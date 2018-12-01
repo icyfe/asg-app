@@ -4,14 +4,17 @@
 		<view>
             <text class="title">{{title}}</text>
         </view>
+		<view-tabbar :tabs="tabs"></view-tabbar>
 	</view>
 </template>
 
 <script>
+	import {schollMixin} from '../../common/js/mixin.js'
 	export default {
+		mixins:[schollMixin],
 		data() {
 			return {
-				title: '首页'
+				title: '推荐'
 			}
 		},
 		onLoad() {

@@ -5,6 +5,84 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/store/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/store/circle",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/store/customer",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		}, {
+			"path": "pages/store/shopcar",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+
+		{
+			"path": "pages/chat/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/chat/friend-circle",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/chat/group",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/chat/mail-list",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/school/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/school/pub-ma",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/school/recommend",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/school/school-knowlege",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/index/user",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
 		}
 	],
 	"globalStyle": {
@@ -12,5 +90,42 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#ff0000",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/bar/home.png",
+				"selectedIconPath": "static/bar/selecthome.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/store/index",
+				"iconPath": "static/bar/store.png",
+				"selectedIconPath": "static/bar/selectstore.png",
+				"text": "商城"
+			},
+			{
+				"pagePath": "pages/chat/index",
+				"iconPath": "static/bar/lts.png",
+				"selectedIconPath": "static/bar/selcetlts.png",
+				"text": "聊天"
+			},
+			{
+				"pagePath": "pages/school/index",
+				"iconPath": "static/bar/sch.png",
+				"selectedIconPath": "static/bar/selectsch.png",
+				"text": "学院"
+			},
+			{
+				"pagePath": "pages/index/user",
+				"iconPath": "static/bar/user.png",
+				"selectedIconPath": "static/bar/selectuser.png",
+				"text": "个人"
+			}
+		]
 	}
 }

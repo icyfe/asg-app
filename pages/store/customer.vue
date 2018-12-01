@@ -4,14 +4,16 @@
 		<view>
             <text class="title">{{title}}</text>
         </view>
+		<view-tabbar :tabs="tabs"></view-tabbar>
 	</view>
 </template>
-
 <script>
+	import {storeMixin} from '../../common/js/mixin.js'
 	export default {
+		mixins:[storeMixin],
 		data() {
 			return {
-				title: '首页'
+				title: '客服'
 			}
 		},
 		onLoad() {

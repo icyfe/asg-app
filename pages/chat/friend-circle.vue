@@ -4,14 +4,17 @@
 		<view>
             <text class="title">{{title}}</text>
         </view>
+		<view-tabbar :tabs="tabs"></view-tabbar>
 	</view>
 </template>
 
 <script>
+	import {chatMixin} from '../../common/js/mixin.js'
 	export default {
+		mixins:[chatMixin],
 		data() {
 			return {
-				title: '首页'
+				title: '朋友圈'
 			}
 		},
 		onLoad() {
