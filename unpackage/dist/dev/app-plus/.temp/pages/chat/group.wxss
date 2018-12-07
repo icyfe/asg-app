@@ -1,0 +1,21 @@
+@import "../../common/vendor.wxss";
+
+.content.data-v-946fce5e {
+  text-align: center;
+  height: 100vh;
+}
+.tabbar.data-v-946fce5e {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.logo.data-v-946fce5e {
+  height: 200rpx;
+  width: 200rpx;
+  margin-top: 200rpx;
+}
+.title.data-v-946fce5e {
+  font-size: 36rpx;
+  color: #8f8f94;
+}

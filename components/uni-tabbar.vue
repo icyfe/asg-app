@@ -1,19 +1,21 @@
 <template>
 	<view class="content">
 		<view v-if="tabs.length > 0" class="wrap" v-for="(item , index) in tabs" :key="index" @click="jump(item.page,item.url,index)">
-			<uni-icon size="28" :color="activeindex == index? '#ff0000' : '#707070'" :type="item.type"></uni-icon>
-			<text :class="activeindex == index? 'txt on' :'txt' ">{{item.title}}</text>
+			<uni-icon class="icon" size="28" :color="current == index? '#ff0000' : '#707070'" :type="item.type"></uni-icon>
+			<text :class="current == index? 'txt on' :'txt' ">{{item.title}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	//自定义tabbar
-	import uniIcon from "./uni-icon.vue";
+	//自定义tabbar 
 	export default {
 		props: {
 			tabs: {
 				type: Array
+			},
+			current: {
+				type: String
 			}
 		},
 		data() {
@@ -22,26 +24,21 @@
 			}
 		},
 		onLoad() {
+			this.activeindex = this.current;
+			console.log('cc', this.current,this.activeindex);
+		},
 
-		},
-		components: {
-			uniIcon,
-		},
-		created() {
-			this.activeindex = this.$route.query.index || 0;
-		},
 		methods: {
-			jump(page,url, index) {
-				console.log('跳转路径', url)
-				this.activeindex = index;
-				if (url == 'user' || url=='index') {
+			jump(page, url, index) {
+				console.log('跳转路径', url, index, this.current);
+				if (url == 'user' || url == 'index') {
 					uni.reLaunch({
 						url: `/pages/${page}/${url}`
 					});
 					return
 				}
-				uni.navigateTo({
-					url: `./${url}?index=${index}`
+				uni.redirectTo({
+					url: `./${url}`
 				});
 			}
 		}
@@ -50,10 +47,11 @@
 
 <style lang="less" scoped>
 	.content {
+		background: #555555;
 		position: fixed !important;
 		z-index: 999 !important;
 		left: 0 !important;
-		bottom: 0 !important;
+		bottom: 0px !important;
 		right: 0 !important;
 		display: flex !important;
 		flex-direction: row !important;
@@ -69,8 +67,8 @@
 		.wrap {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-
+			justify-content: flex-start;
+			align-items:center;
 			.txt {
 				font-size: 10px;
 				color: #707070;
@@ -78,6 +76,9 @@
 
 			.on {
 				color: #ff0000;
+			}
+			.icon{
+				 
 			}
 		}
 

@@ -3,93 +3,156 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
 			}
 		},
 		{
 			"path": "pages/store/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					},
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/store/store",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					},
+					"bounce": "none"
+				}
 			}
 		},
 		{
 			"path": "pages/store/circle",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					},
+					"bounce": "none"
+				}
 			}
 		},
 		{
 			"path": "pages/store/customer",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					},
+					"bounce": "none"
+				}
 			}
 		}, {
 			"path": "pages/store/shopcar",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					},
+					"bounce": "none"
+				}
 			}
 		},
 
 		{
 			"path": "pages/chat/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/chat/chat",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
 			}
 		},
 		{
 			"path": "pages/chat/friend-circle",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/chat/group",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/chat/mail-list",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
+			}
+		},
+		{
+			"path": "pages/school/school",
+			"style": {
+
 			}
 		},
 		{
 			"path": "pages/school/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/school/pub-ma",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/school/recommend",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/school/school-knowlege",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+
 			}
 		},
 		{
 			"path": "pages/index/user",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				//   
+			}
+		},
+		{
+			"path": "pages/common/good",
+			"style": {
+				//   
+			}
+		},
+		{
+			"path": "pages/common/goods-detail",
+			"style": {
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#333",
@@ -98,24 +161,24 @@
 		"backgroundColor": "#ffffff",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/bar/home.png",
-				"selectedIconPath": "static/bar/selecthome.png",
+				"iconPath": "./static/bar/home.png",
+				"selectedIconPath": "./static/bar/selecthome.png",
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/store/index",
+				"pagePath": "pages/store/store",
 				"iconPath": "static/bar/store.png",
 				"selectedIconPath": "static/bar/selectstore.png",
 				"text": "商城"
 			},
 			{
-				"pagePath": "pages/chat/index",
+				"pagePath": "pages/chat/chat",
 				"iconPath": "static/bar/lts.png",
 				"selectedIconPath": "static/bar/selcetlts.png",
 				"text": "聊天"
 			},
 			{
-				"pagePath": "pages/school/index",
+				"pagePath": "pages/school/school",
 				"iconPath": "static/bar/sch.png",
 				"selectedIconPath": "static/bar/selectsch.png",
 				"text": "学院"

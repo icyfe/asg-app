@@ -1,0 +1,116 @@
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/product-list.vue.wxml" />
+<template name="a6075708">
+  <scroll-view ref="scroll" scroll-top="{{scrolltop}}" scroll-y enable-back-to-top class="_scroll-view data-v-29a9da5a detail-container" bindscroll="handleProxy" data-eventid="{{'ctd-4'}}" data-comkey="{{$k}}">
+    <view class="_view data-v-29a9da5a mnav-bar">
+      <view class="_view data-v-29a9da5a wrap">
+        <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'Mzf-0'}}" data-comkey="{{$k}}">
+          <template type="arrow-left" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'e6t-0'],$root}}" is="04590597"></template>
+        </view>
+        <view class="_view data-v-29a9da5a nav-title" hidden="{{!(navisShow)}}">
+          <view bindtap="handleProxy" data-eventid="{{'aZo-1'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [isactive ? 'avtive' : '']]}}">宝贝</view>
+          <view bindtap="handleProxy" data-eventid="{{'oKF-2'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [!isactive ? 'avtive' : '']]}}">详情</view>
+        </view>
+      </view>
+    </view>
+    <swiper class="_swiper data-v-29a9da5a swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" interval="5000" duration="3000">
+      <swiper-item class="_swiper-item data-v-29a9da5a item" wx:key="index2" key="{{index2}}" wx:for="{{imagelist}}" wx:for-index="index2" wx:for-item="item">
+        <image class="_image data-v-29a9da5a swiper-img" src="{{item.src}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="_view data-v-29a9da5a container">
+      <view class="_view data-v-29a9da5a price-container">
+        <view class="_view data-v-29a9da5a price-wrap">
+          <view class="_view data-v-29a9da5a price-one">
+            <view class="_view data-v-29a9da5a jh">券后</view>
+            <view class="_view data-v-29a9da5a price">￥{{reprice}}</view>
+          </view>
+          <view class="_view data-v-29a9da5a describe"> 预估佣金 {{reprice}} 元 </view>
+        </view>
+        <view class="_view data-v-29a9da5a describe">{{goods.title}}</view>
+        <view class="_view data-v-29a9da5a ready-buy">
+          <view class="_view data-v-29a9da5a small-gray">原价￥{{goods.reprice}}</view>
+          <view class="_view data-v-29a9da5a small-gray">{{goods.readyby}}人已购买</view>
+        </view>
+      </view>
+      <view class="_view data-v-29a9da5a big-title">
+        <view class="_view data-v-29a9da5a shoptitle">
+          <image class="_image data-v-29a9da5a logo" mode="aspectFit" src="../../static/tm.png"></image>
+          <view class="_view data-v-29a9da5a title">{{goods.title}}</view>
+        </view>
+        <view class="_view data-v-29a9da5a share">
+          <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'MZC-2'],$root}}" is="04590597"></template>
+          <text class="_text data-v-29a9da5a small-gray">分享</text>
+        </view>
+      </view>
+      <view class="_view data-v-29a9da5a quan-container" bindtap="jump(goods.coupon_click_url)">
+        <image class="_image data-v-29a9da5a quan-bg" src="../../static/bgquan.png"></image>
+        <view class="_view data-v-29a9da5a wrap">
+          <view class="_view data-v-29a9da5a yhq">
+            <view class="_view data-v-29a9da5a yhq-txt">优惠券</view>
+            <view class="_view data-v-29a9da5a yhq-price">￥{{goods.reprice}}</view>
+          </view>
+          <view class="_view data-v-29a9da5a yhq">
+            <view class="_view data-v-29a9da5a data-txt">使用期限</view>
+            <view class="_view data-v-29a9da5a data">{{goods.reprice}}~{{goods.reprice}}</view>
+          </view>
+        </view>
+        <view class="_view data-v-29a9da5a take"> 立即领券</view>
+      </view>
+      <view class="_view data-v-29a9da5a recommend">
+        <view class="_view data-v-29a9da5a title">推荐语</view>
+        <view class="_view data-v-29a9da5a small-gray marginL">{{goods.title}}</view>
+      </view>
+      <view class="_view data-v-29a9da5a store-introduction">
+        <view class="_view data-v-29a9da5a item">
+          <template size="16" type="tmlogo" color="#fe1a34" data="{{...$root['0'], ...$root[$kk+'FXq-3'],$root}}" is="04590597"></template>
+          <view class="_view data-v-29a9da5a txt">{{goods.title}}</view>
+        </view>
+        <view class="_view data-v-29a9da5a rank">
+          <view class="_view data-v-29a9da5a txt">店铺评分</view>
+          <view class="_view data-v-29a9da5a item">
+            <view class="_view data-v-29a9da5a score">描述4.8</view>
+            <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'3it-4'],$root}}" is="04590597"></template>
+          </view>
+          <view class="_view data-v-29a9da5a item">
+            <view class="_view data-v-29a9da5a score">服务4.8</view>
+            <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'Ff4-5'],$root}}" is="04590597"></template>
+          </view>
+          <view class="_view data-v-29a9da5a item">
+            <view class="_view data-v-29a9da5a score">发货4.8</view>
+            <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'bTZ-6'],$root}}" is="04590597"></template>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-29a9da5a line-title">———— 商品详情 ————</view>
+      <view class="_view data-v-29a9da5a shop-detail-wrap">
+        <rich-text nodes="{{detailimg}}" class="_rich-text data-v-29a9da5a"></rich-text>
+      </view>
+      <view class="_view data-v-29a9da5a line-title">———— 为您推荐 ————</view>
+      <template data="{{...$root['0'], ...$root[$kk+'W4I-8'],$root}}" is="0b724cc6"></template>
+      <view class="_view data-v-29a9da5a line-title" style="margin-bottom: 120rpx;">—— 到底了 ——</view>
+      <view class="_view data-v-29a9da5a footer-container">
+        <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'YB8-3'}}" data-comkey="{{$k}}"> 返回 </view>
+        <view class="_view data-v-29a9da5a colle">
+          <view class="_view data-v-29a9da5a wrap">
+            <template type="shoucang" color="#fff" data="{{...$root['0'], ...$root[$kk+'naz-9'],$root}}" is="04590597"></template>
+            <view class="_view data-v-29a9da5a">收藏</view>
+          </view>
+        </view>
+        <view class="_view data-v-29a9da5a share">
+          <view class="_view data-v-29a9da5a wrap">
+            <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'lCH-10'],$root}}" is="04590597"></template>
+            <view class="_view data-v-29a9da5a">分享</view>
+          </view>
+        </view>
+        <view class="_view data-v-29a9da5a copy"> 复制淘口令 </view>
+        <view class="_view data-v-29a9da5a join">
+          <view class="_view data-v-29a9da5a">
+            <view class="_view data-v-29a9da5a sm-txt">立省￥{{goods.reprice}}</view>
+            <view class="_view data-v-29a9da5a">领券购买</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</template>

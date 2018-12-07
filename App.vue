@@ -1,12 +1,12 @@
 <script>
 	export default {
-		onLaunch: function () {
+		onLaunch: function() {
 			console.log('App Launch')
 		},
-		onShow: function () {
+		onShow: function() {
 			console.log('App Show')
 		},
-		onHide: function () {
+		onHide: function() {
 			console.log('App Hide')
 		}
 	}
@@ -14,5 +14,13 @@
 
 <style>
 	/*每个页面公共css */
-	@import "./static/font/font.css";
+	@import "./common/css/common.css";
+
+	page {
+		background-color: #fff;
+		height: 100%;
+		font-size: 28upx;
+		line-height: 1.8;
+		/* padding-bottom: 120upx; */
+	}
 </style>

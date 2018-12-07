@@ -1,28 +1,54 @@
 <template>
 	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
+		<image class="logo" src="../../static/logo.png"></image>
 		<view>
-            <text class="title">{{title}}</text>
-        </view>
-		<view-tabbar :tabs="tabs"></view-tabbar>
+			<text class="title">{{title}}</text>
+		</view>
+		<view-tabbar current="1" :tabs="tabs"></view-tabbar>
 	</view>
 </template>
 
 <script>
-	import {schollMixin} from '../../common/js/mixin.js'
+	import viewTabbar from '../../components/uni-tabbar.vue'
 	export default {
-		mixins:[schollMixin],
 		data() {
 			return {
-				title: '宣传'
+				title:"学院知识",
+				tabs: [{
+						url: "index",
+						type: "baokuan",
+						title: '每日爆款',
+						page: 'school'
+					}, {
+						url: "/pages/school/pub-ma",
+						type: "xuanchuan",
+						title: '宣传素材',
+						page: 'school'
+					},
+					{
+						url: "/pages/school/school-knowlege",
+						type: "study",
+						title: ' 知识学院',
+						page: 'school'
+					},
+					{
+						url: "/pages/school/recommend",
+						type: "xinyu",
+						title: ' 每日心语',
+						page: 'school'
+					},
+					{
+						url: "user",
+						type: "user",
+						title: ' 我的',
+						page: 'index'
+					}
+				]
 			}
 		},
-		onLoad() {
-
+		components: {
+			viewTabbar,
 		},
-		methods: {
-
-		}
 	}
 </script>
 
@@ -31,11 +57,13 @@
 		text-align: center;
 		height: 400upx;
 	}
-    .logo{
-        height: 200upx;
-        width: 200upx;
-        margin-top: 200upx;
-    }
+
+	.logo {
+		height: 200upx;
+		width: 200upx;
+		margin-top: 200upx;
+	}
+
 	.title {
 		font-size: 36upx;
 		color: #8f8f94;

@@ -1,0 +1,152 @@
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/line.vue.wxml" />
+<import src="/components/good-list.vue.wxml" />
+<import src="/components/go-top.vue.wxml" />
+<template name="1091f44b">
+  <view class="_view data-v-d31acb48 index-content">
+    <view class="_view data-v-d31acb48 search-container">
+      <view class="_view data-v-d31acb48 qrcode">
+        <template type="qrcode" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'Tc3-0'],$root}}" is="04590597"></template>
+      </view>
+      <view class="_view data-v-d31acb48 search">
+        <template type="search" size="15" color="#bababa" data="{{...$root['0'], ...$root[$kk+'kmA-1'],$root}}" is="04590597"></template> 立即查找独家优惠券 </view>
+      <view class="_view data-v-d31acb48 msg">
+        <template type="message" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'PQz-2'],$root}}" is="04590597"></template>
+      </view>
+    </view>
+    <view class="_view data-v-d31acb48 uni-tab-bar">
+      <scroll-view id="tab-bar" scroll-x scroll-left="{{scrollLeft}}" class="_scroll-view data-v-d31acb48 {{[uni - swiper - tab, [isfixed ? '_isfixed' : '']]}}">
+        <view wx:key="tab.id" key="{{tab.id}}" id="{{tab.id}}" data-current="{{index}}" bindtap="handleProxy" data-eventid="{{'vQk-0-'+index}}" data-comkey="{{$k}}" wx:for="{{tabBars}}" wx:for-index="index" wx:for-item="tab" class="_view data-v-d31acb48 {{['swiper-tab-list', tabIndex == index ? 'active' : '']}}">{{tab.name}}</view>
+      </scroll-view>
+      <swiper current="{{tabIndex}}" class="_swiper data-v-d31acb48 index-swiper" duration="{{duration}}" bindchange="handleProxy" data-eventid="{{'ydr-13'}}" data-comkey="{{$k}}">
+        <swiper-item wx:key="item" key="{{item}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-d31acb48">
+          <scroll-view scroll-y class="_scroll-view data-v-d31acb48 list" bindscroll="handleProxy" scroll-top="{{globScrollTop}}" data-eventid="{{'vKE-12-'+index}}" data-comkey="{{$k}}">
+            <swiper bindchange="handleProxy" class="_swiper data-v-d31acb48 swiper-box" circular autoplay indicator-active-color="#fff" indicator-dots interval="5000" duration="{{duration}}" data-eventid="{{'S2L-1-'+index}}" data-comkey="{{$k}}">
+              <swiper-item class="_swiper-item data-v-d31acb48 item" wx:key="index2" key="{{index2}}" wx:for="{{imagelist}}" wx:for-index="index2" wx:for-item="item">
+                <image class="_image data-v-d31acb48 swiper-img" src="{{item.src}}"></image>
+              </swiper-item>
+            </swiper>
+            <view class="_view data-v-d31acb48 classification-container">
+              <view class="_view data-v-d31acb48 item">
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'3DR-4-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48 txt">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'VAs-5-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'pgD-6-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'C7U-7-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'8PW-8-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+              </view>
+              <view class="_view data-v-d31acb48 item">
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'xNo-9-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48 txt">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'Qox-10-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'CEU-11-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'5FJ-12-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+                <view class="_view data-v-d31acb48">
+                  <template type="on-lightning" size="35" color="#e5241f" data="{{...$root['0'], ...$root[$kk+'EtJ-13-'+index],$root}}" is="04590597"></template>
+                  <text class="_text data-v-d31acb48">大牌秒杀</text>
+                </view>
+              </view>
+            </view>
+            <view class="_view data-v-d31acb48 uni-swiper-msg">
+              <view class="_view data-v-d31acb48 uni-swiper-msg-icon">
+                <image src="../../static/logo.png" mode="widthFix" class="_image data-v-d31acb48"></image>
+              </view>
+              <swiper vertical="true" autoplay="true" circular="true" interval="3000" class="_swiper data-v-d31acb48">
+                <swiper-item wx:key="boardindex" key="{{boardindex}}" wx:for="{{msg}}" wx:for-index="boardindex" wx:for-item="item" class="_swiper-item data-v-d31acb48">
+                  <navigator class="_navigator data-v-d31acb48">{{item}}</navigator>
+                </swiper-item>
+              </swiper>
+            </view>
+            <template height="5" data="{{...$root['0'], ...$root[$kk+'8AY-15-'+index],$root}}" is="3a42c3d5"></template>
+            <view class="_view data-v-d31acb48 hot-txt">今日
+              <text class="_text data-v-d31acb48 hot">热销</text>榜单</view>
+            <scroll-view class="_scroll-view data-v-d31acb48 hot-scroll-wrap border-1px" scroll-x style="width: 100%;">
+              <view class="_view data-v-d31acb48 wrap">
+                <view class="_view data-v-d31acb48 uni-product" wx:key="productindex" key="{{productindex}}" wx:for="{{productList}}" wx:for-index="productindex" wx:for-item="product">
+                  <view class="_view data-v-d31acb48 image-view">
+                    <image class="_image data-v-d31acb48 uni-product-image" src="{{product.image}}"></image>
+                  </view>
+                  <view class="_view data-v-d31acb48 uni-product-title">{{product.title}}</view>
+                  <view class="_view data-v-d31acb48 uni-product-price">
+                    <text class="_text data-v-d31acb48 uni-product-price-favour">￥{{product.originalPrice}}</text>
+                    <text class="_text data-v-d31acb48 uni-product-price-original">￥{{product.favourPrice}}</text>
+                    <text class="_text data-v-d31acb48 uni-product-tip">{{product.tip}}</text>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+            <template height="10" data="{{...$root['0'], ...$root[$kk+'X14-16-'+index],$root}}" is="3a42c3d5"></template>
+            <view class="_view data-v-d31acb48 recommend">—— 为你推荐 ——</view>
+            <template height="2" data="{{...$root['0'], ...$root[$kk+'m9t-17-'+index],$root}}" is="3a42c3d5"></template>
+            <view class="_view data-v-d31acb48 {{['_fiexd hidden screen-wrap', [isfixed ? 'visiale' : '']]}}">
+              <view bindtap="handleProxy" data-eventid="{{'jAW-2-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 0 ? 'on' : '']}}">精选</view>
+              <view bindtap="handleProxy" data-eventid="{{'ZHy-3-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 1 ? 'on' : '']}}">销量</view>
+              <view bindtap="handleProxy" data-eventid="{{'N7p-4-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 2 ? 'on' : '']}}">最新</view>
+              <view class="_view data-v-d31acb48 jg-wrap" bindtap="handleProxy" data-eventid="{{'cYp-5-'+index}}" data-comkey="{{$k}}">
+                <text class="_text data-v-d31acb48 {{[active == 3 ? 'on' : '']}}">价格</text>
+                <view class="_view data-v-d31acb48 jgicon">
+                  <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'ssd-18-'+index],$root}}" is="04590597"></template>
+                  <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'Oaw-19-'+index],$root}}" is="04590597"></template>
+                </view>
+              </view>
+            </view>
+            <view class="_view data-v-d31acb48 screen-wrap" hidden="{{!(!isfixed)}}">
+              <view bindtap="handleProxy" data-eventid="{{'jdK-6-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 0 ? 'on' : '']}}">精选</view>
+              <view bindtap="handleProxy" data-eventid="{{'PxE-7-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 1 ? 'on' : '']}}">销量</view>
+              <view bindtap="handleProxy" data-eventid="{{'znV-8-'+index}}" data-comkey="{{$k}}" class="_view data-v-d31acb48 {{[active == 2 ? 'on' : '']}}">最新</view>
+              <view class="_view data-v-d31acb48 jg-wrap" bindtap="handleProxy" data-eventid="{{'4WJ-9-'+index}}" data-comkey="{{$k}}">
+                <text class="_text data-v-d31acb48 {{[active == 3 ? 'on' : '']}}">价格</text>
+                <view class="_view data-v-d31acb48 jgicon">
+                  <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'8WC-20-'+index],$root}}" is="04590597"></template>
+                  <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'OYI-21-'+index],$root}}" is="04590597"></template>
+                </view>
+              </view>
+            </view>
+            <view class="_view data-v-d31acb48 goods-container" bindtap="handleProxy" data-eventid="{{'8Px-10-'+index}}" data-comkey="{{$k}}">
+              <template data="{{...$root['0'], ...$root[$kk+'yrT-22-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'0hV-23-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'nnG-24-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'coh-25-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'8YP-26-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'7da-27-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'v1w-28-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'Fgc-29-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'SQL-30-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'8aW-31-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'nd2-32-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'HKY-33-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'mjZ-34-'+index],$root}}" is="322f959d"></template>
+              <template data="{{...$root['0'], ...$root[$kk+'Gvt-35-'+index],$root}}" is="322f959d"></template>
+            </view>
+            <template bindgoTop="handleProxy" data-eventid="{{'z4N-11-'+index}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'uxH-36-'+index],$root}}" is="ded7d2de"></template>
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</template>

@@ -1,5 +1,5 @@
 <template>
-    <view class="iconfont" :class="['icon-'+type]" :style="{color:color,'font-size':fontSize}" @click="onClick()"></view>
+    <view class="iconfont" :class="['icon-'+type]" :style="{color:color,'font-size':fontSize, 'line-height':1}" @click="onClick()"></view>
 </template>
 
 <script>
@@ -11,8 +11,11 @@
             type: String,
             /**
              * 图标颜色
-             */
-            color: String,
+             */	
+            color:{
+				type:String,
+				default:'#f707070'
+			},
             /**
              * 图标大小
              */

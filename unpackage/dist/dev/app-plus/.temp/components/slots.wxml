@@ -1,0 +1,8 @@
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/line.vue.wxml" />
+<import src="/components/good-list.vue.wxml" />
+<import src="/components/go-top.vue.wxml" />
+<import src="/components/uni-tabbar.vue.wxml" />
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/product-list.vue.wxml" />
+<import src="/components/uni-icon.vue.wxml" />

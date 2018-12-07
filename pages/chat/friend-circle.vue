@@ -1,41 +1,77 @@
 <template>
 	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
+		<image class="logo" src="../../static/logo.png"></image>
 		<view>
-            <text class="title">{{title}}</text>
-        </view>
-		<view-tabbar :tabs="tabs"></view-tabbar>
+			<text class="title">{{title}}</text>
+		</view>
+		<view-tabbar current="1" class="tabbar"   :tabs="tabs"></view-tabbar>
 	</view>
 </template>
 
 <script>
-	import {chatMixin} from '../../common/js/mixin.js'
+	import viewTabbar from '../../components/uni-tabbar.vue'
 	export default {
-		mixins:[chatMixin],
 		data() {
 			return {
-				title: '朋友圈'
+				title:"朋友圈",
+				tabs: [{
+						url: "index",
+						type: "bliaotian",
+						title: '聊天',
+						page: 'chat'
+					}, {
+						url: "/pages/chat/friend-circle",
+						type: "find",
+						title: '朋友圈',
+						page: 'chat'
+					},
+					{
+						url: "/pages/chat/group",
+						type: "tuandui",
+						title: ' 团队',
+						page: 'chat'
+					},
+					{
+						url: "/pages/chat/mail-list",
+						type: "txl",
+						title: ' 通讯录',
+						page: 'chat'
+					},
+					{
+						url: "user",
+						type: "user",
+						title: ' 我的',
+						page: 'index'
+					}
+				]
 			}
 		},
-		onLoad() {
-
+		components: {
+			viewTabbar,
 		},
-		methods: {
-
-		}
 	}
 </script>
 
-<style>
+<style scoped>
 	.content {
 		text-align: center;
-		height: 400upx;
+		height: 100vh;
 	}
-    .logo{
-        height: 200upx;
-        width: 200upx;
-        margin-top: 200upx;
-    }
+
+	.tabbar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+	}
+
+	.logo {
+		height: 200upx;
+		width: 200upx;
+		margin-top: 200upx;
+	}
+
 	.title {
 		font-size: 36upx;
 		color: #8f8f94;
