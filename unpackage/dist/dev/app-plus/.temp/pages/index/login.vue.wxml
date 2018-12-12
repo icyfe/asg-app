@@ -1,0 +1,45 @@
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/uni-segmented-control.vue.wxml" />
+<template name="4b8cd13c">
+  <view class="_view data-v-601a3d73">
+    <view class="_view data-v-601a3d73 nav">
+      <view class="_view data-v-601a3d73 back">
+        <template type="arrow-left" size="20" color="#fff" data="{{...$root['0'], ...$root[$kk+'Jm2-0'],$root}}" is="04590597"></template>
+      </view>
+      <view class="_view data-v-601a3d73 title">登录/注册</view>
+    </view>
+    <view class="_view data-v-601a3d73 switch-wrap">
+      <template bindclickItem="handleProxy" data-eventid="{{'qB3-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'hMW-1'],$root}}" is="4b9071f4"></template>
+    </view>
+    <view class="_view data-v-601a3d73 content">
+      <view hidden="{{!(current === 0)}}" class="_view data-v-601a3d73">
+        <view class="_view data-v-601a3d73 item">
+          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'StC-2'],$root}}" is="04590597"></template>
+          <input bindblur="handleProxy" class="_input data-v-601a3d73 _input" placeholder="{{loginerror}}" focus data-eventid="{{'umJ-1'}}" data-comkey="{{$k}}" />
+        </view>
+        <view class="_view data-v-601a3d73 item">
+          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'lCy-3'],$root}}" is="04590597"></template>
+          <input placeholder="请输入验证码" class="_input data-v-601a3d73" />
+          <view bindtap="handleProxy" class="_view data-v-601a3d73 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'Ade-2'}}" data-comkey="{{$k}}">{{yzm}}</view>
+        </view>
+        <view class="_view data-v-601a3d73 login-bt">登录</view>
+      </view>
+      <view hidden="{{!(current === 1)}}" class="_view data-v-601a3d73">
+        <view class="_view data-v-601a3d73 item">
+          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'JPO-4'],$root}}" is="04590597"></template>
+          <input bindblur="handleProxy" placeholder="{{loginerror}}" focus data-eventid="{{'9tB-3'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
+        </view>
+        <view class="_view data-v-601a3d73 item">
+          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'0iR-5'],$root}}" is="04590597"></template>
+          <input placeholder="请输入验证码" class="_input data-v-601a3d73" />
+          <view bindtap="handleProxy" data-eventid="{{'JNI-4'}}" data-comkey="{{$k}}" class="_view data-v-601a3d73 {{['bt', [isSend ? 'disable' : '']]}}">{{yzm}}</view>
+        </view>
+        <view class="_view data-v-601a3d73 item">
+          <template type="yqm" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'cKg-6'],$root}}" is="04590597"></template>
+          <input placeholder="请输入邀请码" class="_input data-v-601a3d73" />
+        </view>
+        <view class="_view data-v-601a3d73 login-bt">注册</view>
+      </view>
+    </view>
+  </view>
+</template>

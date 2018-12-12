@@ -34,8 +34,11 @@
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ],
+				"schemes": [
+                    "taobao"
                 ]
-            },
+			},
             "ios": { /* ios打包配置 */
 
             },

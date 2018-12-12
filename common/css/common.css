@@ -1,10 +1,10 @@
- @font-face {
+@font-face {
   font-family: 'iconfont';  /* project id 873049 */
-  src: url('https://at.alicdn.com/t/font_873049_u1tq5me2yy.eot');
-  src: url('https://at.alicdn.com/t/font_873049_u1tq5me2yy.eot?#iefix') format('embedded-opentype'),
-  url('https://at.alicdn.com/t/font_873049_u1tq5me2yy.woff') format('woff'),
-  url('https://at.alicdn.com/t/font_873049_u1tq5me2yy.ttf') format('truetype'),
-  url('https://at.alicdn.com/t/font_873049_u1tq5me2yy.svg#iconfont') format('svg');
+  src: url('https://at.alicdn.com/t/font_873049_c4r2421ohqa.eot');
+  src: url('https://at.alicdn.com/t/font_873049_c4r2421ohqa.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_873049_c4r2421ohqa.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_873049_c4r2421ohqa.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_873049_c4r2421ohqa.svg#iconfont') format('svg');
 }
 .iconfont {
 	font-family: "iconfont" !important;
@@ -12,6 +12,15 @@
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.icon-yqm:before{
+	content: "\e66e";
+}
+.icon-yanzhengma:before{
+	content: "\e6d9";
+}
+.icon-shouji:before{
+	content: "\e62d";
 }
 .icon-tmlogo:before{
 	content: "\e647";
@@ -282,7 +291,15 @@
 		transform: scale(1.2);
 	}
 }
-
+/* img */
+ p>img{
+	max-width: 100%!important;
+}
+/* 试试 */
+.input-placeholder{
+		height: 28px!important;
+		line-height:28px!important;
+	}
 /* 一像素 */
 .border-1px {
 	position: relative;

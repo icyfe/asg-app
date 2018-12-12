@@ -1,18 +1,18 @@
 <template name="0b724cc6">
   <view class="_view data-v-f7b29232 page">
     <view class="_view data-v-f7b29232 uni-product-list">
-      <view class="_view data-v-f7b29232 uni-product" wx:key="index" key="{{index}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="product">
+      <view class="_view data-v-f7b29232 uni-product" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'LLu-0-'+index}}" data-comkey="{{$k}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="product">
         <view class="_view data-v-f7b29232 image-view">
-          <image wx:if="{{renderImage}}" class="_image data-v-f7b29232 uni-product-image" src="{{product.image}}"></image>
+          <image wx:if="{{renderImage}}" class="_image data-v-f7b29232 uni-product-image" src="{{product.img}}"></image>
         </view>
         <view class="_view data-v-f7b29232 uni-product-title">{{product.title}}</view>
         <view class="_view data-v-f7b29232 uni-product-price">
-          <text class="_text data-v-f7b29232 uni-product-price-favour">￥{{product.originalPrice}}</text>
-          <text class="_text data-v-f7b29232 uni-product-price-original">￥{{product.favourPrice}}</text>
+          <text class="_text data-v-f7b29232 uni-product-price-favour">￥{{product.reprice}}</text>
+          <text class="_text data-v-f7b29232 uni-product-price-original">￥{{product.price}}</text>
         </view>
         <view class="_view data-v-f7b29232 uni-product-price">
-          <text class="_text data-v-f7b29232 small-gray">202002人已购</text>
-          <text class="_text data-v-f7b29232 uni-product-tip">5元券</text>
+          <text class="_text data-v-f7b29232 small-gray">{{product.readyby}}人已购</text>
+          <text class="_text data-v-f7b29232 uni-product-tip">{{product.value}}元券</text>
         </view>
       </view>
     </view>

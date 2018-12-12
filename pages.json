@@ -136,7 +136,11 @@
 		{
 			"path": "pages/index/user",
 			"style": {
-				//   
+			}
+		},
+		{
+			"path": "pages/index/login",
+			"style": {
 			}
 		},
 		{
@@ -147,8 +151,7 @@
 		},
 		{
 			"path": "pages/common/goods-detail",
-			"style": {
-			}
+			"style": {}
 		}
 	],
 	"globalStyle": {

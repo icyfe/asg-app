@@ -1,5 +1,5 @@
 <template>
-	<scroll-view ref='scroll' :scroll-top="scrolltop" scroll-y enable-back-to-top class="detail-container" @scroll='_onscroll'>
+	<view v-if="good">
 		<!-- nav nar -->
 		<view class="mnav-bar">
 			<view class="wrap">
@@ -12,178 +12,258 @@
 				</view>
 			</view>
 		</view>
-		<!-- 轮播图 -->
-		<swiper class="swiper-box" circular indicator-dots autoplay  indicator-active-color="#fff"   duration="500">
-			<swiper-item class="item" v-for="(item, index2)  in imagelist" :key="index2">
-				<image class="swiper-img" :src="item.src"></image>
-				<!-- lazy-load mode="aspectFit" -->
-			</swiper-item>
-		</swiper>
-		<!-- 宝贝介绍 -->
-		<view class="container">
-			<view class="price-container">
-				<view class="price-wrap">
-					<view class="price-one">
-						<view class="jh">券后</view>
-						<view class="price">￥{{reprice}}</view>
+
+		<scroll-view ref='scroll' :scroll-top="scrolltop" scroll-y class="detail-container" @scroll='_onscroll'>
+			<!-- 轮播图 -->
+			<swiper class="swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
+				<swiper-item class="item" v-if="good.sm_banner.length > 0" v-for="(item, banerindex)  in good.sm_banner" :key="banerindex">
+					<image class="swiper-img" :src="item"></image>
+					<!-- lazy-load mode="aspectFit" -->
+				</swiper-item>
+			</swiper>
+			<!-- 宝贝介绍 -->
+			<view class="container">
+				<view class="price-container">
+					<view class="price-wrap">
+						<view class="price-one">
+							<view class="jh">券后</view>
+							<view class="price">￥{{good.price}}</view>
+						</view>
+						<view class="describe">
+							预估佣金 {{good.yj}} 元
+						</view>
 					</view>
-					<view class="describe">
-						预估佣金 {{reprice}} 元
-					</view>
-				</view>
-				<view class="describe">{{goods.title}}</view>
-				<view class="ready-buy">
-					<view class="small-gray">原价￥{{goods.reprice}}</view>
-					<view class="small-gray">{{goods.readyby}}人已购买</view>
-				</view>
-			</view>
-			<!-- 分享栏 -->
-			<view class="big-title">
-				<view class='shoptitle'>
-					<image class="logo" mode="aspectFit" src="../../static/tm.png"></image>
-					<view class="title">{{goods.title}}</view>
-				</view>
-				<view class="share">
-					<uni-icon type="share" color="#8a8a8a"></uni-icon>
-					<text class="small-gray">分享</text>
-				</view>
-			</view>
-			<!-- 优惠券 -->
-			<view class="quan-container" bindtap="jump(goods.coupon_click_url)">
-				<image class="quan-bg" src="../../static/bgquan.png"></image>
-				<view class="wrap">
-					<view class="yhq">
-						<view class="yhq-txt">优惠券</view>
-						<view class="yhq-price">￥{{goods.reprice}}</view>
-					</view>
-					<view class="yhq">
-						<view class="data-txt">使用期限</view>
-						<view class="data">{{goods.reprice}}~{{goods.reprice}}</view>
+					<view class="describe">{{good.title}}</view>
+					<view class="ready-buy">
+						<view class="small-gray">原价￥{{good.reprice}}</view>
+						<view class="small-gray">{{good.readyby}}人已购买</view>
 					</view>
 				</view>
-				<view class="take"> 立即领券</view>
-			</view>
-			<!-- 推荐语 -->
-			<view class="recommend">
-				<view class="title">推荐语</view>
-				<view class="small-gray marginL">{{goods.title}}</view>
-			</view>
-			<!-- 店铺评分 -->
-			<view class="store-introduction">
-				<view class="item">
-					<uni-icon size="16" type="tmlogo" color="#fe1a34"></uni-icon>
-					<view class="txt">{{goods.title}}</view>
-				</view>
-				<view class="rank">
-					<view class="txt">店铺评分</view>
-					<view class="item">
-						<view class="score">描述4.8</view>
-						<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
+				<!-- 分享栏 -->
+				<view class="big-title" @click="share">
+					<view class='shoptitle'>
+						<image class="logo" mode="aspectFit" src="../../static/tm.png"></image>
+						<view class="title">{{good.title}}</view>
 					</view>
-					<view class="item">
-						<view class="score">服务4.8</view>
-						<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
-					</view>
-					<view class="item">
-						<view class="score">发货4.8</view>
-						<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
-					</view>
-				</view>
-			</view>
-			<!-- 商品详情 -->
-			<view class="line-title">———— 商品详情 ————</view>
-			<view class="shop-detail-wrap">
-				<rich-text :nodes="detailimg"></rich-text>
-			</view>
-			<!-- 为您推荐 -->
-			<view class="line-title">———— 为您推荐 ————</view>
-			<product-list></product-list>
-			<view class="line-title" style="margin-bottom: 120upx;">—— 到底了 ——</view>
-			<!--底部固定栏 -->
-			<view class="footer-container">
-				<view class="back" @click="back">
-					返回
-				</view>
-				<view class="colle">
-					<view class="wrap">
-						<uni-icon type="shoucang" color="#fff"></uni-icon>
-						<view>收藏</view>
-					</view>
-				</view>
-				<view class="share">
-					<view class="wrap">
+					<view class="share">
 						<uni-icon type="share" color="#8a8a8a"></uni-icon>
-						<view>分享</view>
+						<text class="small-gray">分享</text>
 					</view>
 				</view>
-				<view class="copy">
-					复制淘口令
-				</view>
-				<view class="join">
-					<view>
-						<view class="sm-txt">立省￥{{goods.reprice}}</view>
-						<view>领券购买</view>
+				<!-- 优惠券 -->
+				<view class="quan-container" @click="jump(good.coupon_click_url)">
+					<image class="quan-bg" src="../../static/bgquan.png"></image>
+					<view class="wrap">
+						<view class="yhq">
+							<view class="yhq-txt">优惠券</view>
+							<view class="yhq-price">￥{{good.value}}</view>
+						</view>
+						<view class="yhq">
+							<view class="data-txt">使用期限</view>
+							<view class="data">{{good.startdate}}~{{good.enddate}}</view>
+						</view>
 					</view>
+					<view class="take"> 立即领券</view>
+				</view>
+				<!-- 推荐语 -->
+				<view class="recommend">
+					<view class="title">推荐语</view>
+					<view class="small-gray marginL">{{good.desc}}</view>
+				</view>
+				<!-- 店铺评分 -->
+				<view class="store-introduction">
+					<view class="item">
+						<uni-icon size="16" type="tmlogo" color="#fe1a34"></uni-icon>
+						<view class="txt">{{good.title}}</view>
+					</view>
+					<view class="rank">
+						<view class="txt">店铺评分</view>
+						<view class="item">
+							<view class="score">描述4.8</view>
+							<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
+						</view>
+						<view class="item">
+							<view class="score">服务4.8</view>
+							<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
+						</view>
+						<view class="item">
+							<view class="score">发货4.8</view>
+							<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
+						</view>
+					</view>
+				</view>
+				<!-- 商品详情 -->
+				<view class="line-title">———— 商品详情 ————</view>
+				<view>
+					<rich-text id="shop-detail-wrap" :nodes="good.detail"></rich-text>
+				</view>
+				<!-- 为您推荐 -->
+				<view class="line-title">———— 为您推荐 ————</view>
+				<product-list :productList="recommend"></product-list>
+				<view class="line-title" style="margin-bottom: 120upx;">—— 到底了 ——</view>
+			</view>
+		</scroll-view>
+		<!--底部固定栏 -->
+		<view class="footer-container">
+			<view class="back" @click="back">
+				返回
+			</view>
+			<view class="colle" @click="collection">
+				<view class="wrap">
+					<uni-icon type="shoucang" :color="collentionColor"></uni-icon>
+					<view :style="{color:collentionColor}">收藏</view>
+				</view>
+			</view>
+			<view class="share" @click="share">
+				<view class="wrap">
+					<uni-icon type="share" color="#8a8a8a"></uni-icon>
+					<view>分享</view>
+				</view>
+			</view>
+			<view class="copy" @click="copykey">
+				复制淘口令
+			</view>
+			<view class="join" @click="jump(good.coupon_click_url)">
+				<view>
+					<view class="sm-txt">立省￥{{good.value}}</view>
+					<view>领券购买</view>
 				</view>
 			</view>
 		</view>
-	</scroll-view>
+	</view>
 </template>
 <script>
 	import productList from '@/components/product-list.vue'
+	import {
+		getGoodDetail,
+		getGoodsList
+	} from '@/api/goods.js'
 	export default {
+		computed: {
+			collentionColor() {
+				return this.isCollection ? "#ff0000" : "#fff"
+			}
+		},
 		data() {
 			return {
+				isCollection: false,
+				parentScrollTop: 0,
 				scrolltop: 0,
 				navisShow: true,
 				isactive: true,
 				reprice: 15,
-				detailimg: '<div class=""><p><img src="https://img.alicdn.com/imgextra/i3/2828294548/O1CN011jT1llnGVYeFDJZ_!!2828294548.jpg" style="max-width:100.0%;" size="730x377"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i1/2828294548/O1CN011jT1lmpDgWWLbSo_!!2828294548.jpg" style="max-width:100.0%;" size="750x2370"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i1/2828294548/O1CN011jT1llYi3om84lP_!!2828294548.jpg" style="max-width:100.0%;" size="750x1685"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i3/2828294548/O1CN011jT1lm2UUZ8Jh72_!!2828294548.jpg" style="max-width:100.0%;" size="750x1689"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i2/2828294548/O1CN011jT1lmpCHEy58ak_!!2828294548.jpg" style="max-width:100.0%;" size="750x2234"><img align="absmiddle" src="https:https://img.alicdn.com/imgextra/i4/2828294548/O1CN011jT1lf6oqrXUOO7_!!2828294548.jpg" style="max-width:100.0%;" size="750x2387"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i4/2828294548/O1CN011jT1lf6p3JikKDu_!!2828294548.jpg" style="max-width:100.0%;" size="750x2124"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i3/2828294548/O1CN011jT1ljQfcOpPtMM_!!2828294548.jpg" style="max-width:100.0%;" size="750x1780"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i4/2828294548/O1CN011jT1llYhnDvO27z_!!2828294548.jpg" style="max-width:100.0%;" size="750x2064"><img align="absmiddle" src="https://img.alicdn.com/imgextra/i3/2828294548/O1CN011jT1lkhEV5IqJFA_!!2828294548.jpg" style="max-width:100.0%;" size="750x2472" /></p></div>',
-				goods: {
-					title: '劲霸男装',
-					reprice: 12,
-					readyby: "2656132"
-				},
-				imagelist: [{
-						title: 1,
-						src: "https://img.alicdn.com/tps/i4/TB1yNlhhAvoK1RjSZFwSuwiCFXa.jpg_q90_.webp"
-					},
-					{
-						title: 2,
-						src: "https://aecpm.alicdn.com/simba/img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg"
-					},
-					{
-						title: 3,
-						src: "https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg"
-					},
-					{
-						title: 3,
-						src: "https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg"
-					},
-					{
-						title: 3,
-						src: "https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg"
-					}
-				],
+				good: null,
+				recommend: {}
 			}
+		},
+		onLoad(option) {
+			let id = option.id || ''
+			this.parentScrollTop = option.scrollTop
+			console.log('scrollTop', this.parentScrollTop);
+			console.log('id', id);
+			this._getGoodDetail(id);
+			this._getRecommend();
 		},
 		components: {
 			productList,
 		},
 		methods: {
+			//复制淘口令
+			copykey() {
+				let _this = this
+				uni.setClipboardData({
+					data: this.good.tkl,
+					success: function() {
+						uni.showToast({
+							title:'已复制'
+						})
+					}
+				});
+			},
+			// 收藏
+			collection() {
+				if (this.isCollection) {
+					this.isCollection = false;
+					uni.showToast({
+						title: '已取消'
+					})
+				} else {
+					this.isCollection = true;
+					uni.showToast({
+						title: '已收藏'
+					})
+				}
+			},
+			//分享
+			share() {
+				console.log('share')
+				uni.share({
+					provider: "weixin",
+					scene: "WXSenceTimeline",
+					type: 0,
+					href: this.good.coupon_click_url,
+					title: `我正在领取淘宝购物超级优惠券`,
+					summary: `${this.good.title}该店正在做优惠哦!`,
+					imageUrl: this.good.sm_banner[0],
+					success: function(res) {
+						console.log("success:" + JSON.stringify(res));
+					},
+					fail: function(err) {
+						console.log("fail:" + JSON.stringify(err));
+					}
+				});
+			},
+			jump(url) {
+				console.log(url)
+				let str = url.slice(8);
+				plus.runtime.openURL(`taobao://${str}`);
+			},
+			_getGoodDetail(id) {
+				let ret = getGoodDetail(id)
+				uni.showLoading({
+					title: '加载中...',
+					mask: true
+				})
+				ret.then(res => {
+					uni.hideLoading();
+					if (res.code == 200) {
+						this.good = res.result
+						console.log('sp', this.good)
+					} else {
+						uni.showToast({
+							title: '查无此商品',
+							icon: 'none'
+						})
+					}
+				})
+			},
+			_getRecommend() {
+				let ret = getGoodsList({
+					page: 0,
+					type: '',
+					screen: "",
+					jg: ""
+				});
+				ret.then(res => {
+					if (res.code == 200) {
+						this.recommend = res.result;
+						// console.log('recommend', this.recommend);
+					}
+				})
+			},
 			back() {
 				uni.navigateBack({
 					delta: 1
-				});
+				})
 			},
 			_onscroll(e) {
 				let even = e.target || e.srcElement;
-				let scrollTop = even.scrollTop;
-				this.scrolltop = scrollTop; //实时同步位置
-				// console.log(scrollTop)
-				if (scrollTop >= 555) {
+				this.scrolltop = even.scrollTop;
+				// this.scrolltop = scrollTop; //实时同步位置
+				// console.log('11111', even.scrollTop)
+				if (even.scrollTop > 555 && this.isactive) {
 					this.isactive = false
-				} else {
+				} else if (even.scrollTop < 555 && !this.isactive) {
 					this.isactive = true
 				}
 			},
@@ -192,12 +272,11 @@
 				let target = ev.target || ev.srcElement;
 				console.log(target.offsetLeft)
 				if (target.offsetLeft < 190 && target.offsetLeft > 150) {
-					// console.log('1', this.scrolltop)
-
+					console.log('1', this.scrolltop)
 					this.scrolltop = 0;
 					this.isactive = true;
 				} else if (target.offsetLeft < 240 && target.offsetLeft > 190) {
-					// console.log('2', this.scrolltop)
+					console.log('2', this.scrolltop)
 					this.scrolltop = 555;
 					this.isactive = false;
 				}
@@ -207,7 +286,7 @@
 </script>
 <style scoped lang="less">
 	.detail-container {
-		height: 100%;
+		height: 100vh;
 		width: 100%;
 		overflow-x: hidden;
 	}
@@ -583,6 +662,13 @@
 			.sm-txt {
 				font-size: 12upx;
 			}
+		}
+	}
+
+	// 商品详情容器
+	#shop-detail-wrap {
+		img {
+			max-width: 100% !important;
 		}
 	}
 

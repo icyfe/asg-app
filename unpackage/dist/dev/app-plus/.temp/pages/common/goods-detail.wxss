@@ -1,7 +1,7 @@
 @import "../../common/vendor.wxss";
 
 .detail-container.data-v-29a9da5a {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   overflow-x: hidden;
 }
@@ -492,6 +492,9 @@
 }
 .footer-container .join .sm-txt.data-v-29a9da5a {
   font-size: 12rpx;
+}
+#shop-detail-wrap ._img.data-v-29a9da5a {
+  max-width: 100% !important;
 }
 .small-gray.data-v-29a9da5a {
   font-size: 24rpx;

@@ -1,21 +1,24 @@
 <template>
-	<view class="goods-wrap">
+	<view class="goods-wrap" @click="onTap">
 		<view class="goods-img">
-			<image class="img" mode="aspectFit" src="https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product3.jpg"></image>
+			<image class="img" mode="aspectFit" lazy-load :src="goodimg"></image>
 		</view>
 		<view class="desc">
 			<view class="shop-title">
 				<image class="logo" mode="aspectFit" src="../../static/tm.png"></image>
-				<view class="txt">大码女装限时发售大码女装限时发售大码女装限时发售大码女装限时发售</view>
+				<view class="txt">{{goodtitle}}</view>
 			</view>
 			<view class="shop-desc">
 				<view class="price-wrap">
-					<view class="present">￥15</view>
-					<view class="original">原价￥16</view>
+					<view class="price">
+						<view class="original">原价￥{{goodorprice}}</view>
+						<view class="present">￥{{goodprice}}</view>
+					</view>
+					<view class="yj">佣金￥{{goodyj}}</view>
 				</view>
 				<view class="coupon-wrap">
-					<view class="num">521523人已购</view>
-					<view class="value">5元券</view>
+					<view class="num">{{goodbuynum}}人已购</view>
+					<view class="value">{{goodvalue}}元券</view>
 				</view>
 			</view>
 		</view>
@@ -24,14 +27,24 @@
 
 <script>
 	export default {
+		props:{
+			goodyj:[String,Number],
+			goodimg:String,
+			goodtitle:String,
+			goodprice:[String, Number],
+			goodorprice:[String, Number],
+			goodbuynum:[String, Number],
+			goodvalue:[String, Number],
+			goodid:[String,Number]
+		},
 		computed: {
 			fontSize() {
 				return `${this.size}px`
 			}
 		},
 		methods: {
-			onClick() {
-				this.$emit('click')
+			onTap() {
+				this.$emit('onTap')
 			}
 		}
 	}
@@ -51,23 +64,23 @@
 		border-bottom: 1upx solid #f8f8f8;
 		.goods-img {
 			width: 300upx;
-			border-radius: 10upx;
+			border-radius: 20upx;
 
 			.img {
 				width: 280upx;
 				height: 280upx;
 				padding: 10upx;
-				border-radius: 10upx;
+				border-radius: 20upx;
 			}
 		}
 
 		.desc {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-around;
+			justify-content: space-between;
 			height: calc(300upx - 20upx);
 			padding: 10upx 0;
-
+			width: 100%;
 			.shop-title {
 				display: flex;
 				flex-direction: row;
@@ -91,12 +104,20 @@
 					flex-direction: row;
 					justify-content: space-between;
 					align-items: center;
-
+					.price{
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-start;
+						align-items: center;
+					}
 					.present {
 						font-size: 30upx;
 						color: #FF0000;
 					}
-
+					.yj{
+						font-size: 20upx;
+						color: #FF0000;
+					}
 					.original {
 						text-decoration: line-through;
 						color: #555555;

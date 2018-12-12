@@ -1,5 +1,5 @@
 <template>
-	<view class="index-content">
+	<view class="index-content" v-if="productList">
 		<!-- 查找栏 -->
 		<view class="search-container">
 			<view class="qrcode">
@@ -24,17 +24,40 @@
 			<swiper :current="tabIndex" class="index-swiper" :duration="duration" @change="changeTab">
 				<swiper-item v-for="item in itemList" :key="item">
 					<!-- 整页布局滚动 -->
-					<scroll-view scroll-y class="list" @scroll="_screensticky" :scroll-top="globScrollTop" >
+					<scroll-view scroll-y @scroll="_screensticky" :scroll-top="globScrollTop" class="list" @scrolltolower='onloadmore'>
 						<!-- 轮播图 -->
-						<swiper @change="changeswiper" class="swiper-box" circular autoplay indicator-active-color="#fff" indicator-dots interval="5000" :duration="duration">
+						<swiper @change="changeswiper" class="swiper-box" circular autoplay indicator-active-color="#fff" indicator-dots
+						 interval="5000" :duration="duration">
 							<swiper-item class="item" v-for="(item, index2)  in imagelist" :key="index2">
 								<image class="swiper-img" :src="item.src"></image>
 								<!-- lazy-load mode="aspectFit" -->
 							</swiper-item>
 						</swiper>
 						<!-- 首页20个大类分区 -->
-						<view class="classification-container">
+						<view class="classification-container" v-show="tabIndex == 0">
 							<view class="item">
+								<view>
+									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
+									<text class="txt">聚划算</text>
+								</view>
+								<view>
+									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
+									<text>9.9包邮</text>
+								</view>
+								<view>
+									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
+									<text>天猫精选</text>
+								</view>
+								<view>
+									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
+									<text>淘淘乐</text>
+								</view>
+								<view>
+									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
+									<text>每日推荐</text>
+								</view>
+							</view>
+							<!-- <view class="item">
 								<view>
 									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
 									<text class="txt">大牌秒杀</text>
@@ -55,55 +78,33 @@
 									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
 									<text>大牌秒杀</text>
 								</view>
-							</view>
-							<view class="item">
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text class="txt">大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-							</view>
+							</view> -->
 						</view>
 						<!-- 滚动公告栏首页 -->
-						<view class="uni-swiper-msg">
+						<view class="uni-swiper-msg" v-show="tabIndex == 0">
 							<view class="uni-swiper-msg-icon">
 								<image src="../../static/logo.png" mode="widthFix"></image>
 							</view>
 							<swiper vertical="true" autoplay="true" circular="true" interval="3000">
-								<swiper-item v-for="(item, boardindex) in msg" :key="boardindex">
-									<navigator>{{item}}</navigator>
+								<swiper-item v-if="msg.length > 1" v-for="(item, boardindex) in msg" :key="boardindex">
+									<view @click="godetail(item.id)">{{item.title}}</view>
 								</swiper-item>
 							</swiper>
 						</view>
 						<divid-line height="5"></divid-line>
 						<!-- 精选滑动页面 -->
-						<view class="hot-txt">今日<text class="hot">热销</text>榜单</view>
-						<scroll-view class="hot-scroll-wrap border-1px" scroll-x style="width: 100%;">
+						<view class="hot-txt" v-show="tabIndex == 0">今日<text class="hot">热销</text>榜单</view>
+						<scroll-view class="hot-scroll-wrap border-1px" scroll-x style="width: 100%;" v-show="tabIndex == 0">
 							<view class="wrap">
-								<view class="uni-product" v-for="(product,productindex) in productList" :key="productindex">
+								<view class="uni-product" v-for="(product,hotproductindex) in hotProductList" :key="hotproductindex" @click="godetail(product.id)">
 									<view class="image-view">
-										<image class="uni-product-image" :src="product.image"></image>
+										<image class="uni-product-image" :src="product.img"></image>
 									</view>
 									<view class="uni-product-title">{{product.title}}</view>
 									<view class="uni-product-price">
-										<text class="uni-product-price-favour">￥{{product.originalPrice}}</text>
-										<text class="uni-product-price-original">￥{{product.favourPrice}}</text>
-										<text class="uni-product-tip">{{product.tip}}</text>
+										<text class="uni-product-price-favour">￥{{product.originp}}</text>
+										<text class="uni-product-price-original">￥{{product.price}}</text>
+										<text class="uni-product-tip">{{product.type}}</text>
 									</view>
 								</view>
 							</view>
@@ -112,7 +113,8 @@
 						<divid-line height="10"></divid-line>
 						<view class="recommend">—— 为你推荐 ——</view>
 						<divid-line height="2"></divid-line>
-						<view :class="['_fiexd hidden screen-wrap', {'visiale':isfixed}]">
+						<!-- <view :class="['_fiexd hidden screen-wrap', {'visiale':isfixed}]"> -->
+						<view class="screen-wrap _fiexd" v-if="isfixed">
 							<view :class="{on :active==0}" @click="screentap('0')">精选</view>
 							<view :class="{on :active==1}" @click="screentap('1')">销量</view>
 							<view :class="{on :active==2}" @click="screentap('2')">最新</view>
@@ -126,7 +128,8 @@
 								</view>
 							</view>
 						</view>
-						<view class='screen-wrap' v-show="!isfixed">
+						<!-- <view  :class="['screen-wrap', {'_sticky':!isAndroid}]"> -->
+						<view :class="['screen-wrap', {'_sticky':!isAndroid}]">
 							<view :class="{on :active==0}" @click="screentap('0')">精选</view>
 							<view :class="{on :active==1}" @click="screentap('1')">销量</view>
 							<view :class="{on :active==2}" @click="screentap('2')">最新</view>
@@ -140,27 +143,18 @@
 								</view>
 							</view>
 						</view>
-						<view class="goods-container" @click="jump">
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
-							<good-list></good-list>
+						<view class="goods-container">
+							<block v-for="(item,productindex) in productList" :key="productindex">
+								<good-list :goodimg="item.img" :goodtitle="item.title" :goodprice="item.price" :goodorprice="item.reprice"
+								 :goodbuynum="item.readyby" :goodvalue="item.value" :goodyj="item.yj" :goodid="item.id" @onTap="godetail(item.id)"></good-list>
+							</block>
+							<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
 						</view>
-						<go-top :isShow="isShow" @goTop="goTop"></go-top>
 					</scroll-view>
 				</swiper-item>
 			</swiper>
 		</view>
+		<go-top v-if="isShow" @goTop="goTop"></go-top>
 	</view>
 </template>
 
@@ -169,6 +163,11 @@
 	import dividLine from '@/components/line.vue';
 	import goodList from '@/components/good-list.vue';
 	import goTop from '@/components/go-top.vue'
+	import {
+		getGoodsList,
+		getRecommend,
+		getHotListGood
+	} from '@/api/goods.js'
 	export default {
 		components: {
 			uniLoadMore,
@@ -188,43 +187,31 @@
 		},
 		data() {
 			return {
-				isShow:false,
-				globScrollTop:0,
+				page: 1,
+				scrollEv: null,
+				nowScroll: 0,
+				isScroll: false,
+				isAndroid: false,
+				timer: null,
+				isShow: false,
+				globScrollTop: 0,
 				uni: "",
 				swiper: "",
 				tab: "",
-				timer: null,
 				active: 0,
 				isup: 3,
 				count: 0,
+				screen: null,
 				isfixed: false,
-				productList: [{
-						image: 'https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product1.jpg',
-						title: 'Apple iPhone X 256GB 深空灰色 移动联通电信4G手机',
-						originalPrice: 9999,
-						favourPrice: 8888,
-						tip: '自营'
-					},
-					{
-						image: 'https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product2.jpg',
-						title: 'Apple iPad 平板电脑 2018年新款9.7英寸',
-						originalPrice: 3499,
-						favourPrice: 3399,
-						tip: '优惠'
-					},
-					{
-						image: 'https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product3.jpg',
-						title: 'Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）',
-						originalPrice: 12999,
-						favourPrice: 10688,
-						tip: '秒杀'
-					}
-				],
-				msg: [
-					'uni-app行业峰会频频亮相，开发者反响热烈',
-					'DCloud完成B2轮融资，uni-app震撼发布',
-					'36氪热文榜推荐、CSDN公号推荐 DCloud CEO文章'
-				],
+				productList: null,
+				loadingType: 0,
+				contentText: {
+					contentdown: "上拉显示更多",
+					contentrefresh: "正在加载...",
+					contentnomore: "没有更多数据了"
+				},
+				hotProductList: [],
+				msg: [],
 				imagelist: [{
 						title: 1,
 						src: "https://img.alicdn.com/tps/i4/TB1yNlhhAvoK1RjSZFwSuwiCFXa.jpg_q90_.webp"
@@ -279,37 +266,145 @@
 						name: '家具',
 						id: 'caijing'
 					}
-				]
+				],
+
 			}
 		},
-		created() {
-			console.log('cc');
-		 
+		onLoad(option) {
+			// 			this.nowScroll = option.scrollTop || 0;
+			// 			this.globScrollTop = this.nowScroll;
+			// 			console.log('现在的值nowScroll', this.nowScroll);
+			// 			if (plus.os.name == 'Android') {
+			// 				this.isAndroid = true
+			// 			} else if (plus.os.name == 'iOS') {
+			// 				this.isAndroid = false
+			// 			}
+			// console.log('cc');
+			this._getData();
 		},
 		methods: {
-			goTop(){
+			onloadmore() {
+				if (this.loadingType !== 0) {
+					return;
+				}
+				this.loadingType = 1;
+
+				let ret = getGoodsList({
+					page: this.page,
+					type: this.tabIndex == 0 ? '' : this.tabBars[this.tabIndex].name,
+					screen: '',
+					jg: ''
+				});
+				ret.then(res => {
+
+					if (res.code == 200) {
+						if (res.result.length == 0) {
+							this.loadingType = 3;
+							return
+						}
+						this.productList = this.productList.concat(res.result);
+						this.page++;
+						this.loadingType = 0;
+					} else {
+						this._showError()
+					}
+				})
+			},
+			_getData() {
+				uni.showLoading({
+					title: '加载中..',
+					mask: true
+				})
+				// getHotListGood(),
+				let ret = Promise.all([getRecommend(),getHotListGood(), getGoodsList({
+					page: 0,
+					type: '',
+					screen: '',
+					jg: ''
+				})]);
+				ret.then(res => {
+					console.log('aa', res)
+					uni.hideLoading();
+					if (res.length) {
+						for (let item of res) {
+							if (item.code!=200) {
+								this._showError()
+								return
+							}
+						}
+						this.msg = res[0].result
+						this.hotProductList = res[1].result;
+						this.productList = res[2].result;
+						console.log(this.hotProductList);
+					}
+				})
+			},
+			godetail(id) {
+
+				uni.navigateTo({
+					url: `/pages/common/goods-detail?id=${id}&scrollTop=${this.nowScroll}`
+				})
+				this.globScrollTop = this.nowScroll;
+			},
+			_showError() {
+				uni.showToast({
+					title: "出错了...",
+					icon: 'none',
+					mask: true
+				})
+			},
+			_getGoodsList(page = 0, type = '', screen = '', jg = '') {
+				uni.showLoading({
+					title: '加载中..'
+				})
+				let ret = getGoodsList({
+					page,
+					type,
+					screen,
+					jg
+				});
+				ret.then(res => {
+					uni.hideLoading();
+					if (res.code == 200) {
+						this.productList = res.result;
+					} else {
+						this._showError()
+					}
+				})
+			},
+			goTop() {
 				this.globScrollTop = 0;
+				this.isScroll = false;
 			},
 			//条件筛选滑动事件监听 (this._delayfun)
+
 			_screensticky(ev) {
 				let target = ev.target || ev.srcElement;
-				let scrollTop = target.scrollTop;
-				this.globScrollTop = scrollTop;
-				if (scrollTop > 670) { 
+				this.nowScroll = target.scrollTop
+				// console.log(target.scrollTop);
+				if (!this.isScroll) {
+					this.globScrollTop = 1;
+					this.isScroll = true;
+				}
+				if (this.nowScroll > 620) {
+					// console.log('>670')
+					if (this.isAndroid) {
+						this.isfixed = true;
+					}
 					this.isfixed = true;
-					this.isShow = true;
-					// console.log('1')
+					this.isShow = true; // 显示一键返回顶部的箭头按钮
 				} else {
+					// console.log('<670')
 					this.isfixed = false;
 					this.isShow = false;
-				// console.log('2')
 				}
 			},
-			jump() {
-				uni.navigateTo({
-					url: '/pages/common/goods-detail'
-					// url: '/pages/common/good'
-				});
+			jump(id) {
+				console.log(id);
+				// 				uni.navigateTo({
+				// 					url: '/pages/common/goods-detail'
+				// 					// url: '/pages/common/good'
+				// 				});
 			},
 			//条件筛选
 			screentap(index) {
@@ -317,8 +412,11 @@
 					this.active = index;
 					this.isup = this.count % 2 == 0 ? this.isup = 0 : this.isup = 1;
 					this.count++;
+					console.log("this.isip", this.isup)
+					this._getGoodsList(0, '', index, this.isup);
 					return
 				}
+				this._getGoodsList(0, '', index);
 				this.active = index
 				this.isup = 3;
 			},
@@ -329,6 +427,8 @@
 			//滑动swiper 改变内容
 			async changeTab(e) {
 				let index = e.target.current;
+				let type = index == 0 ? '' : this.tabBars[index].name
+				this._getGoodsList('', type); // 切换时刷新数据
 				if (this.isClickChange) {
 					this.tabIndex = index;
 					this.isClickChange = false;
@@ -381,6 +481,7 @@
 
 <style lang="less" scoped>
 	.index-content {
+		position: relative;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -388,14 +489,22 @@
 		.goods-container {
 			padding-bottom: 140upx;
 		}
-		 .visiale{
-			 visibility: visible!important;
-		 }
-		 .hidden{
-			 visibility: hidden;
-		 }
+
+		.visiale {
+			visibility: visible !important;
+		}
+
+		.hidden {
+			visibility: hidden;
+		}
+
 		._fiexd {
 			position: fixed;
+			top: 0;
+		}
+
+		._sticky {
+			position: sticky;
 			top: 0;
 		}
 
@@ -432,9 +541,6 @@
 
 		// 条件筛选
 		.screen-wrap {
-			// position: fixed;
-			// 			top: 0;
-		 
 			height: 30upx;
 			width: 100%;
 			display: flex;
@@ -443,7 +549,6 @@
 			align-items: center;
 			padding: 20upx 0;
 			background: #fff;
-			;
 
 			.jg-wrap {
 				display: flex;
