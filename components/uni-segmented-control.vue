@@ -10,6 +10,10 @@
 	export default {
 		name: 'segmented-control',
 		props: {
+			width:{
+				type:[String,Number],
+				default:"75%"
+			},
 			current: {
 				type: Number,
 				default: 0
@@ -31,7 +35,7 @@
 		},
 		data() {
 			return {
-				currentIndex: this.current
+				currentIndex: this.current,
 			}
 		},
 		watch: {
@@ -46,10 +50,10 @@
 				let styleString = '';
 				switch (this.styleType) {
 					case 'text':
-						styleString = `border:0;`;
+						styleString = `border:0; width:${this.width};`;
 						break;
 					default:
-						styleString = `border-color: ${this.activeColor}`;
+						styleString = `border-color: ${this.activeColor};width:${this.width};border-radius:${this.width=="100%"?"0":"10upx"}`;
 						break;
 				}
 				return styleString;
@@ -90,17 +94,17 @@
 	}
 </script>
 
-<style>
+<style lang="less" scoped>
 	.segmented-control {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		width: 75%;
 		font-size: 28upx;
-		border-radius: 10upx;
+		// border-radius: 10upx;
 		box-sizing: border-box;
 		margin: 0 auto;
 		overflow: hidden;
+		background: #FFFFFF;
 	}
 
 	.segmented-control.button {

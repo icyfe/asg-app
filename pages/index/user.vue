@@ -1,30 +1,54 @@
 <template>
-	<view class="content">
+	<view class="content" v-if="commsisson">
 		<view class="upper">
 			<view class="user-wrap">
-				<image class="avatar" src="../../static/avatar.jpg"></image>
-				<view class="phone">15805986933</view>
-				<view><text class="yq-title">邀请码：</text><text class="code-title">AD125FS</text> <text class="copy-title">复制</text></view>
-				<view class="price-total">
+				<image @tap="jump('setting')" class="avatar" src="../../static/avatar.jpg"></image>
+				<view class="phone">{{user.phone}}</view>
+				<view @tap='copy'><text class="yq-title">邀请码：</text><text class="code-title">{{user.invitecode}}</text> <text class="copy-title"
+					 @tap="copy">复制</text></view>
+				<!-- <view class="price-total">
 					<view class="price-item">今日预估:<text class="price">￥15</text></view>
 					<view class="price-item">本月预估:<text class="price">￥15</text></view>
 					<view class="price-item">上月预估:<text class="price">￥15</text></view>
-				</view>
+				</view> -->
 			</view>
 			<view class="money-apply">
 				<view class="left">
 					<view class="money-txt">
 						<view class="money-color txt">余额</view>
-						<view class="money-color">￥0</view>
+						<view class="money-color">￥{{commsisson.CommissionSurplus}}</view>
 					</view>
-					<view class="dec">每月结算日为...</view>
+					<view class="dec">每月结算日为25号</view>
 				</view>
 				<view class="right">
 					立即提现
 				</view>
 			</view>
 		</view>
-		<view class="lower">
+		<view class="lower" v-if="commsisson">
+			<view class="lower-wrap" @tap="jump('total-revenue')">
+				<view class="first-menu">
+					<view>
+						<view class="price-txt">￥{{commsisson.CommissionAllDay}}</view>
+						<view class="sm-txt">今日预估</view>
+					</view>
+					<view>
+						<view class="price-txt">￥{{commsisson.CommissionAllMonth}}</view>
+						<view class="sm-txt">本月预估</view>
+					</view>
+				</view>
+				<view class="first-menu">
+					<view class="item">
+						<view class="sm-txt">上月结算</view>
+						<view class="price-txt sm-txt">￥{{commsisson.RealCommissionAgoMonth}}</view>
+					</view>
+					<view class="item">
+						<view class="sm-txt">上月预估</view>
+						<view class="price-txt sm-txt">￥{{commsisson.CommissionAllAgoMonth}}</view>
+					</view>
+				</view>
+			</view>
+			<divid-line height="5"></divid-line>
 			<view class="first-menu">
 				<view>
 					<uni-icon type="rank" size="25" color="#b10000"></uni-icon>
@@ -68,7 +92,7 @@
 					</view>
 					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
 				</view>
-				<view class="item">
+				<view class="item" @tap="jump('setting')">
 					<view class="item">
 						<uni-icon type="shezhi" color="#009bdb" size="22"></uni-icon>
 						<text>设置</text>
@@ -81,18 +105,84 @@
 </template>
 
 <script>
+	import dividLine from '@/components/line.vue';
+	import {
+		getUserinit
+	} from '@/api/user'
 	export default {
+		components: {
+			dividLine
+		},
 		data() {
 			return {
-				title: '个人'
+				title: '个人',
+				user: null,
+				commsisson: null //用户佣金信息返回
 			}
 		},
 		onLoad() {
-
+			this.getData();
 		},
 		methods: {
+			getData() {
+				try {
+					this.user = uni.getStorageSync('user');
+					if (!this.user) {
+						uni.reLaunch({
+							url: '/pages/index/login'
+						})
+						return
+					}
+					uni.showLoading({
+						title: '加载中...'
+					})
+					let ret = getUserinit(this.user.phone)
+					// console.log('佣金获取', ret)
+					ret.then(res => {
+						console.log('佣金获取', res)
+						uni.hideLoading()
+						if (res.code == 100) {
+							uni.showToast({
+								title: "初始化用户信息失败",
+								icon: 'none'
+							})
+							return
+						} else {
+							let data = res.result;
+							this.user.username = data.username;
+							this.user.pid = data.PID;
+							this.commsisson = data;
+							console.log('thisuser', this.commsisson)
+							uni.setStorageSync('user', this.user)
+						}
+					})
 
-		}
+				} catch (e) {
+					uni.hideLoading()
+					uni.showToast({
+						title: "初始化用户信息失败",
+						icon: 'none'
+					})
+					console.log('error', e.message);
+				}
+			},
+			jump(url) {
+				uni.navigateTo({
+					url: `/pages/index/${url}`
+				})
+			},
+			copy() {
+				uni.setClipboardData({
+					data: this.user.invitecode,
+					success: () => {
+						uni.showToast({
+							title: '已复制',
+							icon: 'success',
+						})
+					}
+				})
+			}
+		},
 	}
 </script>
 
@@ -101,6 +191,11 @@
 		text-align: center;
 		width: 100%;
 		height: 100%;
+		padding: 0 0 50upx 0;
+	}
+
+	.sm-txt {
+		font-size: 12px !important;
 	}
 
 	.upper {
@@ -145,12 +240,14 @@
 				margin-left: 6px;
 				text-decoration: underline;
 			}
-			.price-total{
+
+			.price-total {
 				width: 100%;
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
 			}
+
 			.price-item {
 				font-size: 12px;
 				color: #fff;
@@ -159,6 +256,7 @@
 				justify-content: center;
 				align-items: center;
 				margin-left: 10px;
+
 				.price {
 					font-size: 14px;
 					color: #fff;
@@ -221,6 +319,15 @@
 
 	.lower {
 		margin-top: 20px;
+		padding-bottom: 100px;
+
+		.lower-wrap {
+			width: calc(100% - 40px);
+			padding: 0 20px;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
+			// box-shadow: 0 0 10rpx 2rpx #eeeeee;
+		}
 
 		.first-menu {
 			display: flex;
@@ -228,6 +335,23 @@
 			justify-content: space-around;
 			color: #000;
 			font-size: 14px;
+			padding: 10px 0;
+			border-bottom: 1px solid #f8f8f8;
+
+			.item {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				font-size: 12px !important;
+				padding: 10upx 0;
+			}
+
+			.price-txt {
+				font-size: 16px;
+				font-weight: 600;
+				color: #ccba66
+			}
 		}
 
 		.second-menu {

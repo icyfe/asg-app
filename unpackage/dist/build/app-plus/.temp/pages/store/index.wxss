@@ -1,0 +1,2 @@
+@import "../../common/vendor.wxss";
+.content.data-v-0a3638aa{text-align:center;height:100vh}.logo.data-v-0a3638aa{height:200rpx;width:200rpx;margin-top:200rpx}.title.data-v-0a3638aa{font-size:36rpx;color:#8f8f94}

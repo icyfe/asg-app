@@ -5,10 +5,10 @@ export function getGoodsList(data) {
 	// console.log('data!!',data)
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: `${BASE_URL}/api/get/listgoods`,
+			url: `${BASE_URL}/api/get/good/listgoods`,
 			data: {
 				page: data.page || 0,
-				type: data.type || '',
+				type: data.type == "全部" ? '' : data.type || '',
 				screen: data.screen || '',
 				jg: data.jg || ''
 			},
@@ -26,12 +26,14 @@ export function getGoodsList(data) {
 
 	})
 }
-export function getGoodDetail(id) {
+export function getGoodDetail(id, table,pid='mm_234890166_197900069_54657250100') {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: `${BASE_URL}/api/get/detailgoods`,
+			url: `${BASE_URL}/api/get/good/detailgoods`,
 			data: {
 				id,
+				table,
+				pid
 			},
 			method: "GET",
 			header: {
@@ -51,7 +53,7 @@ export function getGoodDetail(id) {
 export function getRecommend() {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: `${BASE_URL}/api/get/recommend`,
+			url: `${BASE_URL}/api/get/good/recommend`,
 			method: "GET",
 			header: {
 				'content-header': 'application/json'
@@ -70,7 +72,7 @@ export function getRecommend() {
 export function getHotListGood() {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: `${BASE_URL}/api/get/hotlist`,
+			url: `${BASE_URL}/api/get/good/hotlist`,
 			method: "GET",
 			header: {
 				'content-header': 'application/json'
@@ -85,3 +87,100 @@ export function getHotListGood() {
 
 	})
 }
+
+export function getOtherGood({
+	page = '0',
+	type = 'tqg_good',
+	screen = '',
+	jg = ''
+}) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/get/good/othergood`,
+			method: "GET",
+			header: {
+				'content-header': 'application/json'
+			},
+			data: {
+				page,
+				type,
+				screen,
+				jg
+			},
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('获取商品列表信息出错', err)
+			}
+		});
+
+	})
+}
+
+export function getDetailImg(num_iid) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: 'https://hws.m.taobao.com/cache/desc/5.0',
+			method: "GET",
+			header: {
+				'content-header': 'application/json'
+			},
+			data: {
+				id:num_iid,
+				'qq-pf-to':'pcqq.group'
+			},
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('获取图片列表信息出错', err)
+			}
+		});
+
+	})
+}
+
+export function getKeyWord(keyword,page=0){
+	return new Promise((resolve, reject) =>{
+		uni.request({
+			url: `${BASE_URL}/api/get/good/kwsearch`,
+			method: "GET",
+			header: {
+				'content-header': 'application/json'
+			},
+			data: {
+				keyword,
+				page,
+			},
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('关键字查询出错', err)
+			}
+		})
+	})
+}
+// export function getDetailImg(num_iid) {
+// 	return new Promise((resolve, reject) => {
+// 		uni.request({
+// 			url: 'http://h5api.m.taobao.com/h5/mtop.taobao.detail.getdesc/6.0/',
+// 			method: "GET",
+// 			header: {
+// 				'content-header': 'application/json'
+// 			},
+// 			data: {
+// 				data:{"id":num_iid},
+// 				'qq-pf-to':'pcqq.group'
+// 			},
+// 			success: (res) => {
+// 				resolve(res.data);
+// 			},
+// 			fail: (err) => {
+// 				console.log('获取图片列表信息出错', err)
+// 			}
+// 		});
+// 
+// 	})
+// }

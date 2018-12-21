@@ -1,0 +1,1 @@
+<import src="/pages/chat/friend-circle.vue.wxml" /><template is="cd3868b0" data="{{ ...$root['0'], $root }}"/>

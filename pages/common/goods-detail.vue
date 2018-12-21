@@ -15,19 +15,19 @@
 
 		<scroll-view ref='scroll' :scroll-top="scrolltop" scroll-y class="detail-container" @scroll='_onscroll'>
 			<!-- 轮播图 -->
-			<swiper class="swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
-				<swiper-item class="item" v-if="good.sm_banner.length > 0" v-for="(item, banerindex)  in good.sm_banner" :key="banerindex">
+			<swiper v-if="good" class="swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
+				<swiper-item class="item" v-for="(item, banerindex)  in good.small_images" :key="banerindex">
 					<image class="swiper-img" :src="item"></image>
 					<!-- lazy-load mode="aspectFit" -->
 				</swiper-item>
 			</swiper>
 			<!-- 宝贝介绍 -->
-			<view class="container">
+			<view class="container" v-if="good">
 				<view class="price-container">
 					<view class="price-wrap">
 						<view class="price-one">
 							<view class="jh">券后</view>
-							<view class="price">￥{{good.price}}</view>
+							<view class="price">￥{{good.quanhoujia}}</view>
 						</view>
 						<view class="describe">
 							预估佣金 {{good.yj}} 元
@@ -35,14 +35,14 @@
 					</view>
 					<view class="describe">{{good.title}}</view>
 					<view class="ready-buy">
-						<view class="small-gray">原价￥{{good.reprice}}</view>
-						<view class="small-gray">{{good.readyby}}人已购买</view>
+						<view class="small-gray">原价￥{{good.zk_final_price}}</view>
+						<view class="small-gray">{{good.volume}}人已购买</view>
 					</view>
 				</view>
 				<!-- 分享栏 -->
 				<view class="big-title" @click="share">
 					<view class='shoptitle'>
-						<image class="logo" mode="aspectFit" src="../../static/tm.png"></image>
+						<image class="logo" mode="aspectFit" :src="good.logo"></image>
 						<view class="title">{{good.title}}</view>
 					</view>
 					<view class="share">
@@ -51,16 +51,16 @@
 					</view>
 				</view>
 				<!-- 优惠券 -->
-				<view class="quan-container" @click="jump(good.coupon_click_url)">
+				<view class="quan-container" @click="jump(good.short_url)">
 					<image class="quan-bg" src="../../static/bgquan.png"></image>
 					<view class="wrap">
 						<view class="yhq">
 							<view class="yhq-txt">优惠券</view>
-							<view class="yhq-price">￥{{good.value}}</view>
+							<view class="yhq-price">￥{{good.youhuiquan}}</view>
 						</view>
 						<view class="yhq">
 							<view class="data-txt">使用期限</view>
-							<view class="data">{{good.startdate}}~{{good.enddate}}</view>
+							<view class="data">{{good.coupon_start_time}}~{{good.coupon_end_time}}</view>
 						</view>
 					</view>
 					<view class="take"> 立即领券</view>
@@ -68,16 +68,20 @@
 				<!-- 推荐语 -->
 				<view class="recommend">
 					<view class="title">推荐语</view>
-					<view class="small-gray marginL">{{good.desc}}</view>
+					<view class="small-gray marginL">{{good.item_description}}</view>
 				</view>
 				<!-- 店铺评分 -->
 				<view class="store-introduction">
 					<view class="item">
-						<uni-icon size="16" type="tmlogo" color="#fe1a34"></uni-icon>
-						<view class="txt">{{good.title}}</view>
+						<view class="icons">
+							<uni-icon size="16" :type="good.smlogo" color="#fe1a34"></uni-icon>
+						</view>
+						<view class="txt">
+							{{good.title}}
+						</view>
 					</view>
 					<view class="rank">
-						<view class="txt">店铺评分</view>
+						<view class="dptxt">店铺评分</view>
 						<view class="item">
 							<view class="score">描述4.8</view>
 							<uni-icon class="micon" type="up-arrow" size="16" color="#fe5e78"></uni-icon>
@@ -94,8 +98,9 @@
 				</view>
 				<!-- 商品详情 -->
 				<view class="line-title">———— 商品详情 ————</view>
-				<view>
-					<rich-text id="shop-detail-wrap" :nodes="good.detail"></rich-text>
+				<view v-if="detail">
+					<!-- <view> 商品详情 ...{{detail}}</view> -->
+					<rich-text id="shop-detail-wrap" :nodes="detail"></rich-text>
 				</view>
 				<!-- 为您推荐 -->
 				<view class="line-title">———— 为您推荐 ————</view>
@@ -123,9 +128,9 @@
 			<view class="copy" @click="copykey">
 				复制淘口令
 			</view>
-			<view class="join" @click="jump(good.coupon_click_url)">
+			<view class="join" @click="jump(good.short_url)">
 				<view>
-					<view class="sm-txt">立省￥{{good.value}}</view>
+					<view class="sm-txt">立省￥{{good.youhuiquan}}</view>
 					<view>领券购买</view>
 				</view>
 			</view>
@@ -136,7 +141,8 @@
 	import productList from '@/components/product-list.vue'
 	import {
 		getGoodDetail,
-		getGoodsList
+		getGoodsList,
+		getDetailImg
 	} from '@/api/goods.js'
 	export default {
 		computed: {
@@ -146,36 +152,46 @@
 		},
 		data() {
 			return {
+				nowScrollTop: 0,
 				isCollection: false,
-				parentScrollTop: 0,
+				table: '',
 				scrolltop: 0,
 				navisShow: true,
 				isactive: true,
 				reprice: 15,
 				good: null,
-				recommend: {}
+				recommend: {},
+				detail: null,
 			}
 		},
 		onLoad(option) {
 			let id = option.id || ''
-			this.parentScrollTop = option.scrollTop
-			console.log('scrollTop', this.parentScrollTop);
+			let table = option.table || ''
+			console.log('table', table);
 			console.log('id', id);
-			this._getGoodDetail(id);
-			this._getRecommend();
+			let pid =  this._getPid();
+			this._getData(id, table, pid)
 		},
 		components: {
 			productList,
 		},
 		methods: {
+			_getPid(){
+				try{
+					let data = uni.getStorageSync('user');
+					return data.pid
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
 			//复制淘口令
 			copykey() {
 				let _this = this
 				uni.setClipboardData({
-					data: this.good.tkl,
+					data: `【${this.good.title}】${this.good.short_url} 点击链接，再选择浏览器咑閞；或復·制这段描述${this.good.tkl}后到👉淘♂寳♀👈`,
 					success: function() {
 						uni.showToast({
-							title:'已复制'
+							title: '已复制'
 						})
 					}
 				});
@@ -201,10 +217,10 @@
 					provider: "weixin",
 					scene: "WXSenceTimeline",
 					type: 0,
-					href: this.good.coupon_click_url,
+					href: this.good.short_url,
 					title: `我正在领取淘宝购物超级优惠券`,
-					summary: `${this.good.title}该店正在做优惠哦!`,
-					imageUrl: this.good.sm_banner[0],
+					summary: `${this.good.item_description}`,
+					imageUrl: this.good.small_images[0],
 					success: function(res) {
 						console.log("success:" + JSON.stringify(res));
 					},
@@ -218,8 +234,45 @@
 				let str = url.slice(8);
 				plus.runtime.openURL(`taobao://${str}`);
 			},
-			_getGoodDetail(id) {
-				let ret = getGoodDetail(id)
+
+			_getData(id, table,pid) {
+				let ret = Promise.all([getGoodDetail(id, table,pid), getGoodsList({
+					page: 0,
+					type: '',
+					screen: "",
+					jg: ""
+				}), getDetailImg(id)]);
+				ret.then(res => {
+					if (res.length > 0) {
+						console.log('商品详情', res)
+						this.good = res[0].result
+						this.good.logo = this.good.user_type == 0 ? '../../static/tb.png' : '../../static/tm.png';
+						this.good.smlogo = this.good.user_type == 0 ? 'tblogo' : 'tmlogo'
+						this.good.yj = (this.good.youhuiquan * (parseFloat(this.good.commission_rate / 100))).toFixed(2)
+						this.good.coupon_start_time = this.good.coupon_start_time.slice(0, 10);
+						this.good.coupon_end_time = this.good.coupon_end_time.slice(0, 10)
+						this.recommend = res[1].result
+						this.detail = this._getDetailImg(res[2].wdescContent.pages)
+					}
+				})
+			},
+			// 			this.detail = this._getDetailImg(res[2].wdescContent.pages)
+			// , getDetailImg(id)]
+			_getDetailImg(list) {
+				let image = '';
+				let regx = /<[^>]*>|<\/[^>]*>/gm;
+				let len = list.length;
+				for (var i = 0; i < len; i++) {
+					if (list[i].indexOf("<txt>") != -1) {
+						image += "";
+					} else {
+						image += "<img src='https://" + list[i].replace(regx, "") + "' style='width:100%;max-width:100%' />";
+					}
+				}
+				return image
+			},
+			_getGoodDetail(id, table) {
+				let ret = getGoodDetail(id, table)
 				uni.showLoading({
 					title: '加载中...',
 					mask: true
@@ -258,27 +311,38 @@
 			},
 			_onscroll(e) {
 				let even = e.target || e.srcElement;
-				this.scrolltop = even.scrollTop;
+				this.nowScrollTop = even.scrollTop;
 				// this.scrolltop = scrollTop; //实时同步位置
 				// console.log('11111', even.scrollTop)
 				if (even.scrollTop > 555 && this.isactive) {
-					this.isactive = false
+					this.$nextTick(function() {
+						this.isactive = false
+					})
+
 				} else if (even.scrollTop < 555 && !this.isactive) {
-					this.isactive = true
+					this.$nextTick(function() {
+						this.isactive = true
+					})
 				}
 			},
 			go(ev) {
 				let e = ev || window.event;
 				let target = ev.target || ev.srcElement;
-				console.log(target.offsetLeft)
+
 				if (target.offsetLeft < 190 && target.offsetLeft > 150) {
-					console.log('1', this.scrolltop)
-					this.scrolltop = 0;
-					this.isactive = true;
+					this.scrolltop = this.nowScrollTop
+					this.$nextTick(function() {
+						this.scrolltop = 0;
+						this.isactive = true;
+					})
 				} else if (target.offsetLeft < 240 && target.offsetLeft > 190) {
 					console.log('2', this.scrolltop)
-					this.scrolltop = 555;
-					this.isactive = false;
+					this.scrolltop = this.nowScrollTop
+					this.$nextTick(function() {
+						this.scrolltop = 555;
+						this.isactive = false;
+					})
+
 				}
 			},
 		}
@@ -426,19 +490,25 @@
 		align-items: flex-start;
 
 		.shoptitle {
+			position: relative;
 			display: flex;
+			width: 90%;
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
 		}
 
 		.logo {
+			position: absolute;
+			top: 5px;
+			left: 0;
 			width: 30upx;
 			height: 30upx;
 			margin-right: 10upx;
 		}
 
 		.share {
+			width: 10%;
 			text-align: center;
 		}
 
@@ -446,6 +516,7 @@
 			font-size: 28upx;
 			font-weight: 600;
 			color: #000;
+			margin-left: 25px;
 			// margin-left: 10upx;
 		}
 	}
@@ -542,6 +613,8 @@
 	// 店铺评分
 	.store-introduction {
 		padding: 20upx 10upx;
+		margin-top: 10px;
+		position: relative;
 
 		.rank {
 			display: flex;
@@ -557,7 +630,20 @@
 			align-items: center;
 		}
 
+		.icons {
+			position: absolute;
+			top: 18px;
+			left: 0px;
+		}
+
 		.txt {
+			margin-left: 36upx;
+			font-size: 28upx;
+			color: #333;
+			font-weight: 600;
+		}
+
+		.dptxt {
 			font-size: 28upx;
 			color: #333;
 			font-weight: 600;
@@ -667,6 +753,7 @@
 
 	// 商品详情容器
 	#shop-detail-wrap {
+		font-size: 0!important;
 		img {
 			max-width: 100% !important;
 		}

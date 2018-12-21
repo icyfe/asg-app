@@ -1,88 +1,101 @@
+<import src="/components/line.vue.wxml" />
 <import src="/components/uni-icon.vue.wxml" />
 <template name="0b34a23c">
-  <view class="_view data-v-1fbf82b1 content">
+  <view class="_view data-v-1fbf82b1 content" wx:if="{{commsisson}}">
     <view class="_view data-v-1fbf82b1 upper">
       <view class="_view data-v-1fbf82b1 user-wrap">
-        <image class="_image data-v-1fbf82b1 avatar" src="../../static/avatar.jpg"></image>
-        <view class="_view data-v-1fbf82b1 phone">15805986933</view>
-        <view class="_view data-v-1fbf82b1">
+        <image bindtap="handleProxy" class="_image data-v-1fbf82b1 avatar" src="../../static/avatar.jpg" data-eventid="{{'4Tk-0'}}" data-comkey="{{$k}}"></image>
+        <view class="_view data-v-1fbf82b1 phone">{{user.phone}}</view>
+        <view bindtap="handleProxy" data-eventid="{{'3yD-2'}}" data-comkey="{{$k}}" class="_view data-v-1fbf82b1">
           <text class="_text data-v-1fbf82b1 yq-title">邀请码：</text>
-          <text class="_text data-v-1fbf82b1 code-title">AD125FS</text>
-          <text class="_text data-v-1fbf82b1 copy-title">复制</text>
-        </view>
-        <view class="_view data-v-1fbf82b1 price-total">
-          <view class="_view data-v-1fbf82b1 price-item">今日预估:
-            <text class="_text data-v-1fbf82b1 price">￥15</text>
-          </view>
-          <view class="_view data-v-1fbf82b1 price-item">本月预估:
-            <text class="_text data-v-1fbf82b1 price">￥15</text>
-          </view>
-          <view class="_view data-v-1fbf82b1 price-item">上月预估:
-            <text class="_text data-v-1fbf82b1 price">￥15</text>
-          </view>
+          <text class="_text data-v-1fbf82b1 code-title">{{user.invitecode}}</text>
+          <text class="_text data-v-1fbf82b1 copy-title" bindtap="handleProxy" data-eventid="{{'OLg-1'}}" data-comkey="{{$k}}">复制</text>
         </view>
       </view>
       <view class="_view data-v-1fbf82b1 money-apply">
         <view class="_view data-v-1fbf82b1 left">
           <view class="_view data-v-1fbf82b1 money-txt">
             <view class="_view data-v-1fbf82b1 money-color txt">余额</view>
-            <view class="_view data-v-1fbf82b1 money-color">￥0</view>
+            <view class="_view data-v-1fbf82b1 money-color">￥{{commsisson.CommissionSurplus}}</view>
           </view>
-          <view class="_view data-v-1fbf82b1 dec">每月结算日为...</view>
+          <view class="_view data-v-1fbf82b1 dec">每月结算日为25号</view>
         </view>
         <view class="_view data-v-1fbf82b1 right"> 立即提现 </view>
       </view>
     </view>
-    <view class="_view data-v-1fbf82b1 lower">
+    <view class="_view data-v-1fbf82b1 lower" wx:if="{{commsisson}}">
+      <view class="_view data-v-1fbf82b1 lower-wrap" bindtap="handleProxy" data-eventid="{{'IaW-3'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-1fbf82b1 first-menu">
+          <view class="_view data-v-1fbf82b1">
+            <view class="_view data-v-1fbf82b1 price-txt">￥{{commsisson.CommissionAllDay}}</view>
+            <view class="_view data-v-1fbf82b1 sm-txt">今日预估</view>
+          </view>
+          <view class="_view data-v-1fbf82b1">
+            <view class="_view data-v-1fbf82b1 price-txt">￥{{commsisson.CommissionAllMonth}}</view>
+            <view class="_view data-v-1fbf82b1 sm-txt">本月预估</view>
+          </view>
+        </view>
+        <view class="_view data-v-1fbf82b1 first-menu">
+          <view class="_view data-v-1fbf82b1 item">
+            <view class="_view data-v-1fbf82b1 sm-txt">上月结算</view>
+            <view class="_view data-v-1fbf82b1 price-txt sm-txt">￥{{commsisson.RealCommissionAgoMonth}}</view>
+          </view>
+          <view class="_view data-v-1fbf82b1 item">
+            <view class="_view data-v-1fbf82b1 sm-txt">上月预估</view>
+            <view class="_view data-v-1fbf82b1 price-txt sm-txt">￥{{commsisson.CommissionAllAgoMonth}}</view>
+          </view>
+        </view>
+      </view>
+      <template height="5" data="{{...$root['0'], ...$root[$kk+'O4i-0'],$root}}" is="3a42c3d5"></template>
       <view class="_view data-v-1fbf82b1 first-menu">
         <view class="_view data-v-1fbf82b1">
-          <template type="rank" size="25" color="#b10000" data="{{...$root['0'], ...$root[$kk+'uh6-0'],$root}}" is="04590597"></template>
+          <template type="rank" size="25" color="#b10000" data="{{...$root['0'], ...$root[$kk+'XZ3-1'],$root}}" is="04590597"></template>
           <text class="_text data-v-1fbf82b1">收入榜单</text>
         </view>
         <view class="_view data-v-1fbf82b1">
-          <template type="help" size="25" color="#b6e371" data="{{...$root['0'], ...$root[$kk+'I5R-1'],$root}}" is="04590597"></template>
+          <template type="help" size="25" color="#b6e371" data="{{...$root['0'], ...$root[$kk+'2UT-2'],$root}}" is="04590597"></template>
           <text class="_text data-v-1fbf82b1">使用帮助</text>
         </view>
         <view class="_view data-v-1fbf82b1">
-          <template type="about" size="25" color="#ff9801" data="{{...$root['0'], ...$root[$kk+'wyh-2'],$root}}" is="04590597"></template>
+          <template type="about" size="25" color="#ff9801" data="{{...$root['0'], ...$root[$kk+'LGf-3'],$root}}" is="04590597"></template>
           <text class="_text data-v-1fbf82b1">关于我们</text>
         </view>
       </view>
       <view class="_view data-v-1fbf82b1 second-menu">
         <view class="_view data-v-1fbf82b1 item">
           <view class="_view data-v-1fbf82b1 item">
-            <template type="kefu" color="#7a7e83" size="22" data="{{...$root['0'], ...$root[$kk+'2xL-3'],$root}}" is="04590597"></template>
+            <template type="kefu" color="#7a7e83" size="22" data="{{...$root['0'], ...$root[$kk+'Hnd-4'],$root}}" is="04590597"></template>
             <text class="_text data-v-1fbf82b1">专属客服</text>
           </view>
-          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'5Tp-4'],$root}}" is="04590597"></template>
+          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'cmf-5'],$root}}" is="04590597"></template>
         </view>
         <view class="_view data-v-1fbf82b1 item">
           <view class="_view data-v-1fbf82b1 item">
-            <template type="shoucang" color="#dd5145" size="22" data="{{...$root['0'], ...$root[$kk+'Izl-5'],$root}}" is="04590597"></template>
+            <template type="shoucang" color="#dd5145" size="22" data="{{...$root['0'], ...$root[$kk+'7Ef-6'],$root}}" is="04590597"></template>
             <text class="_text data-v-1fbf82b1">我的收藏</text>
           </view>
-          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'yOB-6'],$root}}" is="04590597"></template>
+          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'aul-7'],$root}}" is="04590597"></template>
         </view>
         <view class="_view data-v-1fbf82b1 item">
           <view class="_view data-v-1fbf82b1 item">
-            <template type="tixian" color="#f9263e" size="22" data="{{...$root['0'], ...$root[$kk+'AmG-7'],$root}}" is="04590597"></template>
+            <template type="tixian" color="#f9263e" size="22" data="{{...$root['0'], ...$root[$kk+'1NX-8'],$root}}" is="04590597"></template>
             <text class="_text data-v-1fbf82b1">提现申请</text>
           </view>
-          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'BuQ-8'],$root}}" is="04590597"></template>
+          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'OgS-9'],$root}}" is="04590597"></template>
         </view>
         <view class="_view data-v-1fbf82b1 item">
           <view class="_view data-v-1fbf82b1 item">
-            <template type="laxin" color="#EEE685" size="22" data="{{...$root['0'], ...$root[$kk+'sfU-9'],$root}}" is="04590597"></template>
+            <template type="laxin" color="#EEE685" size="22" data="{{...$root['0'], ...$root[$kk+'FVp-10'],$root}}" is="04590597"></template>
             <text class="_text data-v-1fbf82b1">我要拉新</text>
           </view>
-          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'IjV-10'],$root}}" is="04590597"></template>
+          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'wqh-11'],$root}}" is="04590597"></template>
         </view>
-        <view class="_view data-v-1fbf82b1 item">
+        <view class="_view data-v-1fbf82b1 item" bindtap="handleProxy" data-eventid="{{'Vfw-4'}}" data-comkey="{{$k}}">
           <view class="_view data-v-1fbf82b1 item">
-            <template type="shezhi" color="#009bdb" size="22" data="{{...$root['0'], ...$root[$kk+'KH9-11'],$root}}" is="04590597"></template>
+            <template type="shezhi" color="#009bdb" size="22" data="{{...$root['0'], ...$root[$kk+'BaR-12'],$root}}" is="04590597"></template>
             <text class="_text data-v-1fbf82b1">设置</text>
           </view>
-          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'SY5-12'],$root}}" is="04590597"></template>
+          <template type="arrow-right" size="18" color="#333" data="{{...$root['0'], ...$root[$kk+'AG8-13'],$root}}" is="04590597"></template>
         </view>
       </view>
     </view>

@@ -1,24 +1,24 @@
 <template>
 	<view class="goods-wrap" @click="onTap">
 		<view class="goods-img">
-			<image class="img" mode="aspectFit" lazy-load :src="goodimg"></image>
+			<image class="img" mode="aspectFit" lazy-load :src="good.pict_url"></image>
 		</view>
 		<view class="desc">
 			<view class="shop-title">
-				<image class="logo" mode="aspectFit" src="../../static/tm.png"></image>
-				<view class="txt">{{goodtitle}}</view>
+				<image class="logo" mode="aspectFit" :src="logo"></image>
+				<view class="txt">{{good.title}}</view>
 			</view>
 			<view class="shop-desc">
 				<view class="price-wrap">
 					<view class="price">
-						<view class="original">原价￥{{goodorprice}}</view>
-						<view class="present">￥{{goodprice}}</view>
+						<view class="original">原价￥{{good.zk_final_price}}</view>
+						<view class="present">￥{{good.quanhoujia}}</view>
 					</view>
-					<view class="yj">佣金￥{{goodyj}}</view>
+					<view class="yj">预估佣金￥{{yj}}</view>
 				</view>
 				<view class="coupon-wrap">
-					<view class="num">{{goodbuynum}}人已购</view>
-					<view class="value">{{goodvalue}}元券</view>
+					<view class="num">{{good.volume}}人已购</view>
+					<view class="value">{{good.youhuiquan}}元券</view>
 				</view>
 			</view>
 		</view>
@@ -28,19 +28,18 @@
 <script>
 	export default {
 		props:{
-			goodyj:[String,Number],
-			goodimg:String,
-			goodtitle:String,
-			goodprice:[String, Number],
-			goodorprice:[String, Number],
-			goodbuynum:[String, Number],
-			goodvalue:[String, Number],
-			goodid:[String,Number]
+			good:Object,
 		},
 		computed: {
 			fontSize() {
 				return `${this.size}px`
-			}
+			},
+			 logo() {
+			 	return this.good.user_type == 0 ? '../../static/tb.png' : '../../static/tm.png';
+			 },
+			 yj(){
+				 return (this.good.youhuiquan * ( parseFloat(this.good.commission_rate/100))).toFixed(2);
+			 }
 		},
 		methods: {
 			onTap() {
@@ -78,9 +77,11 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			height: calc(300upx - 20upx);
+			height: calc(320upx - 20upx);
 			padding: 10upx 0;
 			width: 100%;
+			white-space: normal;
+			line-height: 1.8;
 			.shop-title {
 				display: flex;
 				flex-direction: row;
@@ -139,7 +140,7 @@
 					.value {
 						background: #fc1f3f;
 						border-radius: 10upx;
-						border-style: dotted;
+						// border-style: dotted;
 						font-size: 28upx;
 						font-weight: 600;
 						padding: 0upx 30upx;

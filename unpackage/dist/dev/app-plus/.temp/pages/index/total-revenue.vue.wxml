@@ -1,0 +1,176 @@
+<import src="/components/uni-icon.vue.wxml" />
+<import src="/components/nav-bar.vue.wxml" />
+<import src="/components/uni-segmented-control.vue.wxml" />
+<import src="/components/line.vue.wxml" />
+<template name="d1b5dee8">
+  <view class="_view data-v-758b159d container">
+    <view class="_view data-v-758b159d question-mark">
+      <template type="wh" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'cPJ-0'],$root}}" is="04590597"></template>
+    </view>
+    <template title="收益概况" color="#fff" background="#ff0000" bindback="handleProxy" data-eventid="{{'CvH-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'98X-1'],$root}}" is="2ae10ad0"></template>
+    <view class="_view data-v-758b159d content">
+      <view class="_view data-v-758b159d upper">
+        <view class="_view data-v-758b159d user-price">
+          <view class="_view data-v-758b159d price">￥0</view>
+          <view class="_view data-v-758b159d lj-txt">累计收益结算</view>
+          <view class="_view data-v-758b159d ye">账户余额(元)： ￥0</view>
+        </view>
+      </view>
+      <view class="_view data-v-758b159d switch-wrap">
+        <template bindclickItem="handleProxy" width="100%" data-eventid="{{'mj6-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'ygp-2'],$root}}" is="4b9071f4"></template>
+      </view>
+      <view hidden="{{!(current==0)}}" class="_view data-v-758b159d">
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">结算收入</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'Q4r-2'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'d6L-3'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+              <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收入</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'SYQ-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'qgA-4'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+              <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收入</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'1fU-4'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'pfF-5'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+              <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
+            </view>
+          </view>
+        </view>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'36P-6'],$root}}" is="3a42c3d5"></template>
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d title">
+            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'5Rr-7'],$root}}" is="04590597"></template>
+            <view class="_view data-v-758b159d title-txt">今日</view>
+          </view>
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">待付笔数</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'awO-5'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Lgl-8'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收益</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'AQ0-6'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'fWd-9'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">其他</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+          </view>
+        </view>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'HRM-10'],$root}}" is="3a42c3d5"></template>
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d title">
+            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'zQ7-11'],$root}}" is="04590597"></template>
+            <view class="_view data-v-758b159d title-txt">昨日</view>
+          </view>
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">待付笔数</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'axY-7'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'jsn-12'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收益</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'QiM-8'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'uVj-13'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">其他</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+          </view>
+        </view>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'Yie-14'],$root}}" is="3a42c3d5"></template>
+        <view class="_view data-v-758b159d withdrawals-record">提现记录</view>
+      </view>
+      <view hidden="{{!(current==1)}}" class="_view data-v-758b159d">
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">已结算</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'aP6-9'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Duv-15'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">待结算</view>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'ufC-10'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'dBu-16'],$root}}" is="04590597"></template>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+          </view>
+        </view>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'IJ1-17'],$root}}" is="3a42c3d5"></template>
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d title">
+            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'kMZ-18'],$root}}" is="04590597"></template>
+            <view class="_view data-v-758b159d title-txt">今日</view>
+          </view>
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">待付笔数</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收益</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+          </view>
+        </view>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'j3y-19'],$root}}" is="3a42c3d5"></template>
+        <view class="_view data-v-758b159d wrap">
+          <view class="_view data-v-758b159d title">
+            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'VjB-20'],$root}}" is="04590597"></template>
+            <view class="_view data-v-758b159d title-txt">昨日</view>
+          </view>
+          <view class="_view data-v-758b159d item-wrap">
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">待付笔数</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+            <view class="_view data-v-758b159d item">
+              <view class="_view data-v-758b159d item-icon">
+                <view class="_view data-v-758b159d black-txt">预估收益</view>
+              </view>
+              <view class="_view data-v-758b159d">￥0</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

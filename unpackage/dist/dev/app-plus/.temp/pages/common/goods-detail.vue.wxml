@@ -4,112 +4,114 @@
   <view wx:if="{{good}}" class="_view data-v-29a9da5a">
     <view class="_view data-v-29a9da5a mnav-bar">
       <view class="_view data-v-29a9da5a wrap">
-        <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'g7N-0'}}" data-comkey="{{$k}}">
-          <template type="arrow-left" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'FQr-0'],$root}}" is="04590597"></template>
+        <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'9RQ-0'}}" data-comkey="{{$k}}">
+          <template type="arrow-left" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'h0K-0'],$root}}" is="04590597"></template>
         </view>
         <view class="_view data-v-29a9da5a nav-title" hidden="{{!(navisShow)}}">
-          <view bindtap="handleProxy" data-eventid="{{'gp7-1'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [isactive ? 'avtive' : '']]}}">宝贝</view>
-          <view bindtap="handleProxy" data-eventid="{{'M5x-2'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [!isactive ? 'avtive' : '']]}}">详情</view>
+          <view bindtap="handleProxy" data-eventid="{{'6T0-1'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [isactive ? 'avtive' : '']]}}">宝贝</view>
+          <view bindtap="handleProxy" data-eventid="{{'BSD-2'}}" data-comkey="{{$k}}" class="_view data-v-29a9da5a {{['txt', [!isactive ? 'avtive' : '']]}}">详情</view>
         </view>
       </view>
     </view>
-    <scroll-view ref="scroll" scroll-top="{{scrolltop}}" scroll-y class="_scroll-view data-v-29a9da5a detail-container" bindscroll="handleProxy" data-eventid="{{'sIL-5'}}" data-comkey="{{$k}}">
-      <swiper class="_swiper data-v-29a9da5a swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
-        <swiper-item class="_swiper-item data-v-29a9da5a item" wx:if="{{good.sm_banner.length > 0}}" wx:key="banerindex" key="{{banerindex}}" wx:for="{{good.sm_banner}}" wx:for-index="banerindex" wx:for-item="item">
+    <scroll-view ref="scroll" scroll-top="{{scrolltop}}" scroll-y class="_scroll-view data-v-29a9da5a detail-container" bindscroll="handleProxy" data-eventid="{{'GQd-5'}}" data-comkey="{{$k}}">
+      <swiper wx:if="{{good}}" class="_swiper data-v-29a9da5a swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
+        <swiper-item class="_swiper-item data-v-29a9da5a item" wx:key="banerindex" key="{{banerindex}}" wx:for="{{good.small_images}}" wx:for-index="banerindex" wx:for-item="item">
           <image class="_image data-v-29a9da5a swiper-img" src="{{item}}"></image>
         </swiper-item>
       </swiper>
-      <view class="_view data-v-29a9da5a container">
+      <view class="_view data-v-29a9da5a container" wx:if="{{good}}">
         <view class="_view data-v-29a9da5a price-container">
           <view class="_view data-v-29a9da5a price-wrap">
             <view class="_view data-v-29a9da5a price-one">
               <view class="_view data-v-29a9da5a jh">券后</view>
-              <view class="_view data-v-29a9da5a price">￥{{good.price}}</view>
+              <view class="_view data-v-29a9da5a price">￥{{good.quanhoujia}}</view>
             </view>
             <view class="_view data-v-29a9da5a describe"> 预估佣金 {{good.yj}} 元 </view>
           </view>
           <view class="_view data-v-29a9da5a describe">{{good.title}}</view>
           <view class="_view data-v-29a9da5a ready-buy">
-            <view class="_view data-v-29a9da5a small-gray">原价￥{{good.reprice}}</view>
-            <view class="_view data-v-29a9da5a small-gray">{{good.readyby}}人已购买</view>
+            <view class="_view data-v-29a9da5a small-gray">原价￥{{good.zk_final_price}}</view>
+            <view class="_view data-v-29a9da5a small-gray">{{good.volume}}人已购买</view>
           </view>
         </view>
-        <view class="_view data-v-29a9da5a big-title" bindtap="handleProxy" data-eventid="{{'hnb-3'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-29a9da5a big-title" bindtap="handleProxy" data-eventid="{{'Rcx-3'}}" data-comkey="{{$k}}">
           <view class="_view data-v-29a9da5a shoptitle">
-            <image class="_image data-v-29a9da5a logo" mode="aspectFit" src="../../static/tm.png"></image>
+            <image class="_image data-v-29a9da5a logo" mode="aspectFit" src="{{good.logo}}"></image>
             <view class="_view data-v-29a9da5a title">{{good.title}}</view>
           </view>
           <view class="_view data-v-29a9da5a share">
-            <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'Eio-2'],$root}}" is="04590597"></template>
+            <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'v8j-2'],$root}}" is="04590597"></template>
             <text class="_text data-v-29a9da5a small-gray">分享</text>
           </view>
         </view>
-        <view class="_view data-v-29a9da5a quan-container" bindtap="handleProxy" data-eventid="{{'Gww-4'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-29a9da5a quan-container" bindtap="handleProxy" data-eventid="{{'8h1-4'}}" data-comkey="{{$k}}">
           <image class="_image data-v-29a9da5a quan-bg" src="../../static/bgquan.png"></image>
           <view class="_view data-v-29a9da5a wrap">
             <view class="_view data-v-29a9da5a yhq">
               <view class="_view data-v-29a9da5a yhq-txt">优惠券</view>
-              <view class="_view data-v-29a9da5a yhq-price">￥{{good.value}}</view>
+              <view class="_view data-v-29a9da5a yhq-price">￥{{good.youhuiquan}}</view>
             </view>
             <view class="_view data-v-29a9da5a yhq">
               <view class="_view data-v-29a9da5a data-txt">使用期限</view>
-              <view class="_view data-v-29a9da5a data">{{good.startdate}}~{{good.enddate}}</view>
+              <view class="_view data-v-29a9da5a data">{{good.coupon_start_time}}~{{good.coupon_end_time}}</view>
             </view>
           </view>
           <view class="_view data-v-29a9da5a take"> 立即领券</view>
         </view>
         <view class="_view data-v-29a9da5a recommend">
           <view class="_view data-v-29a9da5a title">推荐语</view>
-          <view class="_view data-v-29a9da5a small-gray marginL">{{good.desc}}</view>
+          <view class="_view data-v-29a9da5a small-gray marginL">{{good.item_description}}</view>
         </view>
         <view class="_view data-v-29a9da5a store-introduction">
           <view class="_view data-v-29a9da5a item">
-            <template size="16" type="tmlogo" color="#fe1a34" data="{{...$root['0'], ...$root[$kk+'H6x-3'],$root}}" is="04590597"></template>
-            <view class="_view data-v-29a9da5a txt">{{good.title}}</view>
+            <view class="_view data-v-29a9da5a icons">
+              <template size="16" color="#fe1a34" data="{{...$root['0'], ...$root[$kk+'RcM-3'],$root}}" is="04590597"></template>
+            </view>
+            <view class="_view data-v-29a9da5a txt"> {{good.title}} </view>
           </view>
           <view class="_view data-v-29a9da5a rank">
-            <view class="_view data-v-29a9da5a txt">店铺评分</view>
+            <view class="_view data-v-29a9da5a dptxt">店铺评分</view>
             <view class="_view data-v-29a9da5a item">
               <view class="_view data-v-29a9da5a score">描述4.8</view>
-              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'3zv-4'],$root}}" is="04590597"></template>
+              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'TD9-4'],$root}}" is="04590597"></template>
             </view>
             <view class="_view data-v-29a9da5a item">
               <view class="_view data-v-29a9da5a score">服务4.8</view>
-              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'Oy3-5'],$root}}" is="04590597"></template>
+              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'Vsv-5'],$root}}" is="04590597"></template>
             </view>
             <view class="_view data-v-29a9da5a item">
               <view class="_view data-v-29a9da5a score">发货4.8</view>
-              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'1ll-6'],$root}}" is="04590597"></template>
+              <template type="up-arrow" size="16" color="#fe5e78" data="{{...$root['0'], ...$root[$kk+'Qwx-6'],$root}}" is="04590597"></template>
             </view>
           </view>
         </view>
         <view class="_view data-v-29a9da5a line-title">———— 商品详情 ————</view>
-        <view class="_view data-v-29a9da5a">
-          <rich-text id="shop-detail-wrap" nodes="{{good.detail}}" class="_rich-text data-v-29a9da5a"></rich-text>
+        <view wx:if="{{detail}}" class="_view data-v-29a9da5a">
+          <rich-text id="shop-detail-wrap" nodes="{{detail}}" class="_rich-text data-v-29a9da5a"></rich-text>
         </view>
         <view class="_view data-v-29a9da5a line-title">———— 为您推荐 ————</view>
-        <template data="{{...$root['0'], ...$root[$kk+'f1e-8'],$root}}" is="0b724cc6"></template>
+        <template data="{{...$root['0'], ...$root[$kk+'PtW-8'],$root}}" is="0b724cc6"></template>
         <view class="_view data-v-29a9da5a line-title" style="margin-bottom: 120rpx;">—— 到底了 ——</view>
       </view>
     </scroll-view>
     <view class="_view data-v-29a9da5a footer-container">
-      <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'AHA-6'}}" data-comkey="{{$k}}"> 返回 </view>
-      <view class="_view data-v-29a9da5a colle" bindtap="handleProxy" data-eventid="{{'qyd-7'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-29a9da5a back" bindtap="handleProxy" data-eventid="{{'yk7-6'}}" data-comkey="{{$k}}"> 返回 </view>
+      <view class="_view data-v-29a9da5a colle" bindtap="handleProxy" data-eventid="{{'bQj-7'}}" data-comkey="{{$k}}">
         <view class="_view data-v-29a9da5a wrap">
-          <template type="shoucang" data="{{...$root['0'], ...$root[$kk+'tmm-9'],$root}}" is="04590597"></template>
+          <template type="shoucang" data="{{...$root['0'], ...$root[$kk+'9Q4-9'],$root}}" is="04590597"></template>
           <view class="_view data-v-29a9da5a" style=" {{('color:' + collentionColor + ';')}}">收藏</view>
         </view>
       </view>
-      <view class="_view data-v-29a9da5a share" bindtap="handleProxy" data-eventid="{{'3mJ-8'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-29a9da5a share" bindtap="handleProxy" data-eventid="{{'r8O-8'}}" data-comkey="{{$k}}">
         <view class="_view data-v-29a9da5a wrap">
-          <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'R5R-10'],$root}}" is="04590597"></template>
+          <template type="share" color="#8a8a8a" data="{{...$root['0'], ...$root[$kk+'TOP-10'],$root}}" is="04590597"></template>
           <view class="_view data-v-29a9da5a">分享</view>
         </view>
       </view>
-      <view class="_view data-v-29a9da5a copy" bindtap="handleProxy" data-eventid="{{'4LT-9'}}" data-comkey="{{$k}}"> 复制淘口令 </view>
-      <view class="_view data-v-29a9da5a join" bindtap="handleProxy" data-eventid="{{'LGq-10'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-29a9da5a copy" bindtap="handleProxy" data-eventid="{{'TVr-9'}}" data-comkey="{{$k}}"> 复制淘口令 </view>
+      <view class="_view data-v-29a9da5a join" bindtap="handleProxy" data-eventid="{{'45c-10'}}" data-comkey="{{$k}}">
         <view class="_view data-v-29a9da5a">
-          <view class="_view data-v-29a9da5a sm-txt">立省￥{{good.value}}</view>
+          <view class="_view data-v-29a9da5a sm-txt">立省￥{{good.youhuiquan}}</view>
           <view class="_view data-v-29a9da5a">领券购买</view>
         </view>
       </view>

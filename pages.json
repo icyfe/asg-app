@@ -3,11 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"app-plus": {
-					"titleNView": {
-						"type": "transparent"
-					}
-				}
+				 
 			}
 		},
 		{
@@ -152,6 +148,41 @@
 		{
 			"path": "pages/common/goods-detail",
 			"style": {}
+		},{
+			"path": "pages/common/good-item",
+			"style": {}
+		},
+		{
+			"path": "pages/common/web-view",
+			"style": {}
+		},
+		{
+			"path": "pages/common/search",
+			"style": {}
+		},
+		{
+			"path": "pages/index/setting",
+			"style": {}
+		},
+		{
+			"path": "pages/index/change-name",
+			"style": {}
+		},
+		{
+			"path": "pages/index/change-phone",
+			"style": {}
+		},
+		{
+			"path": "pages/index/new-phone",
+			"style": {}
+		},
+		{
+			"path":"pages/index/total-revenue",
+			"style":{}
+		},
+		{
+			"path":"pages/common/search-detail",
+			"style":{}
 		}
 	],
 	"globalStyle": {

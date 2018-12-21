@@ -1,0 +1,26 @@
+<template name="322f959d">
+  <view class="_view data-v-0bcbcc93 goods-wrap" bindtap="handleProxy" data-eventid="{{'kvv-0'}}" data-comkey="{{$k}}">
+    <view class="_view data-v-0bcbcc93 goods-img">
+      <image class="_image data-v-0bcbcc93 img" mode="aspectFit" lazy-load src="{{goodimg}}"></image>
+    </view>
+    <view class="_view data-v-0bcbcc93 desc">
+      <view class="_view data-v-0bcbcc93 shop-title">
+        <image class="_image data-v-0bcbcc93 logo" mode="aspectFit" src="../../static/tm.png"></image>
+        <view class="_view data-v-0bcbcc93 txt">{{goodtitle}}</view>
+      </view>
+      <view class="_view data-v-0bcbcc93 shop-desc">
+        <view class="_view data-v-0bcbcc93 price-wrap">
+          <view class="_view data-v-0bcbcc93 price">
+            <view class="_view data-v-0bcbcc93 original">原价￥{{goodorprice}}</view>
+            <view class="_view data-v-0bcbcc93 present">￥{{goodprice}}</view>
+          </view>
+          <view class="_view data-v-0bcbcc93 yj">佣金￥{{goodyj}}</view>
+        </view>
+        <view class="_view data-v-0bcbcc93 coupon-wrap">
+          <view class="_view data-v-0bcbcc93 num">{{goodbuynum}}人已购</view>
+          <view class="_view data-v-0bcbcc93 value">{{goodvalue}}元券</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

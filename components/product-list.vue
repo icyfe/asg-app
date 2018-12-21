@@ -1,18 +1,18 @@
 <template>
 	<view class="page">
 		<view class="uni-product-list">
-			<view class="uni-product" v-for="(product,index) in productList" :key="index" @click="godetail(product.id)">
+			<view class="uni-product" v-for="(product,index) in productList" :key="index" @click="godetail(product.num_iid)">
 				<view class="image-view">
-					<image v-if="renderImage" class="uni-product-image" :src="product.img"></image>
+					<image v-if="renderImage" class="uni-product-image" :src="product.pict_url"></image>
 				</view>
 				<view class="uni-product-title">{{product.title}}</view>
 				<view class="uni-product-price">
-					<text class="uni-product-price-favour">￥{{product.reprice}}</text>
-					<text class="uni-product-price-original">￥{{product.price}}</text>
+					<text class="uni-product-price-favour">￥{{product.zk_final_price}}</text>
+					<text class="uni-product-price-original">￥{{product.quanhoujia}}</text>
 				</view>
 				<view class="uni-product-price">
-					<text class="small-gray">{{product.readyby}}人已购</text>
-					<text class="uni-product-tip">{{product.value}}元券</text>
+					<text class="small-gray">{{product.volume}}人已购</text>
+					<text class="uni-product-tip">{{product.youhuiquan}}元券</text>
 				</view>
 			</view>
 		</view>
@@ -22,7 +22,11 @@
 <script>
 	export default {
 		props: {
-			productList: [Array,Object]
+			productList: [Array,Object],
+			table:{
+				type:String,
+				default:'yhq_goods'
+			}
 		},
 		data() {
 			return {
@@ -32,7 +36,7 @@
 		methods: {
 			godetail(id){
 				uni.navigateTo({
-					url: `/pages/common/goods-detail?id=${id}`
+					url: `/pages/common/goods-detail?id=${id}&table=${this.table}`
 				})
 			}
 		},

@@ -14,7 +14,7 @@
              */	
             color:{
 				type:String,
-				default:'#f707070'
+				default:''
 			},
             /**
              * 图标大小

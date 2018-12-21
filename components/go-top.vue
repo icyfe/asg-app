@@ -23,7 +23,7 @@
 	.gotop {
 		position: fixed;
 		right: 20px;
-		bottom: 60px;
+		bottom: 100px;
 		z-index: 999;
 		border-radius: 50%;
 		font-weight: 600;

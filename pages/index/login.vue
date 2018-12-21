@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="nav">
-			<view class="back">
+			<view class="back" @tap="back">
 				<uni-icon type='arrow-left' size="20" color="#fff"></uni-icon>
 			</view>
 			<view class="title">登录/注册</view>
@@ -18,10 +18,10 @@
 				</view>
 				<view class="item">
 					<uni-icon type="yanzhengma" color="#ccc" size="16"></uni-icon>
-					<input placeholder="请输入验证码" />
-					<view :class="['bt',{'disable':isSend}]" @click="send" class="bt">{{yzm}}</view>
+					<input v-model="code" placeholder="请输入验证码" />
+					<view :class="['bt',{'disable':isSend}]" @click="send('login')" class="bt">{{loginyzm}}</view>
 				</view>
-				<view class="login-bt">登录</view>
+				<button :class="['login-bt',{'disable':isabled}]" :disabled="isabled" @tap="login">登录</button>
 			</view>
 			<view v-show="current === 1">
 				<view class="item">
@@ -30,14 +30,14 @@
 				</view>
 				<view class="item">
 					<uni-icon type="yanzhengma" color="#ccc" size="16"></uni-icon>
-					<input placeholder="请输入验证码" />
-					<view :class="['bt',{'disable':isSend}]" @click="send">{{yzm}}</view>
+					<input v-model="code" placeholder="请输入验证码" />
+					<view :class="['bt',{'disable':isSend}]" @click="send('register')" class="bt">{{regyzm}}</view>
 				</view>
 				<view class="item">
 					<uni-icon type="yqm" color="#ccc" size="16"></uni-icon>
-					<input placeholder="请输入邀请码" />
+					<input v-model="yqm" placeholder="请输入邀请码" />
 				</view>
-				<view class="login-bt">注册</view>
+				<button :class="['login-bt',{'disable':isabled}]" @tap="register" :disabled="isabled">注册</button>
 			</view>
 		</view>
 	</view>
@@ -45,6 +45,11 @@
 
 <script>
 	import uniSegmentedControl from '@/components/uni-segmented-control.vue';
+	import {
+		sendcode,
+		postRegister,
+		postLogin
+	} from '@/api/user'
 	export default {
 		data() {
 			return {
@@ -52,14 +57,17 @@
 					'登录',
 					'注册'
 				],
+				loginyzm: '发送验证码',
+				regyzm: '发送验证码',
+				isabled: true,
 				timer: null,
-				yzm: '发送邀请码',
+				yqm: '',
+				code: '',
 				current: 0,
 				activeColor: '#F9263E',
 				styleType: 'button',
-				isSend: false,
+				isSend: true,
 				phone: '',
-				code: '',
 				loginerror: '请输入手机号',
 
 			}
@@ -68,34 +76,100 @@
 			uniSegmentedControl,
 		},
 		methods: {
+			back(){
+				uni.switchTab({
+					url:'/pages/index/index'
+				})
+			},
+			register() {
+				if (!this.code || !this.yqm) {
+					this._showToast("验证码或邀请码不能为空", 'none');
+					return
+				}
+				postRegister({
+						phone: this.phone,
+						yqm: this.yqm,
+						code: this.code
+					})
+					.then(res => {
+						if (res.code == 100) {
+							this._showToast(res.msg, 'none')
+							return
+						} else {
+							if (res.result) {
+								uni.setStorageSync('user', res.result);
+								uni.switchTab({
+									url: '/pages/index/user'
+								})
+							}
+							this._showToast(res.msg)
+						}
+					})
+			},
+			login() {
+				if (!this.phone || !this.code) {
+					this._showToast("手机号码或验证码不能为空", 'none');
+					return
+				}
+				postLogin(this.phone, this.code).then(res => {
+					console.log(this.phone, this.code)
+					if (res.code == 100) {
+						this._showToast(res.msg, 'none')
+						return
+					}
+					if (res.result) {
+						uni.setStorageSync('user', res.result);
+						uni.switchTab({
+							url: '/pages/index/user'
+						})
+					}
+				})
+			},
 			checkphone(e) {
 				this.phone = e.detail.value;
 				if (!this.phone) {
 					this._showToast('手机号码不能为空', 'none')
-				} else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.phone)) {
-
-					this._showToast("请输入正确的手机号码格式", "none")
-				}
-			},
-			send() {
-				if (!this.isSend && this.phone) {
-					if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.phone)) {
-						this._showToast("请输入正确的手机号码格式", "none")
-						return
-					}
-					this._showToast("验证码已发送")
-					console.log('isSend');
+					this.isabled = true
 					this.isSend = true
-					let timer = null;
-					let cut = 60;
-					timer = setInterval(() => {
-						this.yzm = --cut + "S"
-						if (cut == 0) {
-							clearInterval(timer)
-							this.yzm = '发送验证码'
-							this.isSend = false
+					return
+				} else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.phone)) {
+					this._showToast("请输入正确的手机号码格式", "none")
+					this.isabled = true
+					this.isSend = true
+					return
+				}
+				this.isabled = false
+				this.isSend = false
+			},
+			send(type) {
+				if (!this.isSend && this.phone) {
+					let isEx = sendcode(this.phone, type);
+					isEx.then(res => {
+						if (res.code == 100) {
+							this._showToast(res.msg, 'none')
+							return
 						}
-					}, 10)
+						this._showToast("验证码已发送")
+						this.isSend = true
+						let timer = null;
+						let cut = 60;
+						timer = setInterval(() => {
+							if (type == "login") {
+								this.loginyzm = --cut + "S"
+							} else if (type == "register") {
+								this.regyzm = --cut + "S"
+							}
+							if (cut == 0) {
+								clearInterval(timer)
+								if (type == "login") {
+									this.loginyzm = '发送验证码'
+								} else {
+									this.regyzm = '发送验证码'
+								}
+								this.isSend = false
+							}
+						}, 1000)
+					})
 				} else if (!this.phone) {
 					this._showToast('手机号码不能为空', 'none')
 				}
@@ -157,7 +231,7 @@
 			background: #F9263E;
 			border-radius: 10upx;
 			width: calc(100% - 40upx);
-			padding: 10upx 20upx;
+			padding: 0upx 20upx;
 			text-align: center;
 			margin-top: 20upx;
 			color: #fff;
@@ -181,6 +255,7 @@
 		background: #F9263E;
 		height: 100upx;
 		padding-top: 30upx;
+
 		.back {
 			float: left;
 		}

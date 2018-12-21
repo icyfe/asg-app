@@ -1,0 +1,10 @@
+<import src="/components/uni-tabbar.vue.wxml" />
+<template name="7d5dea46">
+  <view class="_view data-v-120982d6 content">
+    <image class="_image data-v-120982d6 logo" src="../../static/logo.png"></image>
+    <view class="_view data-v-120982d6">
+      <text class="_text data-v-120982d6 title">{{title}}</text>
+    </view>
+    <template current="2" data="{{...$root['0'], ...$root[$kk+'dD4-0'],$root}}" is="3e41bd7c"></template>
+  </view>
+</template>

@@ -1,3 +1,4 @@
+
 <script>
 	export default {
 		onLaunch: function() {
@@ -15,7 +16,6 @@
 <style>
 	/*每个页面公共css */
 	@import "./common/css/common.css";
-
 	page {
 		background-color: #fff;
 		height: 100%;

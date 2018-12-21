@@ -174,9 +174,11 @@
   align-items: flex-start;
 }
 .big-title .shoptitle.data-v-29a9da5a {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  width: 90%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
@@ -189,17 +191,22 @@
   align-items: center;
 }
 .big-title .logo.data-v-29a9da5a {
+  position: absolute;
+  top: 5px;
+  left: 0;
   width: 30rpx;
   height: 30rpx;
   margin-right: 10rpx;
 }
 .big-title .share.data-v-29a9da5a {
+  width: 10%;
   text-align: center;
 }
 .big-title .title.data-v-29a9da5a {
   font-size: 28rpx;
   font-weight: 600;
   color: #000;
+  margin-left: 25px;
 }
 .quan-container.data-v-29a9da5a {
   position: relative;
@@ -305,6 +312,8 @@
 }
 .store-introduction.data-v-29a9da5a {
   padding: 20rpx 10rpx;
+  margin-top: 10px;
+  position: relative;
 }
 .store-introduction .rank.data-v-29a9da5a {
   display: -webkit-box;
@@ -336,7 +345,18 @@
   -webkit-align-items: center;
   align-items: center;
 }
+.store-introduction .icons.data-v-29a9da5a {
+  position: absolute;
+  top: 18px;
+  left: 0px;
+}
 .store-introduction .txt.data-v-29a9da5a {
+  margin-left: 36rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 600;
+}
+.store-introduction .dptxt.data-v-29a9da5a {
   font-size: 28rpx;
   color: #333;
   font-weight: 600;
@@ -492,6 +512,9 @@
 }
 .footer-container .join .sm-txt.data-v-29a9da5a {
   font-size: 12rpx;
+}
+#shop-detail-wrap.data-v-29a9da5a {
+  font-size: 0!important;
 }
 #shop-detail-wrap ._img.data-v-29a9da5a {
   max-width: 100% !important;

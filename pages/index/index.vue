@@ -1,11 +1,11 @@
 <template>
-	<view class="index-content" v-if="productList">
+	<view class="index-content">
 		<!-- 查找栏 -->
 		<view class="search-container">
-			<view class="qrcode">
+			<view class="qrcode" @tap="qrcode">
 				<uni-icon type="qrcode" size="16" color="#bababa"></uni-icon>
 			</view>
-			<view class="search">
+			<view class="search" @tap="jump('search')">
 				<uni-icon type="search" size="15" color="#bababa">
 				</uni-icon>
 				立即查找独家优惠券
@@ -15,154 +15,71 @@
 			</view>
 		</view>
 		<!-- 主布局区域 -->
-		<view class="uni-tab-bar">
-			<scroll-view id="tab-bar" :class="[uni-swiper-tab,{'_isfixed':isfixed}] " scroll-x :scroll-left="scrollLeft">
+		<view class="uni-tab-bar uni-swiper-tab">
+			<scroll-view id="tab-bar" class="_isfixed " scroll-x :scroll-left="scrollLeft">
 				<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
 				 :data-current="index" @tap="tapTab">{{tab.name}}</view>
 			</scroll-view>
 
-			<swiper :current="tabIndex" class="index-swiper" :duration="duration" @change="changeTab">
-				<swiper-item v-for="item in itemList" :key="item">
-					<!-- 整页布局滚动 -->
-					<scroll-view scroll-y @scroll="_screensticky" :scroll-top="globScrollTop" class="list" @scrolltolower='onloadmore'>
-						<!-- 轮播图 -->
-						<swiper @change="changeswiper" class="swiper-box" circular autoplay indicator-active-color="#fff" indicator-dots
-						 interval="5000" :duration="duration">
-							<swiper-item class="item" v-for="(item, index2)  in imagelist" :key="index2">
-								<image class="swiper-img" :src="item.src"></image>
-								<!-- lazy-load mode="aspectFit" -->
-							</swiper-item>
-						</swiper>
-						<!-- 首页20个大类分区 -->
-						<view class="classification-container" v-show="tabIndex == 0">
-							<view class="item">
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text class="txt">聚划算</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>9.9包邮</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>天猫精选</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>淘淘乐</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>每日推荐</text>
-								</view>
-							</view>
-							<!-- <view class="item">
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text class="txt">大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-								<view>
-									<uni-icon type="on-lightning" size="35" color="#e5241f"></uni-icon>
-									<text>大牌秒杀</text>
-								</view>
-							</view> -->
-						</view>
-						<!-- 滚动公告栏首页 -->
-						<view class="uni-swiper-msg" v-show="tabIndex == 0">
-							<view class="uni-swiper-msg-icon">
-								<image src="../../static/logo.png" mode="widthFix"></image>
-							</view>
-							<swiper vertical="true" autoplay="true" circular="true" interval="3000">
-								<swiper-item v-if="msg.length > 1" v-for="(item, boardindex) in msg" :key="boardindex">
-									<view @click="godetail(item.id)">{{item.title}}</view>
-								</swiper-item>
-							</swiper>
-						</view>
-						<divid-line height="5"></divid-line>
-						<!-- 精选滑动页面 -->
-						<view class="hot-txt" v-show="tabIndex == 0">今日<text class="hot">热销</text>榜单</view>
-						<scroll-view class="hot-scroll-wrap border-1px" scroll-x style="width: 100%;" v-show="tabIndex == 0">
-							<view class="wrap">
-								<view class="uni-product" v-for="(product,hotproductindex) in hotProductList" :key="hotproductindex" @click="godetail(product.id)">
-									<view class="image-view">
-										<image class="uni-product-image" :src="product.img"></image>
-									</view>
-									<view class="uni-product-title">{{product.title}}</view>
-									<view class="uni-product-price">
-										<text class="uni-product-price-favour">￥{{product.originp}}</text>
-										<text class="uni-product-price-original">￥{{product.price}}</text>
-										<text class="uni-product-tip">{{product.type}}</text>
-									</view>
-								</view>
-							</view>
-						</scroll-view>
-						<!-- 条件筛选 -->
-						<divid-line height="10"></divid-line>
-						<view class="recommend">—— 为你推荐 ——</view>
-						<divid-line height="2"></divid-line>
-						<!-- <view :class="['_fiexd hidden screen-wrap', {'visiale':isfixed}]"> -->
-						<view class="screen-wrap _fiexd" v-if="isfixed">
-							<view :class="{on :active==0}" @click="screentap('0')">精选</view>
-							<view :class="{on :active==1}" @click="screentap('1')">销量</view>
-							<view :class="{on :active==2}" @click="screentap('2')">最新</view>
-							<view class='jg-wrap' @click="screentap('3')">
-								<text :class="{on :active==3}">价格</text>
-								<view class="jgicon">
-									<uni-icon type="uparrow" size="12" :color="up">
-									</uni-icon>
-									<uni-icon type="downarrow" size="12" :color="down">
-									</uni-icon>
-								</view>
-							</view>
-						</view>
-						<!-- <view  :class="['screen-wrap', {'_sticky':!isAndroid}]"> -->
-						<view :class="['screen-wrap', {'_sticky':!isAndroid}]">
-							<view :class="{on :active==0}" @click="screentap('0')">精选</view>
-							<view :class="{on :active==1}" @click="screentap('1')">销量</view>
-							<view :class="{on :active==2}" @click="screentap('2')">最新</view>
-							<view class='jg-wrap' @click="screentap('3')">
-								<text :class="{on :active==3}">价格</text>
-								<view class="jgicon">
-									<uni-icon type="uparrow" size="12" :color="up">
-									</uni-icon>
-									<uni-icon type="downarrow" size="12" :color="down">
-									</uni-icon>
-								</view>
-							</view>
-						</view>
-						<view class="goods-container">
-							<block v-for="(item,productindex) in productList" :key="productindex">
-								<good-list :goodimg="item.img" :goodtitle="item.title" :goodprice="item.price" :goodorprice="item.reprice"
-								 :goodbuynum="item.readyby" :goodvalue="item.value" :goodyj="item.yj" :goodid="item.id" @onTap="godetail(item.id)"></good-list>
-							</block>
-							<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
-						</view>
-					</scroll-view>
+			<swiper :current="tabIndex" class="index-swiper" circular @change="changeTab">
+				<swiper-item v-if="productList[0]">
+					<block>
+						<scroll-index :productgood='productList[0]' current="0" :type="tabBars[0].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[1]' current="1" :type="tabBars[1].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[2]' current="2" :type="tabBars[2].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[3]' current="3" :type="tabBars[3].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[4]' current="45" :type="tabBars[4].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[5]' current="5" :type="tabBars[5].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[6]' current="6" :type="tabBars[6].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[7]' current="7" :type="tabBars[7].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[8]' current="8" :type="tabBars[8].name"></scroll-index>
+					</block>
+				</swiper-item>
+				<swiper-item >
+					<block>
+						<scroll-index :productgood='productList[9]' current="9" :type="tabBars[9].name"></scroll-index>
+					</block>
 				</swiper-item>
 			</swiper>
 		</view>
-		<go-top v-if="isShow" @goTop="goTop"></go-top>
 	</view>
 </template>
 
 <script>
-	import uniLoadMore from '@/components/uni-load-more.vue';
 	import dividLine from '@/components/line.vue';
-	import goodList from '@/components/good-list.vue';
-	import goTop from '@/components/go-top.vue'
+	import scrollIndex from '@/components/scroll-index.vue'
 	import {
 		getGoodsList,
 		getRecommend,
@@ -170,48 +87,17 @@
 	} from '@/api/goods.js'
 	export default {
 		components: {
-			uniLoadMore,
 			dividLine,
-			goodList,
-			goTop
-		},
-		computed: {
-			up() {
-				let color = this.isup == 0 ? '#ff0000' : '#ccc'
-				return color
-			},
-			down() {
-				let color = this.isup == 1 ? '#ff0000' : '#ccc';
-				return color;
-			}
+			scrollIndex
 		},
 		data() {
 			return {
-				page: 1,
-				scrollEv: null,
-				nowScroll: 0,
-				isScroll: false,
-				isAndroid: false,
-				timer: null,
-				isShow: false,
-				globScrollTop: 0,
 				uni: "",
 				swiper: "",
 				tab: "",
-				active: 0,
-				isup: 3,
-				count: 0,
-				screen: null,
-				isfixed: false,
-				productList: null,
+				scrolltop: 0,
+				productList: [],
 				loadingType: 0,
-				contentText: {
-					contentdown: "上拉显示更多",
-					contentrefresh: "正在加载...",
-					contentnomore: "没有更多数据了"
-				},
-				hotProductList: [],
-				msg: [],
 				imagelist: [{
 						title: 1,
 						src: "https://img.alicdn.com/tps/i4/TB1yNlhhAvoK1RjSZFwSuwiCFXa.jpg_q90_.webp"
@@ -233,39 +119,57 @@
 						src: "https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg"
 					}
 				],
-				itemList: [
-					'itemadfasdf1',
-					'itemasdfasdf2',
-					'itemdfasdfasdfsa3'
-				],
 				duration: 300,
 				loadingText: {
 					contentrefresh: "正在加载...",
 					contentnomore: "没有更多数据了"
 				},
 				scrollLeft: 0,
-				isClickChange: false,
+				istapChange: false,
 				tabIndex: 0,
+				productMap: new Map(),
+				count: 0,
 				tabBars: [{
 						name: '全部',
-						id: 'guanzhu'
+						id: 'zb'
 					},
 					{
-						name: '男装',
-						id: 'tuijian'
+						name: '百货',
+						id: 'bh'
 					},
 					{
 						name: '女装',
-						id: 'tiyu'
+						id: 'nz'
+					},
+					{
+						name: '食品',
+						id: 'sp'
+					},
+					{
+						name: '母婴',
+						id: 'my'
+					},
+					{
+						name: '美妆',
+						id: 'mz'
+					},
+					{
+						name: '洗护',
+						id: 'xh'
+					},
+					{
+						name: '内衣',
+						id: 'ny'
 					},
 					{
 						name: '数码',
-						id: 'redian'
+						id: 'sm'
 					},
 					{
-						name: '家具',
-						id: 'caijing'
-					}
+						name: '家电',
+						id: 'jd'
+					},
+
 				],
 
 			}
@@ -283,32 +187,18 @@
 			this._getData();
 		},
 		methods: {
-			onloadmore() {
-				if (this.loadingType !== 0) {
-					return;
-				}
-				this.loadingType = 1;
-
-				let ret = getGoodsList({
-					page: this.page,
-					type: this.tabIndex == 0 ? '' : this.tabBars[this.tabIndex].name,
-					screen: '',
-					jg: ''
-				});
-				ret.then(res => {
-
-					if (res.code == 200) {
-						if (res.result.length == 0) {
-							this.loadingType = 3;
-							return
-						}
-						this.productList = this.productList.concat(res.result);
-						this.page++;
-						this.loadingType = 0;
-					} else {
-						this._showError()
+			qrcode() {
+				console.log('二维码');
+				uni.scanCode({
+					success: function(res) {
+						console.log('条码类型：' + res.scanType);
+						console.log('条码内容：' + res.result);
+						uni.navigateTo({
+							url: '/pages/common/web-view'
+						})
+						console.log('this.qrsrc', this.qrsrc);
 					}
-				})
+				});
 			},
 			_getData() {
 				uni.showLoading({
@@ -316,7 +206,7 @@
 					mask: true
 				})
 				// getHotListGood(),
-				let ret = Promise.all([getRecommend(),getHotListGood(), getGoodsList({
+				let ret = Promise.all([getRecommend(), getHotListGood(), getGoodsList({
 					page: 0,
 					type: '',
 					screen: '',
@@ -327,22 +217,27 @@
 					uni.hideLoading();
 					if (res.length) {
 						for (let item of res) {
-							if (item.code!=200) {
+							if (item.code != 200) {
 								this._showError()
 								return
 							}
 						}
-						this.msg = res[0].result
-						this.hotProductList = res[1].result;
-						this.productList = res[2].result;
-						console.log(this.hotProductList);
+						// this.msg = res[0].result
+						this.productList.push({
+							hotGood: res[1].result,
+							banner: this.imagelist,
+							msg: res[0].result,
+							product: res[2].result,
+						})
+						uni.setStorageSync(this.tabIndex.toString(), this.productList[this.tabIndex])
+						// this.productMap.set(0, res[2].result)
+						console.log('第一次加载数据', this.productList);
 					}
 				})
 			},
 			godetail(id) {
-
 				uni.navigateTo({
-					url: `/pages/common/goods-detail?id=${id}&scrollTop=${this.nowScroll}`
+					url: `/pages/common/goods-detail?id=${id}&table=yhq_goods`
 				})
 				this.globScrollTop = this.nowScroll;
 			},
@@ -366,72 +261,45 @@
 				ret.then(res => {
 					uni.hideLoading();
 					if (res.code == 200) {
-						this.productList = res.result;
+						this.productList.push({
+							banner: this.imagelist,
+							msg: '',
+							product: res.result
+						})
+						uni.setStorageSync(this.tabIndex.toString(), this.productList[this.tabIndex])
 					} else {
 						this._showError()
 					}
 				})
 			},
-			goTop() {
-				this.globScrollTop = 0;
-				this.isScroll = false;
-			},
-			//条件筛选滑动事件监听 (this._delayfun)
 
-			_screensticky(ev) {
-				let target = ev.target || ev.srcElement;
-				this.nowScroll = target.scrollTop
-				// console.log(target.scrollTop);
-				if (!this.isScroll) {
-					this.globScrollTop = 1;
-					this.isScroll = true;
-				}
-				if (this.nowScroll > 620) {
-					// console.log('>670')
-					if (this.isAndroid) {
-						this.isfixed = true;
-					}
-					this.isfixed = true;
-					this.isShow = true; // 显示一键返回顶部的箭头按钮
-				} else {
-					// console.log('<670')
-					this.isfixed = false;
-					this.isShow = false;
-				}
-			},
-			jump(id) {
-				console.log(id);
-				// 				uni.navigateTo({
-				// 					url: '/pages/common/goods-detail'
-				// 					// url: '/pages/common/good'
-				// 				});
-			},
-			//条件筛选
-			screentap(index) {
-				if (index == 3) {
-					this.active = index;
-					this.isup = this.count % 2 == 0 ? this.isup = 0 : this.isup = 1;
-					this.count++;
-					console.log("this.isip", this.isup)
-					this._getGoodsList(0, '', index, this.isup);
+			jump(type) {
+				if (type == 'search') {
+					uni.navigateTo({
+						url: '/pages/common/search'
+					})
 					return
 				}
-				this._getGoodsList(0, '', index);
-				this.active = index
-				this.isup = 3;
+				const map = new Map()
+					.set('jhs', '聚划算')
+					.set('by', '9.9包邮')
+					.set('tqg', '淘抢购')
+					.set('tj', '每日精选')
+					.set('tmjx', '天猫精选')
+				uni.navigateTo({
+					url: `/pages/common/good-item?type=${type}&title=${map.get(type)}`
+					// url: '/pages/common/good'
+				});
 			},
-			changeswiper(e) {
-				e.stopPropagation();
-				e.preventDefault();
-			},
+
+
 			//滑动swiper 改变内容
 			async changeTab(e) {
 				let index = e.target.current;
 				let type = index == 0 ? '' : this.tabBars[index].name
-				this._getGoodsList('', type); // 切换时刷新数据
-				if (this.isClickChange) {
+				if (this.istapChange) {
 					this.tabIndex = index;
-					this.isClickChange = false;
+					this.istapChange = false;
 					return;
 				}
 				let tabBar = await this.getElSize("tab-bar"),
@@ -445,14 +313,33 @@
 				let winWidth = uni.getSystemInfoSync().windowWidth,
 					nowElement = await this.getElSize(this.tabBars[index].id),
 					nowWidth = nowElement.width;
+
+
 				if (width + nowWidth - tabBarScrollLeft > winWidth) {
 					this.scrollLeft = width + nowWidth - winWidth;
 				}
 				if (width < tabBarScrollLeft) {
 					this.scrollLeft = width;
 				}
-				this.isClickChange = false;
+				this.istapChange = false;
 				this.tabIndex = index; //一旦访问data就会出问题
+				this.loadingType = 0;
+				let good = null;
+				if (!this.productList[this.tabIndex]) {
+					try {
+						good = uni.getStorageSync(this.tabIndex.toString())
+						if (!good) {
+							this._getGoodsList('', this.tabBars[this.tabIndex].name, '', ''); // 切换时刷新数据	
+						} else {
+							this.productList.push(good)
+						}
+						console.log('good', good, 'index', this.tabIndex.toString());
+					} catch (e) {
+						console.log('getData', e.message)
+					}
+				}
+
+
 			},
 			getElSize(id) { //得到元素的size
 				return new Promise((res, rej) => {
@@ -465,166 +352,41 @@
 				})
 			},
 			async tapTab(e) { //点击tab-bar
+				console.log('tabbar', e);
 				if (this.tabIndex === e.target.dataset.current) {
 					return false;
 				} else {
+					let index = e.target.dataset.current;
+					console.log(index, this.tabBars[index])
+					let type = index == 0 ? '' : this.tabBars[index].name
 					let tabBar = await this.getElSize("tab-bar"),
 						tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
 					this.scrollLeft = tabBarScrollLeft;
-					this.isClickChange = true;
+					this.istapChange = true;
 					this.tabIndex = e.target.dataset.current
+					this.loadingType = 0;
 				}
 			},
-		}
+		},
 	}
 </script>
 
 <style lang="less" scoped>
+	.double-tap {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background: #333333;
+		width: 60px;
+		height: 60px;
+	}
+
 	.index-content {
 		position: relative;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-
-		.goods-container {
-			padding-bottom: 140upx;
-		}
-
-		.visiale {
-			visibility: visible !important;
-		}
-
-		.hidden {
-			visibility: hidden;
-		}
-
-		._fiexd {
-			position: fixed;
-			top: 0;
-		}
-
-		._sticky {
-			position: sticky;
-			top: 0;
-		}
-
-		// 热销
-		.hot-txt {
-			margin-left: 50upx;
-			color: #333;
-
-			.hot {
-				color: #FF0000;
-			}
-		}
-
-		// 为你推荐
-
-		.recommend {
-			padding: 25upx 0;
-			width: 100%;
-			font-size: 32upx;
-			text-align: center;
-			color: #FF0000;
-			font-weight: 500;
-		}
-
-		// 选中状态
-		.on {
-			color: red !important;
-		}
-
-		.list {
-			width: 100%;
-			height: 100%;
-		}
-
-		// 条件筛选
-		.screen-wrap {
-			height: 30upx;
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			align-items: center;
-			padding: 20upx 0;
-			background: #fff;
-
-			.jg-wrap {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-			}
-		}
-
-		// 精选商品
-		.hot-scroll-wrap {
-			height: auto;
-			width: 100%;
-			white-space: nowrap;
-
-			.wrap {
-				display: flex;
-				flex-direction: row;
-			}
-		}
-
-		.uni-product {
-			padding: 20upx;
-			display: flex;
-			flex-direction: column;
-			width: 330upx;
-		}
-
-		.image-view {
-			height: 330upx;
-			width: 330upx;
-			margin: 12upx 0;
-		}
-
-		.uni-product-image {
-			height: 330upx;
-			width: 330upx;
-		}
-
-		.uni-product-title {
-			width: 300upx;
-			word-break: break-all;
-			display: -webkit-box;
-			overflow: hidden;
-			line-height: 1.5;
-			text-overflow: ellipsis;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
-		}
-
-		.uni-product-price {
-			margin-top: 10upx;
-			font-size: 28upx;
-			line-height: 1.5;
-			position: relative;
-		}
-
-		.uni-product-price-original {
-			color: #e80080;
-		}
-
-		.uni-product-price-favour {
-			color: #888888;
-			text-decoration: line-through;
-			margin-left: 10upx;
-		}
-
-		.uni-product-tip {
-			position: absolute;
-			right: 10upx;
-			background-color: #ff3333;
-			color: #ffffff;
-			padding: 0 10upx;
-			border-radius: 5upx;
-		}
-
+		z-index: 999;
 		// 公告栏
 		// 		.bulletin-board {
 		// 			width: calc(100% -20upx);
@@ -643,6 +405,7 @@
 			background: #fff;
 			padding: 30upx 20upx 20upx 20upx;
 			margin-top: 40upx;
+			z-index: 999;
 
 			.qrcode {
 				width: 8.333333%;
@@ -717,5 +480,10 @@
 	// 框架样式复写
 	.uni-swiper-tab {
 		border-bottom: 1upx solid #f8f8f8;
+
+	}
+
+	.uni-scroll-view {
+		white-space: nowrap !important;
 	}
 </style>

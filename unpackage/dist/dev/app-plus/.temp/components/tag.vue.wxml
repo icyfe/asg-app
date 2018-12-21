@@ -1,0 +1,5 @@
+<template name="daa0e66e">
+  <view style="margin-top: 10px;" bindtap="handleProxy" data-eventid="{{'8Fz-0'}}" data-comkey="{{$k}}" class="_view data-v-07a5b43f">
+    <text class="_text data-v-07a5b43f search-tag" style=" {{('color:' + color + ';')}}">{{tag}}</text>
+  </view>
+</template>

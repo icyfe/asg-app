@@ -1,0 +1,20 @@
+<import src="/components/nav-bar.vue.wxml" />
+<import src="/components/line.vue.wxml" />
+<template name="d541bbb0">
+  <view class="_view data-v-c6e89212 container">
+    <template title="改绑手机" bindback="handleProxy" data-eventid="{{'x1l-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'CRn-0'],$root}}" is="2ae10ad0"></template>
+    <view class="_view data-v-c6e89212 wrap">
+      <template height="5" data="{{...$root['0'], ...$root[$kk+'dMv-1'],$root}}" is="3a42c3d5"></template>
+      <view class="_view data-v-c6e89212 input-wrap">
+        <view class="_view data-v-c6e89212 origin">原始手机号</view>
+        <view class="_view data-v-c6e89212 txt-input">{{pphone}}</view>
+      </view>
+      <view class="_view data-v-c6e89212 yzm-wrap">
+        <view class="_view data-v-c6e89212 yzm-txt">验证码</view>
+        <input value="{{code}}" bindinput="handleProxy" class="_input data-v-c6e89212 txt-input" placeholder="请输入验证码" data-eventid="{{'eqV-1'}}" data-comkey="{{$k}}" />
+        <view bindtap="handleProxy" class="_view data-v-c6e89212 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'r5h-2'}}" data-comkey="{{$k}}">{{yzm}}</view>
+      </view>
+      <view class="_view data-v-c6e89212 bt-wrap" bindtap="handleProxy" data-eventid="{{'2cG-3'}}" data-comkey="{{$k}}">验证后绑定新手机</view>
+    </view>
+  </view>
+</template>

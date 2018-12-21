@@ -1,0 +1,2 @@
+@import "../../common/vendor.wxss";
+.content.data-v-cf7d0c74{text-align:center;height:100vh}.tabbar.data-v-cf7d0c74{position:fixed;bottom:0;left:0;right:0}.logo.data-v-cf7d0c74{height:200rpx;width:200rpx;margin-top:200rpx}.title.data-v-cf7d0c74{font-size:36rpx;color:#8f8f94}

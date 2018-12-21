@@ -1,8 +1,8 @@
 <import src="/components/uni-icon.vue.wxml" />
 <template name="3e41bd7c">
   <view class="_view data-v-cfa73574 content">
-    <view wx:if="{{tabs.length > 0}}" class="_view data-v-cfa73574 wrap" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'WNR-0-'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item">
-      <template size="28" data="{{...$root['0'], ...$root[$kk+'ZiM-0-'+index],$root}}" is="04590597"></template>
+    <view wx:if="{{tabs.length > 0}}" class="_view data-v-cfa73574 wrap" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'zvz-0-'+index}}" data-comkey="{{$k}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item">
+      <template size="28" data="{{...$root['0'], ...$root[$kk+'ajc-0-'+index],$root}}" is="04590597"></template>
       <text class="_text data-v-cfa73574 {{current == index ? 'txt on' : 'txt'}}">{{item.title}}</text>
     </view>
   </view>
