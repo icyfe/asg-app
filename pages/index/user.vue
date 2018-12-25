@@ -71,7 +71,7 @@
 					</view>
 					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
 				</view>
-				<view class="item">
+				<view class="item" @tap="jump('collection')">
 					<view class="item">
 						<uni-icon type="shoucang" color="#dd5145" size="22"></uni-icon>
 						<text>我的收藏</text>

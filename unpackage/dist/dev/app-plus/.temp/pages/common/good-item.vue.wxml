@@ -4,23 +4,23 @@
 <import src="/components/uni-load-more.vue.wxml" />
 <template name="8ad2f502">
   <view class="_view data-v-59c53e88 content">
-    <template bindback="handleProxy" data-eventid="{{'3kd-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'kkl-0'],$root}}" is="2ae10ad0"></template>
+    <template bindback="handleProxy" data-eventid="{{'2qc-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'7DL-0'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-59c53e88 container">
       <view class="_view data-v-59c53e88 screen-wrap">
-        <view bindtap="handleProxy" data-eventid="{{'IZV-1'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 0 ? 'on' : '']}}">精选</view>
-        <view bindtap="handleProxy" data-eventid="{{'rOG-2'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 1 ? 'on' : '']}}">销量</view>
-        <view bindtap="handleProxy" data-eventid="{{'FUg-3'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 2 ? 'on' : '']}}">最新</view>
-        <view class="_view data-v-59c53e88 jg-wrap" bindtap="handleProxy" data-eventid="{{'ItU-4'}}" data-comkey="{{$k}}">
+        <view bindtap="handleProxy" data-eventid="{{'Hk3-1'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 0 ? 'on' : '']}}">精选</view>
+        <view bindtap="handleProxy" data-eventid="{{'iNR-2'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 1 ? 'on' : '']}}">销量</view>
+        <view bindtap="handleProxy" data-eventid="{{'2vT-3'}}" data-comkey="{{$k}}" class="_view data-v-59c53e88 {{[active == 2 ? 'on' : '']}}">最新</view>
+        <view class="_view data-v-59c53e88 jg-wrap" bindtap="handleProxy" data-eventid="{{'1xz-4'}}" data-comkey="{{$k}}">
           <text class="_text data-v-59c53e88 {{[active == 3 ? 'on' : '']}}">价格</text>
           <view class="_view data-v-59c53e88 jgicon">
-            <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'nvS-1'],$root}}" is="04590597"></template>
-            <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'SL9-2'],$root}}" is="04590597"></template>
+            <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'bxZ-1'],$root}}" is="04590597"></template>
+            <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'1Uu-2'],$root}}" is="04590597"></template>
           </view>
         </view>
       </view>
       <view class="_view data-v-59c53e88 good-wrap">
-        <template data="{{...$root['0'], ...$root[$kk+'cYp-3'],$root}}" is="0b724cc6"></template>
-        <template data="{{...$root['0'], ...$root[$kk+'hQA-4'],$root}}" is="70eb152e"></template>
+        <template data="{{...$root['0'], ...$root[$kk+'o11-3'],$root}}" is="0b724cc6"></template>
+        <template data="{{...$root['0'], ...$root[$kk+'sra-4'],$root}}" is="70eb152e"></template>
       </view>
     </view>
   </view>

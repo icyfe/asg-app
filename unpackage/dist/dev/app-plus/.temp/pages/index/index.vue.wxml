@@ -3,68 +3,68 @@
 <template name="1091f44b">
   <view class="_view data-v-d31acb48 index-content">
     <view class="_view data-v-d31acb48 search-container">
-      <view class="_view data-v-d31acb48 qrcode" bindtap="handleProxy" data-eventid="{{'Yqt-0'}}" data-comkey="{{$k}}">
-        <template type="qrcode" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'tLi-0'],$root}}" is="04590597"></template>
+      <view class="_view data-v-d31acb48 qrcode" bindtap="handleProxy" data-eventid="{{'QVg-0'}}" data-comkey="{{$k}}">
+        <template type="qrcode" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'SYs-0'],$root}}" is="04590597"></template>
       </view>
-      <view class="_view data-v-d31acb48 search" bindtap="handleProxy" data-eventid="{{'T9e-1'}}" data-comkey="{{$k}}">
-        <template type="search" size="15" color="#bababa" data="{{...$root['0'], ...$root[$kk+'QEE-1'],$root}}" is="04590597"></template> 立即查找独家优惠券 </view>
+      <view class="_view data-v-d31acb48 search" bindtap="handleProxy" data-eventid="{{'R2g-1'}}" data-comkey="{{$k}}">
+        <template type="search" size="15" color="#bababa" data="{{...$root['0'], ...$root[$kk+'fDJ-1'],$root}}" is="04590597"></template> 立即查找独家优惠券 </view>
       <view class="_view data-v-d31acb48 msg">
-        <template type="message" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'Ljt-2'],$root}}" is="04590597"></template>
+        <template type="message" size="16" color="#bababa" data="{{...$root['0'], ...$root[$kk+'xyv-2'],$root}}" is="04590597"></template>
       </view>
     </view>
     <view class="_view data-v-d31acb48 uni-tab-bar uni-swiper-tab">
       <scroll-view id="tab-bar" class="_scroll-view data-v-d31acb48 _isfixed " scroll-x scroll-left="{{scrollLeft}}">
-        <view wx:key="tab.id" key="{{tab.id}}" id="{{tab.id}}" data-current="{{index}}" bindtap="handleProxy" data-eventid="{{'me2-2-'+index}}" data-comkey="{{$k}}" wx:for="{{tabBars}}" wx:for-index="index" wx:for-item="tab" class="_view data-v-d31acb48 {{['swiper-tab-list', tabIndex == index ? 'active' : '']}}">{{tab.name}}</view>
+        <view wx:key="tab.id" key="{{tab.id}}" id="{{tab.id}}" data-current="{{index}}" bindtap="handleProxy" data-eventid="{{'NK5-2-'+index}}" data-comkey="{{$k}}" wx:for="{{tabBars}}" wx:for-index="index" wx:for-item="tab" class="_view data-v-d31acb48 {{['swiper-tab-list', tabIndex == index ? 'active' : '']}}">{{tab.name}}</view>
       </scroll-view>
-      <swiper current="{{tabIndex}}" class="_swiper data-v-d31acb48 index-swiper" circular bindchange="handleProxy" data-eventid="{{'rdX-3'}}" data-comkey="{{$k}}">
+      <swiper current="{{tabIndex}}" class="_swiper data-v-d31acb48 index-swiper" circular bindchange="handleProxy" data-eventid="{{'KpW-3'}}" data-comkey="{{$k}}">
         <swiper-item wx:if="{{productList[0]}}" class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="0" data="{{...$root['0'], ...$root[$kk+'mfQ-3'],$root}}" is="332a9c9a"></template>
+            <template current="0" data="{{...$root['0'], ...$root[$kk+'WRP-3'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="1" data="{{...$root['0'], ...$root[$kk+'n3b-5'],$root}}" is="332a9c9a"></template>
+            <template current="1" data="{{...$root['0'], ...$root[$kk+'SYz-5'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="2" data="{{...$root['0'], ...$root[$kk+'meR-7'],$root}}" is="332a9c9a"></template>
+            <template current="2" data="{{...$root['0'], ...$root[$kk+'NWn-7'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="3" data="{{...$root['0'], ...$root[$kk+'zFB-9'],$root}}" is="332a9c9a"></template>
+            <template current="3" data="{{...$root['0'], ...$root[$kk+'EqO-9'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="45" data="{{...$root['0'], ...$root[$kk+'LVW-11'],$root}}" is="332a9c9a"></template>
+            <template current="45" data="{{...$root['0'], ...$root[$kk+'Ujh-11'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="5" data="{{...$root['0'], ...$root[$kk+'Em9-13'],$root}}" is="332a9c9a"></template>
+            <template current="5" data="{{...$root['0'], ...$root[$kk+'R16-13'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="6" data="{{...$root['0'], ...$root[$kk+'iVE-15'],$root}}" is="332a9c9a"></template>
+            <template current="6" data="{{...$root['0'], ...$root[$kk+'ITN-15'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="7" data="{{...$root['0'], ...$root[$kk+'AGT-17'],$root}}" is="332a9c9a"></template>
+            <template current="7" data="{{...$root['0'], ...$root[$kk+'jb0-17'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="8" data="{{...$root['0'], ...$root[$kk+'83D-19'],$root}}" is="332a9c9a"></template>
+            <template current="8" data="{{...$root['0'], ...$root[$kk+'RHi-19'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
         <swiper-item class="_swiper-item data-v-d31acb48">
           <block>
-            <template current="9" data="{{...$root['0'], ...$root[$kk+'Q8h-21'],$root}}" is="332a9c9a"></template>
+            <template current="9" data="{{...$root['0'], ...$root[$kk+'s1b-21'],$root}}" is="332a9c9a"></template>
           </block>
         </swiper-item>
       </swiper>

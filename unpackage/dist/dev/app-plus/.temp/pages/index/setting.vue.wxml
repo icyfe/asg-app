@@ -2,28 +2,28 @@
 <import src="/components/line.vue.wxml" />
 <template name="1b7df689">
   <view class="_view data-v-a865474c content">
-    <template bindback="handleProxy" title="设置" data-eventid="{{'xZP-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'buB-0'],$root}}" is="2ae10ad0"></template>
+    <template bindback="handleProxy" title="设置" data-eventid="{{'Mbx-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'kjj-0'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-a865474c avatar-wrap">
       <view class="_view data-v-a865474c wrap">
         <image class="_image data-v-a865474c avatar" src="../../static/avatar.jpg"></image>
         <view class="_view data-v-a865474c">点击修改头像</view>
       </view>
     </view>
-    <view bindtap="handleProxy" class="_view data-v-a865474c item" data-eventid="{{'gWN-1'}}" data-comkey="{{$k}}">
+    <view bindtap="handleProxy" class="_view data-v-a865474c item" data-eventid="{{'GXq-1'}}" data-comkey="{{$k}}">
       <view class="_view data-v-a865474c left">
         <view class="_view data-v-a865474c">昵称</view>
         <view class="_view data-v-a865474c user-msg">{{user.username}}</view>
       </view>
       <view class="_view data-v-a865474c right">修改</view>
     </view>
-    <view class="_view data-v-a865474c item" bindtap="handleProxy" data-eventid="{{'nT7-2'}}" data-comkey="{{$k}}">
+    <view class="_view data-v-a865474c item" bindtap="handleProxy" data-eventid="{{'zjQ-2'}}" data-comkey="{{$k}}">
       <view class="_view data-v-a865474c left">
         <view class="_view data-v-a865474c">修改手机号</view>
         <view class="_view data-v-a865474c user-msg">{{user.phone}}</view>
       </view>
       <view class="_view data-v-a865474c right">修改</view>
     </view>
-    <template height="10" data="{{...$root['0'], ...$root[$kk+'KnV-1'],$root}}" is="3a42c3d5"></template>
-    <view class="_view data-v-a865474c login-out" bindtap="handleProxy" data-eventid="{{'0RB-3'}}" data-comkey="{{$k}}">退出登录</view>
+    <template height="10" data="{{...$root['0'], ...$root[$kk+'WYB-1'],$root}}" is="3a42c3d5"></template>
+    <view class="_view data-v-a865474c login-out" bindtap="handleProxy" data-eventid="{{'4ca-3'}}" data-comkey="{{$k}}">退出登录</view>
   </view>
 </template>

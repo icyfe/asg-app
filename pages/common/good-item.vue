@@ -42,8 +42,8 @@
 				isup: 3,
 				count: 0,
 				recommend: null,
-				loadingType: 0,
 				title:"",
+				loadingType: 0,
 				contentText: {
 					contentdown: "上拉显示更多",
 					contentrefresh: "正在加载...",
@@ -77,7 +77,7 @@
 				return;
 			}
 			this.loadingType = 1;
-			let ret = getGoodsList({
+			let ret = getOtherGood({
 				page: this.page,
 				type: this.type,
 				screen:this.screen,

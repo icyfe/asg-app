@@ -201,6 +201,9 @@
 			uniSegmentedControl,
 			dividLine
 		},
+		onLoad() {
+			
+		},
 		methods: {
 			back(){
 				uni.navigateBack({

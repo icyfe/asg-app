@@ -2,7 +2,7 @@
 <template name="2ae10ad0">
   <view class="_view data-v-2098f70e nav" style=" {{('background:' + background + ';')}}">
     <view class="_view data-v-2098f70e back">
-      <template type="arrow-left" size="20" bindtap="handleProxy" data-eventid="{{'k5k-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'iXo-0'],$root}}" is="04590597"></template>
+      <template type="arrow-left" size="20" bindtap="handleProxy" data-eventid="{{'Wai-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'I9l-0'],$root}}" is="04590597"></template>
     </view>
     <view class="_view data-v-2098f70e title" style=" {{('color:' + color + ';')}}">{{title}}</view>
   </view>

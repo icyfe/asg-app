@@ -17,7 +17,7 @@
 					<uni-icon type="jhs" size="35" color="#f7002f"></uni-icon>
 					<text class="txt">聚划算</text>
 				</view>
-				<view @tap="jump('by')">
+				<view @tap="jump('special_offer')">
 					<uni-icon type="by" size="35" color="#f83061"></uni-icon>
 					<text>9.9包邮</text>
 				</view>
@@ -258,10 +258,10 @@
 				}
 				const map = new Map()
 					.set('jhs', '聚划算')
-					.set('by', '9.9包邮')
+					.set('special_offer', '9.9包邮')
 					.set('tqg_goods', '淘抢购')
-					.set('tj', '每日默认')
-					.set('tmjx', '天猫默认')
+					.set('tj', '品牌好券')
+					.set('tmjx', '天猫精选')
 				uni.navigateTo({
 					url: `/pages/common/good-item?type=${type}&title=${map.get(type)}`
 					// url: '/pages/common/good'

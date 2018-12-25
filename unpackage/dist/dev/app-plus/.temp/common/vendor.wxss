@@ -299,6 +299,9 @@
   font-size: 24rpx;
   color: #aeaeae;
 }
+.cancle.data-v-f7b29232 {
+  text-align: center;
+}
 .nav.data-v-2098f70e {
   position: fixed;
   top: 0;

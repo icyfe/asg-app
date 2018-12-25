@@ -14,18 +14,29 @@
 					<text class="small-gray">{{product.volume}}人已购</text>
 					<text class="uni-product-tip">{{product.youhuiquan}}元券</text>
 				</view>
+				<view v-if='isShow' class="cancle" @tap.stop="cancle(index)">
+					<uni-icon type="shoucang" color="#ff0000"></uni-icon>
+					<!-- 取消 -->
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {
+		deleteCollection
+	} from '@/api/goods.js'
 	export default {
 		props: {
-			productList: [Array,Object],
-			table:{
-				type:String,
-				default:'yhq_goods'
+			productList: [Array, Object],
+			table: {
+				type: String,
+				default: 'yhq_goods'
+			},
+			isShow: {
+				type: [Boolean, String],
+				default: false
 			}
 		},
 		data() {
@@ -34,10 +45,30 @@
 			};
 		},
 		methods: {
-			godetail(id){
+			godetail(id) {
 				uni.navigateTo({
 					url: `/pages/common/goods-detail?id=${id}&table=${this.table}`
 				})
+			},
+			cancle(index) {
+				console.log('需要取消的ID', this.productList[index].num_iid)
+				deleteCollection({
+					phone: this.getUser(),
+					num_iid: this.productList[index].num_iid
+				}).then(res => {
+					uni.showToast({
+						title: '已取消',
+					})
+					this.productList.splice(index, 1);
+				})
+			},
+			getUser() {
+				try {
+					let user = uni.getStorageSync('user');
+					return user.phone
+				} catch (e) {
+					//TODO handle the exception
+				}
 			}
 		},
 
@@ -113,5 +144,9 @@
 	.small-gray {
 		font-size: 24upx;
 		color: #aeaeae;
+	}
+
+	.cancle {
+		text-align: center;
 	}
 </style>

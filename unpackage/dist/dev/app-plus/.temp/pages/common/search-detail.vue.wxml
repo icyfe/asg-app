@@ -4,19 +4,19 @@
 <import src="/components/uni-load-more.vue.wxml" />
 <template name="b817101c">
   <view class="_view data-v-2b9d847b content">
-    <template title="搜索" color="#ffffff" background="#ff0000" data="{{...$root['0'], ...$root[$kk+'SKW-0'],$root}}" is="2ae10ad0"></template>
+    <template title="搜索" color="#ffffff" background="#ff0000" data="{{...$root['0'], ...$root[$kk+'cv6-0'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-2b9d847b search-box">
       <view class="_view data-v-2b9d847b wrap">
         <view class="_view data-v-2b9d847b placeholder">
-          <template type="search" color="#b5b5b5" size="18" data="{{...$root['0'], ...$root[$kk+'NYQ-1'],$root}}" is="04590597"></template>
-          <input bindconfirm="handleProxy" placeholder="搜索商品关键字" bindinput="handleProxy" value="{{keyword}}" data-eventid="{{'1Uy-0'}}" data-comkey="{{$k}}" class="_input data-v-2b9d847b" />
+          <template type="search" color="#b5b5b5" size="18" data="{{...$root['0'], ...$root[$kk+'98z-1'],$root}}" is="04590597"></template>
+          <input bindconfirm="handleProxy" placeholder="搜索商品关键字" bindinput="handleProxy" value="{{keyword}}" data-eventid="{{'Bdi-0'}}" data-comkey="{{$k}}" class="_input data-v-2b9d847b" />
         </view>
-        <template bindtap="handleProxy" wx:if="{{isShow}}" type="clear" color="#b5b5b5" size="18" data-eventid="{{'hED-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Ykq-2'],$root}}" is="04590597"></template>
+        <template bindtap="handleProxy" wx:if="{{isShow}}" type="clear" color="#b5b5b5" size="18" data-eventid="{{'H3V-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'mXR-2'],$root}}" is="04590597"></template>
       </view>
     </view>
     <view class="_view data-v-2b9d847b container">
-      <template table="yhq_goods" data="{{...$root['0'], ...$root[$kk+'8Qv-3'],$root}}" is="0b724cc6"></template>
-      <template data="{{...$root['0'], ...$root[$kk+'8he-4'],$root}}" is="70eb152e"></template>
+      <template table="yhq_goods" data="{{...$root['0'], ...$root[$kk+'NbV-3'],$root}}" is="0b724cc6"></template>
+      <template data="{{...$root['0'], ...$root[$kk+'ePn-4'],$root}}" is="70eb152e"></template>
     </view>
   </view>
 </template>

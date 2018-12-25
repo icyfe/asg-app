@@ -1,0 +1,6 @@
+<import src="/components/nav-bar.vue.wxml" />
+<template name="3e935e52">
+  <view class="_view data-v-80d63fae content">
+    <template titlt="搜索" color="#fff" background="#ff000" data="{{...$root['0'], ...$root[$kk+'9QV-0'],$root}}" is="2ae10ad0"></template>
+  </view>
+</template>

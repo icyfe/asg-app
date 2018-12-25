@@ -175,15 +175,7 @@
 			}
 		},
 		onLoad(option) {
-			// 			this.nowScroll = option.scrollTop || 0;
-			// 			this.globScrollTop = this.nowScroll;
-			// 			console.log('现在的值nowScroll', this.nowScroll);
-			// 			if (plus.os.name == 'Android') {
-			// 				this.isAndroid = true
-			// 			} else if (plus.os.name == 'iOS') {
-			// 				this.isAndroid = false
-			// 			}
-			// console.log('cc');
+			
 			this._getData();
 		},
 		methods: {

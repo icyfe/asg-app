@@ -12,8 +12,8 @@
 				</view>
 			</view>
 		</view>
-
-		<scroll-view ref='scroll' :scroll-top="scrolltop" scroll-y class="detail-container" @scroll='_onscroll'>
+		<!-- @scroll='_onscroll' -->
+		<scroll-view v-if="good" :scroll-top="scrolltop" scroll-y class="detail-container">
 			<!-- 轮播图 -->
 			<swiper v-if="good" class="swiper-box" circular indicator-dots autoplay indicator-active-color="#fff" duration="500">
 				<swiper-item class="item" v-for="(item, banerindex)  in good.small_images" :key="banerindex">
@@ -109,7 +109,7 @@
 			</view>
 		</scroll-view>
 		<!--底部固定栏 -->
-		<view class="footer-container">
+		<view class="footer-container" v-if="good">
 			<view class="back" @click="back">
 				返回
 			</view>
@@ -142,7 +142,9 @@
 	import {
 		getGoodDetail,
 		getGoodsList,
-		getDetailImg
+		getDetailImg,
+		addCollection,
+		deleteCollection
 	} from '@/api/goods.js'
 	export default {
 		computed: {
@@ -162,6 +164,7 @@
 				good: null,
 				recommend: {},
 				detail: null,
+				phone: this.getUser()
 			}
 		},
 		onLoad(option) {
@@ -169,18 +172,26 @@
 			let table = option.table || ''
 			console.log('table', table);
 			console.log('id', id);
-			let pid =  this._getPid();
+			let pid = this._getPid();
 			this._getData(id, table, pid)
 		},
 		components: {
 			productList,
 		},
 		methods: {
-			_getPid(){
-				try{
+			_getPid() {
+				try {
 					let data = uni.getStorageSync('user');
 					return data.pid
-				}catch(e){
+				} catch (e) {
+					//TODO handle the exception
+				}
+			},
+			getUser() {
+				try {
+					let user = uni.getStorageSync('user');
+					return user.phone
+				} catch (e) {
 					//TODO handle the exception
 				}
 			},
@@ -198,15 +209,41 @@
 			},
 			// 收藏
 			collection() {
-				if (this.isCollection) {
-					this.isCollection = false;
+				if (!this.phone) {
 					uni.showToast({
-						title: '已取消'
+						title: '未登录',
+						icon: 'none'
 					})
-				} else {
-					this.isCollection = true;
-					uni.showToast({
-						title: '已收藏'
+					return
+				}
+				if (this.isCollection) {
+					console.log('取消收藏', this.isCollection)
+					deleteCollection({
+						phone: this.phone,
+						num_iid: this.good.num_iid
+					}).then(res => {
+						this.isCollection = 0;
+						uni.showToast({
+							title: '已取消'
+						})
+					})
+				} else if (!this.isCollection) {
+					console.log('增加收藏', this.isCollection)
+					addCollection({
+						phone: this.phone,
+						volume: this.good.volume,
+						quanhoujia: this.good.quanhoujia,
+						youhuiquan: this.good.youhuiquan,
+						zk_final_price: this.good.zk_final_price,
+						title: this.good.title,
+						pict_url: this.good.pict_url,
+						num_iid: this.good.num_iid
+					}).then(res => {
+						console.log('已收藏');
+						this.isCollection = 1;
+						uni.showToast({
+							title: '已收藏'
+						})
 					})
 				}
 			},
@@ -235,13 +272,13 @@
 				plus.runtime.openURL(`taobao://${str}`);
 			},
 
-			_getData(id, table,pid) {
-				let ret = Promise.all([getGoodDetail(id, table,pid), getGoodsList({
+			_getData(id, table, pid) {
+				let ret = Promise.all([getGoodDetail(id, table, pid, this.getUser()), getGoodsList({
 					page: 0,
 					type: '',
 					screen: "",
 					jg: ""
-				}), getDetailImg(id)]);
+				})]);
 				ret.then(res => {
 					if (res.length > 0) {
 						console.log('商品详情', res)
@@ -251,13 +288,13 @@
 						this.good.yj = (this.good.youhuiquan * (parseFloat(this.good.commission_rate / 100))).toFixed(2)
 						this.good.coupon_start_time = this.good.coupon_start_time.slice(0, 10);
 						this.good.coupon_end_time = this.good.coupon_end_time.slice(0, 10)
-						this.recommend = res[1].result
+						this.recommend = res[1].result,
+							this.isCollection = this.good.isCollection;
 						this.detail = this._getDetailImg(res[2].wdescContent.pages)
 					}
 				})
 			},
-			// 			this.detail = this._getDetailImg(res[2].wdescContent.pages)
-			// , getDetailImg(id)]
+			// getDetailImg(id) this.detail = this._getDetailImg(res[2].wdescContent.pages)
 			_getDetailImg(list) {
 				let image = '';
 				let regx = /<[^>]*>|<\/[^>]*>/gm;
@@ -314,16 +351,11 @@
 				this.nowScrollTop = even.scrollTop;
 				// this.scrolltop = scrollTop; //实时同步位置
 				// console.log('11111', even.scrollTop)
-				if (even.scrollTop > 555 && this.isactive) {
-					this.$nextTick(function() {
-						this.isactive = false
-					})
-
-				} else if (even.scrollTop < 555 && !this.isactive) {
-					this.$nextTick(function() {
-						this.isactive = true
-					})
-				}
+				// 				if (even.scrollTop > 555) {
+				// 						this.isactive = false
+				// 				} else{
+				// 						this.isactive = true
+				// 				}
 			},
 			go(ev) {
 				let e = ev || window.event;
@@ -753,7 +785,8 @@
 
 	// 商品详情容器
 	#shop-detail-wrap {
-		font-size: 0!important;
+		font-size: 0 !important;
+
 		img {
 			max-width: 100% !important;
 		}

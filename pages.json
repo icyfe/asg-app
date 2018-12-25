@@ -183,6 +183,10 @@
 		{
 			"path":"pages/common/search-detail",
 			"style":{}
+		},
+		{
+			"path":"pages/index/collection",
+			"style":{}
 		}
 	],
 	"globalStyle": {

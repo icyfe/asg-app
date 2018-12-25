@@ -26,14 +26,15 @@ export function getGoodsList(data) {
 
 	})
 }
-export function getGoodDetail(id, table,pid='mm_234890166_197900069_54657250100') {
+export function getGoodDetail(id, table, pid = 'mm_234890166_197900069_54657250100',phone="") {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: `${BASE_URL}/api/get/good/detailgoods`,
 			data: {
 				id,
 				table,
-				pid
+				pid,
+				phone
 			},
 			method: "GET",
 			header: {
@@ -127,8 +128,8 @@ export function getDetailImg(num_iid) {
 				'content-header': 'application/json'
 			},
 			data: {
-				id:num_iid,
-				'qq-pf-to':'pcqq.group'
+				id: num_iid,
+				'qq-pf-to': 'pcqq.group'
 			},
 			success: (res) => {
 				resolve(res.data);
@@ -141,8 +142,8 @@ export function getDetailImg(num_iid) {
 	})
 }
 
-export function getKeyWord(keyword,page=0){
-	return new Promise((resolve, reject) =>{
+export function getKeyWord(keyword, page = 0) {
+	return new Promise((resolve, reject) => {
 		uni.request({
 			url: `${BASE_URL}/api/get/good/kwsearch`,
 			method: "GET",
@@ -158,6 +159,63 @@ export function getKeyWord(keyword,page=0){
 			},
 			fail: (err) => {
 				console.log('关键字查询出错', err)
+			}
+		})
+	})
+}
+
+export function getCollection(user) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/get/good/goodcollection/list`,
+			method: "GET",
+			header: {
+				'content-header': 'application/json'
+			},
+			data: {
+				user
+			},
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('get collection message error', err)
+			}
+		})
+	})
+}
+export function addCollection(data) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/post/good/goodcollection/add`,
+			method: "POST",
+			header: {
+				'content-header': 'application/json'
+			},
+			data,
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('add collection message error', err)
+			}
+		})
+	})
+}
+export function deleteCollection(data) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/post/good/goodcollection/delete`,
+			method: 'POST',
+			header: {
+				'content-type': 'application/json'
+			},
+			data,
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('delete collection message error', err)
 			}
 		})
 	})
