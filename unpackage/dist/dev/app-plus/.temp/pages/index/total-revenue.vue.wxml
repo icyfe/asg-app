@@ -5,9 +5,9 @@
 <template name="d1b5dee8">
   <view class="_view data-v-758b159d container">
     <view class="_view data-v-758b159d question-mark">
-      <template type="wh" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'NuF-0'],$root}}" is="04590597"></template>
+      <template type="wh" size="18" color="#fff" data="{{...$root['0'], ...$root[$kk+'5r1-0'],$root}}" is="04590597"></template>
     </view>
-    <template title="收益概况" color="#fff" background="#ff0000" bindback="handleProxy" data-eventid="{{'Lqx-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'I8B-1'],$root}}" is="2ae10ad0"></template>
+    <template title="收益概况" color="#fff" background="#ff0000" bindback="handleProxy" data-eventid="{{'oXU-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'vFK-1'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-758b159d content">
       <view class="_view data-v-758b159d upper">
         <view class="_view data-v-758b159d user-price">
@@ -17,7 +17,7 @@
         </view>
       </view>
       <view class="_view data-v-758b159d switch-wrap">
-        <template bindclickItem="handleProxy" width="100%" data-eventid="{{'iA3-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'7IJ-2'],$root}}" is="4b9071f4"></template>
+        <template bindclickItem="handleProxy" width="100%" data-eventid="{{'1qF-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'5rS-2'],$root}}" is="4b9071f4"></template>
       </view>
       <view hidden="{{!(current==0)}}" class="_view data-v-758b159d">
         <view class="_view data-v-758b159d wrap">
@@ -25,7 +25,7 @@
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">结算收入</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'tnv-2'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'1Xa-3'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'c5K-2'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'yui-3'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
               <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
@@ -33,7 +33,7 @@
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">预估收入</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'uk3-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'LbK-4'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'PQW-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Vuh-4'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
               <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
@@ -41,31 +41,31 @@
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">预估收入</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'Bxv-4'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'rd4-5'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'4Dx-4'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Pz6-5'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
               <view class="_view data-v-758b159d gray-sm-txt">上月收益</view>
             </view>
           </view>
         </view>
-        <template height="5" data="{{...$root['0'], ...$root[$kk+'j4O-6'],$root}}" is="3a42c3d5"></template>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'lHj-6'],$root}}" is="3a42c3d5"></template>
         <view class="_view data-v-758b159d wrap">
           <view class="_view data-v-758b159d title">
-            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'zMX-7'],$root}}" is="04590597"></template>
+            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'pZo-7'],$root}}" is="04590597"></template>
             <view class="_view data-v-758b159d title-txt">今日</view>
           </view>
           <view class="_view data-v-758b159d item-wrap">
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">待付笔数</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'PuT-5'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'RBg-8'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'wIk-5'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'oEa-8'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">预估收益</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'8Jj-6'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Jqt-9'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'bRB-6'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'aeY-9'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
@@ -77,24 +77,24 @@
             </view>
           </view>
         </view>
-        <template height="5" data="{{...$root['0'], ...$root[$kk+'v6o-10'],$root}}" is="3a42c3d5"></template>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'GEp-10'],$root}}" is="3a42c3d5"></template>
         <view class="_view data-v-758b159d wrap">
           <view class="_view data-v-758b159d title">
-            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'Hdp-11'],$root}}" is="04590597"></template>
+            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'hWN-11'],$root}}" is="04590597"></template>
             <view class="_view data-v-758b159d title-txt">昨日</view>
           </view>
           <view class="_view data-v-758b159d item-wrap">
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">待付笔数</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'n38-7'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'TAs-12'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'mK9-7'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'ijN-12'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">预估收益</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'egw-8'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'cFf-13'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'WSO-8'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'YHz-13'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
@@ -106,7 +106,7 @@
             </view>
           </view>
         </view>
-        <template height="5" data="{{...$root['0'], ...$root[$kk+'GCz-14'],$root}}" is="3a42c3d5"></template>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'nyy-14'],$root}}" is="3a42c3d5"></template>
         <view class="_view data-v-758b159d withdrawals-record">提现记录</view>
       </view>
       <view hidden="{{!(current==1)}}" class="_view data-v-758b159d">
@@ -115,23 +115,23 @@
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">已结算</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'U3z-9'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'JO9-15'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'dW7-9'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'E1U-15'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
             <view class="_view data-v-758b159d item">
               <view class="_view data-v-758b159d item-icon">
                 <view class="_view data-v-758b159d black-txt">待结算</view>
-                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'yku-10'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Obc-16'],$root}}" is="04590597"></template>
+                <template type="lwh" color="#ff0000" size="10" bindtap="handleProxy" data-eventid="{{'RmS-10'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'qkh-16'],$root}}" is="04590597"></template>
               </view>
               <view class="_view data-v-758b159d">￥0</view>
             </view>
           </view>
         </view>
-        <template height="5" data="{{...$root['0'], ...$root[$kk+'gJZ-17'],$root}}" is="3a42c3d5"></template>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'DJg-17'],$root}}" is="3a42c3d5"></template>
         <view class="_view data-v-758b159d wrap">
           <view class="_view data-v-758b159d title">
-            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'k3S-18'],$root}}" is="04590597"></template>
+            <template type="sun" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'hrC-18'],$root}}" is="04590597"></template>
             <view class="_view data-v-758b159d title-txt">今日</view>
           </view>
           <view class="_view data-v-758b159d item-wrap">
@@ -149,10 +149,10 @@
             </view>
           </view>
         </view>
-        <template height="5" data="{{...$root['0'], ...$root[$kk+'bT6-19'],$root}}" is="3a42c3d5"></template>
+        <template height="5" data="{{...$root['0'], ...$root[$kk+'Z6p-19'],$root}}" is="3a42c3d5"></template>
         <view class="_view data-v-758b159d wrap">
           <view class="_view data-v-758b159d title">
-            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'CTx-20'],$root}}" is="04590597"></template>
+            <template type="moon" size="18" color="#f2a430" data="{{...$root['0'], ...$root[$kk+'Pps-20'],$root}}" is="04590597"></template>
             <view class="_view data-v-758b159d title-txt">昨日</view>
           </view>
           <view class="_view data-v-758b159d item-wrap">

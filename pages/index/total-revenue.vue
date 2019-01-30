@@ -4,12 +4,12 @@
 			<uni-icon type="wh" size="18" color="#fff"></uni-icon>
 		</view>
 		<nav-bar title="收益概况" color="#fff" background="#ff0000" @back="back"></nav-bar>
-		<view class="content">
+		<view class="content" v-if="online">
 			<view class="upper">
 				<view class="user-price">
-					<view class="price">￥0</view>
+					<view class="price">￥{{online.CommissionTotal}}</view>
 					<view class="lj-txt">累计收益结算</view>
-					<view class="ye">账户余额(元)： ￥0</view>
+					<view class="ye">账户余额(元)： ￥{{online.CommissionSurplus}}</view>
 				</view>
 			</view>
 			<view class="switch-wrap">
@@ -24,7 +24,7 @@
 								<view class="black-txt">结算收入</view>
 								<uni-icon type="lwh" color="#ff0000" size="10" @click="showModel('0')"></uni-icon>
 							</view>
-							<view>￥0</view>
+							<view>￥{{online.RealCommissionAgoMonth}}</view>
 							<view class="gray-sm-txt">上月收益</view>
 						</view>
 						<view class="item">
@@ -32,15 +32,15 @@
 								<view class="black-txt">预估收入</view>
 								<uni-icon type="lwh" color="#ff0000" size="10" @click="showModel('1')"></uni-icon>
 							</view>
-							<view>￥0</view>
-							<view class="gray-sm-txt">上月收益</view>
+							<view>￥{{online.CommissionAllMonth}}</view>
+							<view class="gray-sm-txt">本月收益</view>
 						</view>
 						<view class="item">
 							<view class="item-icon">
 								<view class="black-txt">预估收入</view>
 								<uni-icon type="lwh" color="#ff0000" size="10" @click="showModel('2')"></uni-icon>
 							</view>
-							<view>￥0</view>
+							<view>￥{{online.CommissionAllAgoMonth}}</view>
 							<view class="gray-sm-txt">上月收益</view>
 						</view>
 					</view>
@@ -58,14 +58,14 @@
 								<view class="black-txt">待付笔数</view>
 								<uni-icon type="lwh" color="#ff0000" size="10" @click="showModel('3')"></uni-icon>
 							</view>
-							<view>￥0</view>
+							<view>￥{{online.CommissionAllAgoMonth}}</view>
 						</view>
 						<view class="item">
 							<view class="item-icon">
 								<view class="black-txt">预估收益</view>
 								<uni-icon type="lwh" color="#ff0000" size="10" @click="showModel('4')"></uni-icon>
 							</view>
-							<view>￥0</view>
+							<view>￥{{online.CommissionAllDay}}</view>
 						</view>
 						<view class="item">
 							<view class="item-icon">
@@ -184,6 +184,7 @@
 	import navBar from '@/components/nav-bar.vue'
 	import dividLine from '@/components/line.vue';
 	import uniSegmentedControl from '@/components/uni-segmented-control.vue';
+	import {getProfOnline} from '@/api/user.js'
 	export default {
 		data() {
 			return {
@@ -194,6 +195,7 @@
 				],
 				activeColor: '#ff0000',
 				styleType: 'button',
+				online:null
 			}
 		},
 		components: {
@@ -202,9 +204,17 @@
 			dividLine
 		},
 		onLoad() {
-			
+			this.initData()
 		},
 		methods: {
+			initData(){
+				const {pid} = uni.getStorageSync('user');
+				console.log('pid',pid);
+				getProfOnline(pid).then(res =>{
+					this.online = res.result;
+					console.log('数据',this.online);
+				});
+			},
 			back(){
 				uni.navigateBack({
 					delta:1

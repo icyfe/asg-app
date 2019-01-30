@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<nav-bar title="搜索" color="#ffffff" background="#ff0000"></nav-bar>
+		<nav-bar title="搜索" color="#ffffff" background="#ff0000" @back="back"></nav-bar>
 		<view class="search-box">
 			<view class="wrap">
 				<view class="placeholder">
@@ -74,6 +74,11 @@
 			})
 		},
 		methods: {
+			back(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
 			getData() {
 				uni.showLoading({
 					title: '搜索中'

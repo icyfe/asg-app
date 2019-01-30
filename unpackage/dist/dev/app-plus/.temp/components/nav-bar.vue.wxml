@@ -1,8 +1,8 @@
 <import src="/components/uni-icon.vue.wxml" />
 <template name="2ae10ad0">
   <view class="_view data-v-2098f70e nav" style=" {{('background:' + background + ';')}}">
-    <view class="_view data-v-2098f70e back">
-      <template type="arrow-left" size="20" bindtap="handleProxy" data-eventid="{{'Xan-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Hen-0'],$root}}" is="04590597"></template>
+    <view class="_view data-v-2098f70e back" bindtap="handleProxy" style="width: 30px;" data-eventid="{{'lfq-0'}}" data-comkey="{{$k}}">
+      <template type="arrow-left" size="20" data="{{...$root['0'], ...$root[$kk+'3Iy-0'],$root}}" is="04590597"></template>
     </view>
     <view class="_view data-v-2098f70e title" style=" {{('color:' + color + ';')}}">{{title}}</view>
   </view>

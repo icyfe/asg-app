@@ -1,9 +1,9 @@
 <template>
 	<view class="content">
 		<nav-bar @back='back' title="设置"></nav-bar>
-		<view class="avatar-wrap">
+		<view class="avatar-wrap" @tap="changehead">
 			<view class="wrap">
-				<image class="avatar" src="../../static/avatar.jpg"></image>
+				<image class="avatar" :src="user.avatar"></image>
 				<view>点击修改头像</view>
 			</view>
 		</view>
@@ -12,9 +12,9 @@
 				<view>昵称</view>
 				<view class="user-msg">{{user.username}}</view>
 			</view>
-			<view class="right"  >修改</view>
+			<view class="right">修改</view>
 		</view>
-		
+
 		<view class="item" @tap="jump('change-phone')">
 			<view class="left">
 				<view>修改手机号</view>
@@ -43,6 +43,7 @@
 		data() {
 			return {
 				user: null,
+				// avatar: '../../static/avatar.jpg',
 			}
 		},
 		components: {
@@ -50,18 +51,43 @@
 			navBar
 		},
 		onLoad() {
-			this._getUser()
+			this.init()
 		},
 		methods: {
-			jump(url){
-				console.log('url',url)
+			init() {
+				this._getUser();
+
+			},
+			changehead() {
+				uni.chooseImage({
+					success: (chooseImageRes) => {
+						const tempFilePaths = chooseImageRes.tempFilePaths;
+						uni.uploadFile({
+							url: 'http://39.108.215.49/api/post/upload/avatar', 
+							filePath: tempFilePaths[0],
+							name: 'file',
+							formData: {
+								'phone': this.user.phone,
+							},
+							success: (uploadFileRes) => {
+								let data = JSON.parse(uploadFileRes.data)
+								this.user.avatar = data.result;
+								uni.setStorageSync('user', this.user);
+								console.log(data);
+							}
+						});
+					}
+				});
+			},
+			jump(url) {
+				console.log('url', url)
 				uni.navigateTo({
-					url:`/pages/index/${url}`
+					url: `/pages/index/${url}`
 				})
 			},
-			back(){
-				uni.switchTab({
-					url:"/pages/index/user"
+			back() {
+				uni.reLaunch({
+					url: "/pages/index/user"
 				})
 			},
 			_getUser() {
@@ -133,6 +159,7 @@
 			padding: 10px;
 			width: calc(100% - 20px);
 			z-index: 999;
+
 			.left {
 				display: flex;
 				flex-direction: row;

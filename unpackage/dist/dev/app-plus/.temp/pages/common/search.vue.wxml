@@ -3,29 +3,29 @@
 <import src="/components/tag.vue.wxml" />
 <template name="50878f08">
   <view class="_view data-v-d3db77da content">
-    <template title="搜索" color="#ffffff" background="#ff0000" data="{{...$root['0'], ...$root[$kk+'47v-0'],$root}}" is="2ae10ad0"></template>
+    <template title="搜索" color="#ffffff" background="#ff0000" data="{{...$root['0'], ...$root[$kk+'YFt-0'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-d3db77da search-box">
       <view class="_view data-v-d3db77da wrap">
         <view class="_view data-v-d3db77da placeholder">
-          <template type="search" color="#b5b5b5" size="18" data="{{...$root['0'], ...$root[$kk+'Lek-1'],$root}}" is="04590597"></template>
-          <input bindconfirm="handleProxy" placeholder="搜索商品关键字" bindinput="handleProxy" value="{{value}}" data-eventid="{{'0bJ-0'}}" data-comkey="{{$k}}" class="_input data-v-d3db77da" />
+          <template type="search" color="#b5b5b5" size="18" data="{{...$root['0'], ...$root[$kk+'mbG-1'],$root}}" is="04590597"></template>
+          <input bindconfirm="handleProxy" placeholder="搜索商品关键字" bindinput="handleProxy" value="{{value}}" data-eventid="{{'PAY-0'}}" data-comkey="{{$k}}" class="_input data-v-d3db77da" />
         </view>
-        <template bindtap="handleProxy" wx:if="{{isShow}}" type="clear" color="#b5b5b5" size="18" data-eventid="{{'3Xr-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'h5m-2'],$root}}" is="04590597"></template>
+        <template bindtap="handleProxy" wx:if="{{isShow}}" type="clear" color="#b5b5b5" size="18" data-eventid="{{'4d7-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'mUu-2'],$root}}" is="04590597"></template>
       </view>
     </view>
     <view class="_view data-v-d3db77da container">
       <view class="_view data-v-d3db77da search-title">大家都在搜</view>
       <view class="_view data-v-d3db77da all-search-wrap">
-        <template bindonchange="handleProxy" color="#ff0000" wx:key="hottagindex" data-eventid="{{'2im-2-'+hottagindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'zum-3-'+hottagindex],$root}}" is="daa0e66e" wx:for="{{hottags}}" wx:for-index="hottagindex"
+        <template bindonchange="handleProxy" color="#ff0000" wx:key="hottagindex" data-eventid="{{'7Uy-2-'+hottagindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'SWH-3-'+hottagindex],$root}}" is="daa0e66e" wx:for="{{hottags}}" wx:for-index="hottagindex"
           wx:for-item="tag"></template>
       </view>
       <view class="_view data-v-d3db77da history">
         <view class="_view data-v-d3db77da history-title">
           <view class="_view data-v-d3db77da search-title">搜索历史</view>
-          <template type="delete" size="14" color="#ccc" bindtap="handleProxy" data-eventid="{{'Loh-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'LpZ-4'],$root}}" is="04590597"></template>
+          <template type="delete" size="14" color="#ccc" bindtap="handleProxy" data-eventid="{{'BdZ-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'rEN-4'],$root}}" is="04590597"></template>
         </view>
         <view class="_view data-v-d3db77da all-search-wrap">
-          <template bindonchange="handleProxy" wx:key="hindex" data-eventid="{{'7d2-4-'+hindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'E3L-5-'+hindex],$root}}" is="daa0e66e" wx:for="{{tags}}" wx:for-index="hindex" wx:for-item="tag"></template>
+          <template bindonchange="handleProxy" wx:key="hindex" data-eventid="{{'Aqj-4-'+hindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'xIE-5-'+hindex],$root}}" is="daa0e66e" wx:for="{{tags}}" wx:for-index="hindex" wx:for-item="tag"></template>
         </view>
       </view>
     </view>

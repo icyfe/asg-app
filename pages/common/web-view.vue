@@ -1,13 +1,29 @@
 <template>
-    <view class="content">
-         <nav-bar titlt="搜索" color="#fff" background="#ff000"></nav-bar>
-    </view>
+	<view class="content">
+		<nav-bar color="#fff" background="#ff000" @back="back"></nav-bar>
+		<web-view :src="src"></web-view>
+	</view>
 </template>
 <script>
 	import navBar from '@/components/nav-bar.vue'
-	export default{
-		components:{
+	export default {
+		data() {
+			return {
+				src:'',
+			}
+		},
+		components: {
 			navBar
+		},
+		onLoad(option) {
+			this.src = option.src
+		},
+		methods: {
+			back() {
+				uni.navigateBack({
+					delta: 1,
+				})
+			}
 		}
 	}
 </script>

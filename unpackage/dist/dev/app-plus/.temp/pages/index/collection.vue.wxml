@@ -2,9 +2,9 @@
 <import src="/components/product-list.vue.wxml" />
 <template name="5dffd616">
   <view class="_view data-v-58999184">
-    <template title="我的收藏" background="#ff0000" color="#fff" bindback="handleProxy" data-eventid="{{'nPa-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'97O-0'],$root}}" is="2ae10ad0"></template>
+    <template title="我的收藏" background="#ff0000" color="#fff" bindback="handleProxy" data-eventid="{{'Qw9-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Jd9-0'],$root}}" is="2ae10ad0"></template>
     <view class="_view data-v-58999184 content">
-      <template isShow="true" data="{{...$root['0'], ...$root[$kk+'uuH-1'],$root}}" is="0b724cc6"></template>
+      <template isShow="true" data="{{...$root['0'], ...$root[$kk+'c9f-1'],$root}}" is="0b724cc6"></template>
       <view class="_view data-v-58999184 no-collection" wx:if="{{collection.length==0}}">暂无收藏商品~~~</view>
     </view>
   </view>

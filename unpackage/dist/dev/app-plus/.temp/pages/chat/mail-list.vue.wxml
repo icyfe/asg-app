@@ -5,6 +5,6 @@
     <view class="_view data-v-cf7d0c74">
       <text class="_text data-v-cf7d0c74 title">{{title}}</text>
     </view>
-    <template current="3" data="{{...$root['0'], ...$root[$kk+'uNn-0'],$root}}" is="3e41bd7c"></template>
+    <template current="3" data="{{...$root['0'], ...$root[$kk+'5yC-0'],$root}}" is="3e41bd7c"></template>
   </view>
 </template>

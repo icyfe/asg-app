@@ -4,7 +4,7 @@
 <import src="/components/uni-load-more.vue.wxml" />
 <import src="/components/go-top.vue.wxml" />
 <template name="332a9c9a">
-  <scroll-view scroll-y bindscroll="handleProxy" lower-threshold="100" scroll-top="{{globScrollTop}}" class="_scroll-view data-v-704a8efd list" bindscrolltolower="handleProxy" wx:if="{{productgood}}" data-eventid="{{'1D0-17'}}" data-comkey="{{$k}}">
+  <scroll-view scroll-y bindscroll="handleProxy" lower-threshold="100" scroll-top="{{globScrollTop}}" class="_scroll-view data-v-704a8efd list" bindscrolltolower="handleProxy" wx:if="{{productgood}}" data-eventid="{{'ta6-17'}}" data-comkey="{{$k}}">
     <swiper class="_swiper data-v-704a8efd swiper-box" circular autoplay indicator-active-color="#fff" indicator-dots interval="5000" duration="{{duration}}">
       <swiper-item class="_swiper-item data-v-704a8efd item" wx:if="{{productgood.banner.length > 0}}" wx:key="bannerindex" key="{{bannerindex}}" wx:for="{{productgood.banner}}" wx:for-index="bannerindex" wx:for-item="item">
         <image class="_image data-v-704a8efd swiper-img" src="{{item.src}}"></image>
@@ -12,25 +12,25 @@
     </swiper>
     <view class="_view data-v-704a8efd classification-container" wx:if="{{current == 0}}">
       <view class="_view data-v-704a8efd item">
-        <view bindtap="handleProxy" data-eventid="{{'WRs-0'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
-          <template type="jhs" size="35" color="#f7002f" data="{{...$root['0'], ...$root[$kk+'aBa-1'],$root}}" is="04590597"></template>
+        <view bindtap="handleProxy" data-eventid="{{'vzm-0'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
+          <template type="jhs" size="35" color="#f7002f" data="{{...$root['0'], ...$root[$kk+'q7z-1'],$root}}" is="04590597"></template>
           <text class="_text data-v-704a8efd txt">聚划算</text>
         </view>
-        <view bindtap="handleProxy" data-eventid="{{'HMt-1'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
-          <template type="by" size="35" color="#f83061" data="{{...$root['0'], ...$root[$kk+'YxK-2'],$root}}" is="04590597"></template>
+        <view bindtap="handleProxy" data-eventid="{{'qrv-1'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
+          <template type="by" size="35" color="#f83061" data="{{...$root['0'], ...$root[$kk+'0c8-2'],$root}}" is="04590597"></template>
           <text class="_text data-v-704a8efd">9.9包邮</text>
         </view>
-        <view bindtap="handleProxy" data-eventid="{{'kVG-2'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
-          <template type="tianmao" size="35" color="#ff0000" data="{{...$root['0'], ...$root[$kk+'2lk-3'],$root}}" is="04590597"></template>
-          <text class="_text data-v-704a8efd">天猫精选</text>
+        <view bindtap="handleProxy" data-eventid="{{'vY9-2'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
+          <template type="tianmao" size="35" color="#ff0000" data="{{...$root['0'], ...$root[$kk+'a36-3'],$root}}" is="04590597"></template>
+          <text class="_text data-v-704a8efd">精选商品</text>
         </view>
-        <view bindtap="handleProxy" data-eventid="{{'elZ-3'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
-          <template type="tqg" size="35" color="#f98901" data="{{...$root['0'], ...$root[$kk+'Gzk-4'],$root}}" is="04590597"></template>
+        <view bindtap="handleProxy" data-eventid="{{'GzJ-3'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
+          <template type="tqg" size="35" color="#f98901" data="{{...$root['0'], ...$root[$kk+'3UE-4'],$root}}" is="04590597"></template>
           <text class="_text data-v-704a8efd">淘枪购</text>
         </view>
-        <view bindtap="handleProxy" data-eventid="{{'6Iu-4'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
-          <template type="jian" size="35" color="#ffdd50" data="{{...$root['0'], ...$root[$kk+'pOr-5'],$root}}" is="04590597"></template>
-          <text class="_text data-v-704a8efd">每日推荐</text>
+        <view bindtap="handleProxy" data-eventid="{{'qFQ-4'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">
+          <template type="jian" size="35" color="#ffdd50" data="{{...$root['0'], ...$root[$kk+'d1q-5'],$root}}" is="04590597"></template>
+          <text class="_text data-v-704a8efd">品牌好券</text>
         </view>
       </view>
     </view>
@@ -40,16 +40,16 @@
       </view>
       <swiper vertical="true" autoplay="true" circular="true" interval="3000" class="_swiper data-v-704a8efd">
         <swiper-item wx:key="msgindex" key="{{msgindex}}" wx:for="{{productgood.msg}}" wx:for-index="msgindex" wx:for-item="item" class="_swiper-item data-v-704a8efd">
-          <view bindtap="handleProxy" data-eventid="{{'SUo-5-'+msgindex}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">{{item.title}}</view>
+          <view bindtap="handleProxy" data-eventid="{{'c7V-5-'+msgindex}}" data-comkey="{{$k}}" class="_view data-v-704a8efd">{{item.title}}</view>
         </swiper-item>
       </swiper>
     </view>
-    <template height="5" data="{{...$root['0'], ...$root[$kk+'XFz-7'],$root}}" is="3a42c3d5"></template>
+    <template height="5" data="{{...$root['0'], ...$root[$kk+'np3-7'],$root}}" is="3a42c3d5"></template>
     <view class="_view data-v-704a8efd hot-txt" wx:if="{{current == 0}}">今日
       <text class="_text data-v-704a8efd hot">热销</text>榜单</view>
     <scroll-view class="_scroll-view data-v-704a8efd hot-scroll-wrap border-1px" scroll-x style="width: 100%;" wx:if="{{current == 0}}">
       <view class="_view data-v-704a8efd wrap">
-        <view class="_view data-v-704a8efd uni-product" wx:key="hotproductindex" key="{{hotproductindex}}" bindtap="handleProxy" data-eventid="{{'gDN-6-'+hotproductindex}}" data-comkey="{{$k}}" wx:for="{{productgood.hotGood}}" wx:for-index="hotproductindex"
+        <view class="_view data-v-704a8efd uni-product" wx:key="hotproductindex" key="{{hotproductindex}}" bindtap="handleProxy" data-eventid="{{'9nX-6-'+hotproductindex}}" data-comkey="{{$k}}" wx:for="{{productgood.hotGood}}" wx:for-index="hotproductindex"
           wx:for-item="item">
           <view class="_view data-v-704a8efd image-view">
             <image class="_image data-v-704a8efd uni-product-image" src="{{item.pict_url}}"></image>
@@ -66,39 +66,39 @@
         </view>
       </view>
     </scroll-view>
-    <template height="10" data="{{...$root['0'], ...$root[$kk+'LCg-8'],$root}}" is="3a42c3d5"></template>
+    <template height="10" data="{{...$root['0'], ...$root[$kk+'6tX-8'],$root}}" is="3a42c3d5"></template>
     <view class="_view data-v-704a8efd recommend">—— 为你推荐 ——</view>
-    <template height="2" data="{{...$root['0'], ...$root[$kk+'sz7-9'],$root}}" is="3a42c3d5"></template>
+    <template height="2" data="{{...$root['0'], ...$root[$kk+'PHY-9'],$root}}" is="3a42c3d5"></template>
     <view class="_view data-v-704a8efd screen-wrap _fiexd" wx:if="{{isfixed}}" id="screen">
-      <view bindtap="handleProxy" data-eventid="{{'raJ-7'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 0 ? 'on' : '']}}">默认</view>
-      <view bindtap="handleProxy" data-eventid="{{'JTn-8'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 1 ? 'on' : '']}}">销量</view>
-      <view bindtap="handleProxy" data-eventid="{{'aX2-9'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 2 ? 'on' : '']}}">最新</view>
-      <view class="_view data-v-704a8efd jg-wrap" bindtap="handleProxy" data-eventid="{{'fGe-10'}}" data-comkey="{{$k}}">
+      <view bindtap="handleProxy" data-eventid="{{'s7I-7'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 0 ? 'on' : '']}}">默认</view>
+      <view bindtap="handleProxy" data-eventid="{{'X8V-8'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 1 ? 'on' : '']}}">销量</view>
+      <view bindtap="handleProxy" data-eventid="{{'Sjw-9'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 2 ? 'on' : '']}}">最新</view>
+      <view class="_view data-v-704a8efd jg-wrap" bindtap="handleProxy" data-eventid="{{'dck-10'}}" data-comkey="{{$k}}">
         <text class="_text data-v-704a8efd {{[active == 3 ? 'on' : '']}}">价格</text>
         <view class="_view data-v-704a8efd jgicon">
-          <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'pQk-10'],$root}}" is="04590597"></template>
-          <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'aCW-11'],$root}}" is="04590597"></template>
+          <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'27N-10'],$root}}" is="04590597"></template>
+          <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'JNQ-11'],$root}}" is="04590597"></template>
         </view>
       </view>
     </view>
     <view class="_view data-v-704a8efd {{['screen-wrap', [!isAndroid ? '_sticky' : '']]}}">
-      <view bindtap="handleProxy" data-eventid="{{'4UJ-11'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 0 ? 'on' : '']}}">默认</view>
-      <view bindtap="handleProxy" data-eventid="{{'YGo-12'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 1 ? 'on' : '']}}">销量</view>
-      <view bindtap="handleProxy" data-eventid="{{'KWw-13'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 2 ? 'on' : '']}}">最新</view>
-      <view class="_view data-v-704a8efd jg-wrap" bindtap="handleProxy" data-eventid="{{'TKJ-14'}}" data-comkey="{{$k}}">
+      <view bindtap="handleProxy" data-eventid="{{'S28-11'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 0 ? 'on' : '']}}">默认</view>
+      <view bindtap="handleProxy" data-eventid="{{'6Lk-12'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 1 ? 'on' : '']}}">销量</view>
+      <view bindtap="handleProxy" data-eventid="{{'aAi-13'}}" data-comkey="{{$k}}" class="_view data-v-704a8efd {{[active == 2 ? 'on' : '']}}">最新</view>
+      <view class="_view data-v-704a8efd jg-wrap" bindtap="handleProxy" data-eventid="{{'P5f-14'}}" data-comkey="{{$k}}">
         <text class="_text data-v-704a8efd {{[active == 3 ? 'on' : '']}}">价格</text>
         <view class="_view data-v-704a8efd jgicon">
-          <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'hnM-12'],$root}}" is="04590597"></template>
-          <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'4iM-13'],$root}}" is="04590597"></template>
+          <template type="uparrow" size="12" data="{{...$root['0'], ...$root[$kk+'1jt-12'],$root}}" is="04590597"></template>
+          <template type="downarrow" size="12" data="{{...$root['0'], ...$root[$kk+'5Rw-13'],$root}}" is="04590597"></template>
         </view>
       </view>
     </view>
     <view class="_view data-v-704a8efd goods-container">
       <block wx:key="goodindex" key="{{goodindex}}" wx:for="{{productgood.product}}" wx:for-index="goodindex" wx:for-item="item">
-        <template bindonTap="handleProxy" data-eventid="{{'tmC-15-'+goodindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'l6Y-14-'+goodindex],$root}}" is="322f959d"></template>
+        <template bindonTap="handleProxy" data-eventid="{{'aHw-15-'+goodindex}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'0fS-14-'+goodindex],$root}}" is="322f959d"></template>
       </block>
-      <template data="{{...$root['0'], ...$root[$kk+'eEx-15'],$root}}" is="70eb152e"></template>
+      <template data="{{...$root['0'], ...$root[$kk+'cdX-15'],$root}}" is="70eb152e"></template>
     </view>
-    <template wx:if="{{isShow}}" bindgoTop="handleProxy" data-eventid="{{'gYv-16'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'jPo-16'],$root}}" is="ded7d2de"></template>
+    <template wx:if="{{isShow}}" bindgoTop="handleProxy" data-eventid="{{'yN4-16'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'KV5-16'],$root}}" is="ded7d2de"></template>
   </scroll-view>
 </template>

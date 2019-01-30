@@ -8,8 +8,8 @@
 				<image class="logo" mode="aspectFit" :src="logo"></image>
 				<view class="txt">{{good.title}}</view>
 			</view>
-			<view class="shop-desc">
-				<view class="price-wrap">
+			<view class="shop-desc"  >
+				<view class="price-wrap" v-if="!isgood">
 					<view class="price">
 						<view class="original">原价￥{{good.zk_final_price}}</view>
 						<view class="present">￥{{good.quanhoujia}}</view>
@@ -18,7 +18,8 @@
 				</view>
 				<view class="coupon-wrap">
 					<view class="num">{{good.volume}}人已购</view>
-					<view class="value">{{good.youhuiquan}}元券</view>
+					<view v-if="!isgood" class="value">{{good.youhuiquan}}元券</view>
+					<view v-else class="value">{{good.youhuiquan}}元</view>
 				</view>
 			</view>
 		</view>
@@ -27,19 +28,26 @@
 
 <script>
 	export default {
-		props:{
-			good:Object,
+		props: {
+			good: Object,
+			isgood: {
+				type: Boolean,
+				default: false
+			}
+		},
+		created() {
+			// console.log('是否是商城', this.isgood);
 		},
 		computed: {
 			fontSize() {
 				return `${this.size}px`
 			},
-			 logo() {
-			 	return this.good.user_type == 0 ? '../../static/tb.png' : '../../static/tm.png';
-			 },
-			 yj(){
-				 return (this.good.youhuiquan * ( parseFloat(this.good.commission_rate/100))).toFixed(2);
-			 }
+			logo() {
+				return this.good.user_type == 0 ? '../../static/tb.png' : '../../static/tm.png';
+			},
+			yj() {
+				return (this.good.youhuiquan * (parseFloat(this.good.commission_rate / 100))).toFixed(2);
+			}
 		},
 		methods: {
 			onTap() {
@@ -48,7 +56,7 @@
 		}
 	}
 </script>
- 
+
 
 
 <style lang="less" scoped>
@@ -61,6 +69,7 @@
 		width: calc(100% - 40upx);
 		padding: 0 20upx;
 		border-bottom: 1upx solid #f8f8f8;
+
 		.goods-img {
 			width: 300upx;
 			border-radius: 20upx;
@@ -82,6 +91,7 @@
 			width: 100%;
 			white-space: normal;
 			line-height: 1.8;
+
 			.shop-title {
 				display: flex;
 				flex-direction: row;
@@ -105,20 +115,24 @@
 					flex-direction: row;
 					justify-content: space-between;
 					align-items: center;
-					.price{
+
+					.price {
 						display: flex;
 						flex-direction: row;
 						justify-content: flex-start;
 						align-items: center;
 					}
+
 					.present {
 						font-size: 30upx;
 						color: #FF0000;
 					}
-					.yj{
+
+					.yj {
 						font-size: 20upx;
 						color: #FF0000;
 					}
+
 					.original {
 						text-decoration: line-through;
 						color: #555555;

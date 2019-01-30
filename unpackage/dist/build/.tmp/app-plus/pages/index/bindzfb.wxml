@@ -1,0 +1,2 @@
+<import src="./bindzfb.vue.wxml" />
+    <template is="22de980a" data="{{ ...$root['0'], $root }}"/>

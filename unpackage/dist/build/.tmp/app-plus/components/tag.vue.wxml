@@ -1,0 +1,1 @@
+<template name="fda638f0"><view style="margin-top: 10px;" bindtap="handleProxy" data-eventid="{{'fda638f0-0'}}" data-comkey="{{$k}}" class="_view fda638f0"><text class="_text fda638f0 search-tag" style=" {{('color:' + color + ';')}}">{{tag}}</text></view></template>

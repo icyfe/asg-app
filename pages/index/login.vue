@@ -257,6 +257,7 @@
 		padding-top: 30upx;
 
 		.back {
+			width: 30px;
 			float: left;
 		}
 

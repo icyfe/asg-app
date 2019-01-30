@@ -38,7 +38,8 @@
 				getCollection(user).then(res => {
 					if (res.code != '200') {
 						uni.showToast({
-							title: "服务器开小差了~"
+							title: "服务器开小差了~",
+							icon:"none"
 						})
 					}
 					this.collection = res.result;

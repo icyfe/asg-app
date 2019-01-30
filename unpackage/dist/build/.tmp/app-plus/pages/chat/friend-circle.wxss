@@ -1,0 +1,21 @@
+
+.content.data-v-b4fc276c {
+	text-align: center;
+	height: 100vh;
+}
+.tabbar.data-v-b4fc276c {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.logo.data-v-b4fc276c {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+}
+.title.data-v-b4fc276c {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+

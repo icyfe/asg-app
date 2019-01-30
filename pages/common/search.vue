@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<nav-bar title="搜索" color="#ffffff" background="#ff0000"></nav-bar>
+		<nav-bar title="搜索" color="#ffffff" background="#ff0000" ></nav-bar>
 		<view class="search-box">
 			<view class="wrap">
 				<view class="placeholder">
@@ -35,8 +35,8 @@
 			return {
 				value: '',
 				isShow: false,
-				hottags:["羊毛衫", "防风斗篷", "羊毛衫", "羊毛衫", "羊毛衫"],
-				tags: ["羊毛衫", "防风斗篷", "羊毛衫", "羊毛衫", "羊毛衫"],
+				hottags:["母婴", "美妆", "家电", "数码", "羊毛衫"],
+				tags: ["母婴", "美妆", "家电", "数码", "羊毛衫"],
 			}
 		},
 		components: {

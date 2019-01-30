@@ -323,6 +323,7 @@
   width: 100%;
 }
 .nav .back.data-v-2098f70e {
+  width: 30px!important;
   float: left;
 }
 .nav .title.data-v-2098f70e {

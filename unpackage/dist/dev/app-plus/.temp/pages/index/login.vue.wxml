@@ -3,42 +3,42 @@
 <template name="4b8cd13c">
   <view class="_view data-v-601a3d73">
     <view class="_view data-v-601a3d73 nav">
-      <view class="_view data-v-601a3d73 back" bindtap="handleProxy" data-eventid="{{'G4I-0'}}" data-comkey="{{$k}}">
-        <template type="arrow-left" size="20" color="#fff" data="{{...$root['0'], ...$root[$kk+'B8c-0'],$root}}" is="04590597"></template>
+      <view class="_view data-v-601a3d73 back" bindtap="handleProxy" data-eventid="{{'BFO-0'}}" data-comkey="{{$k}}">
+        <template type="arrow-left" size="20" color="#fff" data="{{...$root['0'], ...$root[$kk+'9dY-0'],$root}}" is="04590597"></template>
       </view>
       <view class="_view data-v-601a3d73 title">登录/注册</view>
     </view>
     <view class="_view data-v-601a3d73 switch-wrap">
-      <template bindclickItem="handleProxy" data-eventid="{{'5wA-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'UQs-1'],$root}}" is="4b9071f4"></template>
+      <template bindclickItem="handleProxy" data-eventid="{{'OiW-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'DDS-1'],$root}}" is="4b9071f4"></template>
     </view>
     <view class="_view data-v-601a3d73 content">
       <view hidden="{{!(current === 0)}}" class="_view data-v-601a3d73">
         <view class="_view data-v-601a3d73 item">
-          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'ZLI-2'],$root}}" is="04590597"></template>
-          <input bindblur="handleProxy" class="_input data-v-601a3d73 _input" placeholder="{{loginerror}}" focus data-eventid="{{'A2I-2'}}" data-comkey="{{$k}}" />
+          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'Gs3-2'],$root}}" is="04590597"></template>
+          <input bindblur="handleProxy" class="_input data-v-601a3d73 _input" placeholder="{{loginerror}}" focus data-eventid="{{'Og3-2'}}" data-comkey="{{$k}}" />
         </view>
         <view class="_view data-v-601a3d73 item">
-          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'kfQ-3'],$root}}" is="04590597"></template>
-          <input value="{{code}}" bindinput="handleProxy" placeholder="请输入验证码" data-eventid="{{'bJO-3'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
-          <view bindtap="handleProxy" class="_view data-v-601a3d73 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'qXP-4'}}" data-comkey="{{$k}}">{{loginyzm}}</view>
+          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'eH1-3'],$root}}" is="04590597"></template>
+          <input value="{{code}}" bindinput="handleProxy" placeholder="请输入验证码" data-eventid="{{'vnq-3'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
+          <view bindtap="handleProxy" class="_view data-v-601a3d73 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'pbr-4'}}" data-comkey="{{$k}}">{{loginyzm}}</view>
         </view>
-        <button disabled="{{isabled}}" bindtap="handleProxy" data-eventid="{{'2TF-5'}}" data-comkey="{{$k}}" class="_button data-v-601a3d73 {{['login-bt', [isabled ? 'disable' : '']]}}">登录</button>
+        <button disabled="{{isabled}}" bindtap="handleProxy" data-eventid="{{'PnA-5'}}" data-comkey="{{$k}}" class="_button data-v-601a3d73 {{['login-bt', [isabled ? 'disable' : '']]}}">登录</button>
       </view>
       <view hidden="{{!(current === 1)}}" class="_view data-v-601a3d73">
         <view class="_view data-v-601a3d73 item">
-          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'NyZ-4'],$root}}" is="04590597"></template>
-          <input bindblur="handleProxy" placeholder="{{loginerror}}" focus data-eventid="{{'oGu-6'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
+          <template type="shouji" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'mML-4'],$root}}" is="04590597"></template>
+          <input bindblur="handleProxy" placeholder="{{loginerror}}" focus data-eventid="{{'PrK-6'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
         </view>
         <view class="_view data-v-601a3d73 item">
-          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'7T6-5'],$root}}" is="04590597"></template>
-          <input value="{{code}}" bindinput="handleProxy" placeholder="请输入验证码" data-eventid="{{'pIL-7'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
-          <view bindtap="handleProxy" class="_view data-v-601a3d73 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'1uS-8'}}" data-comkey="{{$k}}">{{regyzm}}</view>
+          <template type="yanzhengma" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'BxL-5'],$root}}" is="04590597"></template>
+          <input value="{{code}}" bindinput="handleProxy" placeholder="请输入验证码" data-eventid="{{'SOj-7'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
+          <view bindtap="handleProxy" class="_view data-v-601a3d73 bt {{['bt', [isSend ? 'disable' : '']]}}" data-eventid="{{'wyg-8'}}" data-comkey="{{$k}}">{{regyzm}}</view>
         </view>
         <view class="_view data-v-601a3d73 item">
-          <template type="yqm" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'Ewz-6'],$root}}" is="04590597"></template>
-          <input value="{{yqm}}" bindinput="handleProxy" placeholder="请输入邀请码" data-eventid="{{'4Bu-9'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
+          <template type="yqm" color="#ccc" size="16" data="{{...$root['0'], ...$root[$kk+'2v1-6'],$root}}" is="04590597"></template>
+          <input value="{{yqm}}" bindinput="handleProxy" placeholder="请输入邀请码" data-eventid="{{'6nF-9'}}" data-comkey="{{$k}}" class="_input data-v-601a3d73" />
         </view>
-        <button bindtap="handleProxy" disabled="{{isabled}}" data-eventid="{{'mTM-10'}}" data-comkey="{{$k}}" class="_button data-v-601a3d73 {{['login-bt', [isabled ? 'disable' : '']]}}">注册</button>
+        <button bindtap="handleProxy" disabled="{{isabled}}" data-eventid="{{'yJ7-10'}}" data-comkey="{{$k}}" class="_button data-v-601a3d73 {{['login-bt', [isabled ? 'disable' : '']]}}">注册</button>
       </view>
     </view>
   </view>

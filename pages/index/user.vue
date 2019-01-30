@@ -2,10 +2,10 @@
 	<view class="content" v-if="commsisson">
 		<view class="upper">
 			<view class="user-wrap">
-				<image @tap="jump('setting')" class="avatar" src="../../static/avatar.jpg"></image>
+				<image @tap="jump('setting')" class="avatar" :src="commsisson.avatar"></image>
 				<view class="phone">{{user.phone}}</view>
 				<view @tap='copy'><text class="yq-title">邀请码：</text><text class="code-title">{{user.invitecode}}</text> <text class="copy-title"
-					 @tap="copy">复制</text></view>
+					 @tap="copy(user.invitecode)">复制</text></view>
 				<!-- <view class="price-total">
 					<view class="price-item">今日预估:<text class="price">￥15</text></view>
 					<view class="price-item">本月预估:<text class="price">￥15</text></view>
@@ -20,7 +20,7 @@
 					</view>
 					<view class="dec">每月结算日为25号</view>
 				</view>
-				<view class="right">
+				<view class="right" @tap="jump('cash-withdrawal')">
 					立即提现
 				</view>
 			</view>
@@ -50,21 +50,21 @@
 			</view>
 			<divid-line height="5"></divid-line>
 			<view class="first-menu">
-				<view>
+				<view @tap='jump("tx")'>
 					<uni-icon type="rank" size="25" color="#b10000"></uni-icon>
 					<text>收入榜单</text>
 				</view>
-				<view>
+				<view @tap='jump("tx")'>
 					<uni-icon type="help" size="25" color="#b6e371"></uni-icon>
 					<text>使用帮助</text>
 				</view>
-				<view>
+				<view @tap='jump("tx")'>
 					<uni-icon type="about" size="25" color="#ff9801"></uni-icon>
 					<text>关于我们</text>
 				</view>
 			</view>
 			<view class="second-menu">
-				<view class="item">
+				<view class="item" @tap='customer'>
 					<view class="item">
 						<uni-icon type="kefu" color="#7a7e83" size="22"></uni-icon>
 						<text>专属客服</text>
@@ -78,14 +78,14 @@
 					</view>
 					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
 				</view>
-				<view class="item">
+				<view class="item" @tap='jump("tx")'>
 					<view class="item">
 						<uni-icon type="tixian" color="#f9263e" size="22"></uni-icon>
-						<text>提现申请</text>
+						<text>提现记录</text>
 					</view>
 					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
 				</view>
-				<view class="item">
+				<view class="item" @tap="copy(user.invitecode)">
 					<view class="item">
 						<uni-icon type="laxin" color="#EEE685" size="22"></uni-icon>
 						<text>我要拉新</text>
@@ -121,9 +121,18 @@
 			}
 		},
 		onLoad() {
+			console.log('1')
 			this.getData();
 		},
 		methods: {
+			customer() {
+				uni.showModal({
+					title: '专属客服',
+					content: '添加微信：xxxxx获取一对一专属服务',
+					showCancel: false,
+					confirmText: '知道啦',
+				});
+			},
 			getData() {
 				try {
 					this.user = uni.getStorageSync('user');
@@ -151,6 +160,9 @@
 							let data = res.result;
 							this.user.username = data.username;
 							this.user.pid = data.PID;
+							this.user.ye = data.CommissionSurplus;
+							this.user.zfbname = data.zfbname;
+							this.user.avatar = data.avatar;
 							this.commsisson = data;
 							console.log('thisuser', this.commsisson)
 							uni.setStorageSync('user', this.user)
@@ -167,16 +179,24 @@
 				}
 			},
 			jump(url) {
+				if (url == 'tx') {
+					uni.showModal({
+						title: '爱省购提醒',
+						content: '功能开发中...',
+						showCancel: false,
+						confirmText: '知道啦',
+					});
+				}
 				uni.navigateTo({
 					url: `/pages/index/${url}`
 				})
 			},
-			copy() {
+			copy(str) {
 				uni.setClipboardData({
-					data: this.user.invitecode,
+					data: str,
 					success: () => {
 						uni.showToast({
-							title: '已复制',
+							title: '已复制邀请码',
 							icon: 'success',
 						})
 					}

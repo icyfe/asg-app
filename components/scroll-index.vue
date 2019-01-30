@@ -23,15 +23,15 @@
 				</view>
 				<view @tap="jump('tmjx')">
 					<uni-icon type="tianmao" size="35" color="#ff0000"></uni-icon>
-					<text>天猫精选</text>
+					<text>精选商品</text>
 				</view>
 				<view @tap="jump('tqg_goods')">
 					<uni-icon type="tqg" size="35" color="#f98901"></uni-icon>
 					<text>淘枪购</text>
 				</view>
-				<view @tap="jump('tj')">
+				<view @tap="jump('brandvoucher')">
 					<uni-icon type="jian" size="35" color="#ffdd50"></uni-icon>
-					<text>每日推荐</text>
+					<text>品牌好券</text>
 				</view>
 			</view>
 		</view>
@@ -53,7 +53,7 @@
 			<view class="wrap">
 				<view class="uni-product" v-for="(item,hotproductindex) in productgood.hotGood" :key="hotproductindex" @tap="godetail(item.num_iid)">
 					<view class="image-view">
-						<image  class="uni-product-image" :src="item.pict_url"></image>
+						<image class="uni-product-image" :src="item.pict_url"></image>
 					</view>
 					<view class="uni-product-title">{{item.title}}</view>
 					<view class="uni-product-price">
@@ -103,7 +103,7 @@
 		</view>
 		<view class="goods-container">
 			<block v-for="(item,goodindex) in productgood.product" :key="goodindex">
-				<good-list :good='item' @onTap="godetail(item.num_iid)"></good-list>
+				<good-list :good='item' @onTap="godetail(item.num_iid)" :isgood='isgood'></good-list>
 			</block>
 			<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
 		</view>
@@ -130,6 +130,10 @@
 			},
 			type: {
 				type: String,
+			},
+			isgood: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -256,14 +260,18 @@
 					})
 					return
 				}
+				let table = type;
 				const map = new Map()
 					.set('jhs', '聚划算')
 					.set('special_offer', '9.9包邮')
 					.set('tqg_goods', '淘抢购')
-					.set('tj', '品牌好券')
-					.set('tmjx', '天猫精选')
+					.set('brandvoucher', '品牌好券')
+					.set('tmjx', '精选商品')
+				if (type == 'jhs' || type == 'tj' || type == 'tmjx') {
+					table = 'yhq_goods'
+				}
 				uni.navigateTo({
-					url: `/pages/common/good-item?type=${type}&title=${map.get(type)}`
+					url: `/pages/common/good-item?type=${table}&title=${map.get(type)}`
 					// url: '/pages/common/good'
 				});
 			},
@@ -277,9 +285,15 @@
 				})
 			},
 			godetail(id) {
-				uni.navigateTo({
-					url: `/pages/common/goods-detail?id=${id}`
-				})
+				if (!this.isgood) {
+					uni.navigateTo({
+						url: `/pages/common/goods-detail?id=${id}`
+					})
+				} else {
+					uni.navigateTo({
+						url: `/pages/common/goods2-detail?id=${id}`
+					})
+				}
 				this.globScrollTop = this.nowScroll;
 			},
 			//触底加载更多
@@ -292,7 +306,7 @@
 					page: this.page,
 					screen: '',
 					jg: '',
-					type:this.type,
+					type: this.type,
 				});
 				ret.then(res => {
 					if (res.code == 200) {
@@ -404,13 +418,14 @@
 			}
 		}
 
-	 
+
 
 		.image-view {
 			height: 330upx;
 			width: 330upx;
 			margin: 12upx 0;
 		}
+
 		// 公告栏
 		// 		.bulletin-board {
 		// 			width: calc(100% -20upx);
@@ -532,7 +547,7 @@
 		line-height: 50upx;
 	}
 
-/* product */
+	/* product */
 	.uni-product {
 		/* padding: 20upx; */
 		width: calc(350upx - 20upx);
@@ -595,6 +610,7 @@
 		font-size: 24upx;
 		color: #aeaeae;
 	}
+
 	// 框架样式复写
 	.uni-swiper-tab {
 		border-bottom: 1upx solid #f8f8f8;

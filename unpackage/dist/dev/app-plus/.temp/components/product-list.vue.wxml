@@ -2,7 +2,7 @@
 <template name="0b724cc6">
   <view class="_view data-v-f7b29232 page">
     <view class="_view data-v-f7b29232 uni-product-list">
-      <view class="_view data-v-f7b29232 uni-product" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'8dU-1-'+index}}" data-comkey="{{$k}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="product">
+      <view class="_view data-v-f7b29232 uni-product" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'4Df-1-'+index}}" data-comkey="{{$k}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="product">
         <view class="_view data-v-f7b29232 image-view">
           <image wx:if="{{renderImage}}" class="_image data-v-f7b29232 uni-product-image" src="{{product.pict_url}}"></image>
         </view>
@@ -15,8 +15,8 @@
           <text class="_text data-v-f7b29232 small-gray">{{product.volume}}人已购</text>
           <text class="_text data-v-f7b29232 uni-product-tip">{{product.youhuiquan}}元券</text>
         </view>
-        <view wx:if="{{isShow}}" class="_view data-v-f7b29232 cancle" catchtap="handleProxy" data-eventid="{{'Fvc-0-'+index}}" data-comkey="{{$k}}">
-          <template type="shoucang" color="#ff0000" data="{{...$root['0'], ...$root[$kk+'CWa-0-'+index],$root}}" is="04590597"></template>
+        <view wx:if="{{isShow}}" class="_view data-v-f7b29232 cancle" catchtap="handleProxy" data-eventid="{{'OGC-0-'+index}}" data-comkey="{{$k}}">
+          <template type="shoucang" color="#ff0000" data="{{...$root['0'], ...$root[$kk+'Phi-0-'+index],$root}}" is="04590597"></template>
         </view>
       </view>
     </view>

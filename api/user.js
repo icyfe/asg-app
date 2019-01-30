@@ -21,6 +21,30 @@ export function sendcode(phone, type) {
 		});
 	})
 }
+//bind zfb
+export function bindzfb(zfbname, name, code, phone) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/post/user/bindzfb`,
+			data: {
+				phone,
+				name,
+				code,
+				zfbname
+			},
+			method: "POST",
+			header: {
+				'content-header': 'application/json'
+			},
+			success: (res) => {
+				resolve(res.data);
+			},
+			fail: (err) => {
+				console.log('ERROR_MSG', err)
+			}
+		});
+	})
+}
 export function postRegister({
 	phone,
 	code,
@@ -184,9 +208,53 @@ export function getUserinit(phone) {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: `${BASE_URL}/api/post/yj/getcommission`,
-			method:"POST",
-			data:{
+			method: "POST",
+			data: {
 				phone,
+			},
+			header: {
+				'content-header': 'application/json'
+			},
+			success: (res) => {
+				resolve(res.data)
+			},
+			fail: (err) => {
+				console.log('init user error', err.message)
+			}
+		})
+	})
+}
+//用户佣金提现
+export function userTx(pid, phone, money) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/post/yj/tx`,
+			method: "POST",
+			data: {
+				pid,
+				phone,
+				money
+			},
+			header: {
+				'content-header': 'application/json'
+			},
+			success: (res) => {
+				resolve(res.data)
+			},
+			fail: (err) => {
+				console.log('init user error', err.message)
+			}
+		})
+	})
+}
+//佣金详情线上
+export function getProfOnline(pid) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: `${BASE_URL}/api/post/yj/getprofitmsg`,
+			method: "POST",
+			data: {
+				pid,
 			},
 			header: {
 				'content-header': 'application/json'

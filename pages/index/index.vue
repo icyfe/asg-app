@@ -22,52 +22,52 @@
 			</scroll-view>
 
 			<swiper :current="tabIndex" class="index-swiper" circular @change="changeTab">
-				<swiper-item v-if="productList[0]">
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[0]' current="0" :type="tabBars[0].name"></scroll-index>
+						<scroll-index v-if="productList[0]" :productgood='productList[0]' current="0" :type="tabBars[0].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[1]' current="1" :type="tabBars[1].name"></scroll-index>
+						<scroll-index v-if="productList[1]" :productgood='productList[1]' current="1" :type="tabBars[1].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[2]' current="2" :type="tabBars[2].name"></scroll-index>
+						<scroll-index v-if="productList[2]" :productgood='productList[2]' current="2" :type="tabBars[2].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[3]' current="3" :type="tabBars[3].name"></scroll-index>
+						<scroll-index v-if="productList[3]" :productgood='productList[3]' current="3" :type="tabBars[3].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[4]' current="45" :type="tabBars[4].name"></scroll-index>
+						<scroll-index v-if="productList[4]" :productgood='productList[4]' current="45" :type="tabBars[4].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[5]' current="5" :type="tabBars[5].name"></scroll-index>
+						<scroll-index v-if="productList[5]" :productgood='productList[5]' current="5" :type="tabBars[5].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[6]' current="6" :type="tabBars[6].name"></scroll-index>
+						<scroll-index v-if="productList[6]" :productgood='productList[6]' current="6" :type="tabBars[6].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[7]' current="7" :type="tabBars[7].name"></scroll-index>
+						<scroll-index v-if="productList[7]" :productgood='productList[7]' current="7" :type="tabBars[7].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
-						<scroll-index :productgood='productList[8]' current="8" :type="tabBars[8].name"></scroll-index>
+						<scroll-index v-if="productList[8]" :productgood='productList[8]' current="8" :type="tabBars[8].name"></scroll-index>
 					</block>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item>
 					<block>
 						<scroll-index :productgood='productList[9]' current="9" :type="tabBars[9].name"></scroll-index>
 					</block>
@@ -96,7 +96,7 @@
 				swiper: "",
 				tab: "",
 				scrolltop: 0,
-				productList: [],
+				productList: new Array(10),
 				loadingType: 0,
 				imagelist: [{
 						title: 1,
@@ -175,7 +175,7 @@
 			}
 		},
 		onLoad(option) {
-			
+
 			this._getData();
 		},
 		methods: {
@@ -186,9 +186,9 @@
 						console.log('条码类型：' + res.scanType);
 						console.log('条码内容：' + res.result);
 						uni.navigateTo({
-							url: '/pages/common/web-view'
+							url: `/pages/common/web-view?src=${res.result}`
 						})
-						console.log('this.qrsrc', this.qrsrc);
+						// console.log('this.qrsrc', this.qrsrc);
 					}
 				});
 			},
@@ -215,7 +215,7 @@
 							}
 						}
 						// this.msg = res[0].result
-						this.productList.push({
+						this.productList.splice(this.tabIndex, 1, {
 							hotGood: res[1].result,
 							banner: this.imagelist,
 							msg: res[0].result,
@@ -244,20 +244,21 @@
 				uni.showLoading({
 					title: '加载中..'
 				})
-				let ret = getGoodsList({
+				getGoodsList({
 					page,
 					type,
 					screen,
 					jg
-				});
-				ret.then(res => {
+				}).then(res => {
 					uni.hideLoading();
 					if (res.code == 200) {
-						this.productList.push({
+						console.log('没有数据所以获取', this.tabIndex)
+						this.productList.splice(this.tabIndex, 1, {
 							banner: this.imagelist,
 							msg: '',
 							product: res.result
 						})
+						console.log('没有数据所以获取完了', this.productList[this.tabIndex])
 						uni.setStorageSync(this.tabIndex.toString(), this.productList[this.tabIndex])
 					} else {
 						this._showError()
@@ -266,8 +267,9 @@
 			},
 
 			jump(type) {
+				this.globScrollTop = this.nowScroll;
 				if (type == 'search') {
-					uni.navigateTo({
+					uni.switchTab({
 						url: '/pages/common/search'
 					})
 					return
@@ -288,6 +290,7 @@
 			//滑动swiper 改变内容
 			async changeTab(e) {
 				let index = e.target.current;
+				console.log('切换tab', index);
 				let type = index == 0 ? '' : this.tabBars[index].name
 				if (this.istapChange) {
 					this.tabIndex = index;
@@ -317,15 +320,19 @@
 				this.tabIndex = index; //一旦访问data就会出问题
 				this.loadingType = 0;
 				let good = null;
+				console.log('当前tab是否有数据', this.productList[this.tabIndex])
 				if (!this.productList[this.tabIndex]) {
 					try {
 						good = uni.getStorageSync(this.tabIndex.toString())
+						 
+						console.log('从缓存获取数据', this.tabIndex, good)
 						if (!good) {
+							// console.log('获取数据', this.tabBars[this.tabIndex].name);
 							this._getGoodsList('', this.tabBars[this.tabIndex].name, '', ''); // 切换时刷新数据	
 						} else {
-							this.productList.push(good)
+							this.productList.splice(this.tabIndex,1,good)
 						}
-						console.log('good', good, 'index', this.tabIndex.toString());
+						// console.log('good', good, 'index', this.tabIndex.toString());
 					} catch (e) {
 						console.log('getData', e.message)
 					}

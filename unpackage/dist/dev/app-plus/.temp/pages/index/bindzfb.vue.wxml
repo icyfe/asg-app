@@ -1,0 +1,22 @@
+<import src="/components/nav-bar.vue.wxml" />
+<template name="f1b9addc">
+  <view class="_view data-v-17728ee3 content">
+    <template title="绑定支付宝账号" background="#ff0000" color="#fff" bindback="handleProxy" data-eventid="{{'fRa-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'SNV-0'],$root}}" is="2ae10ad0"></template>
+    <view class="_view data-v-17728ee3 container">
+      <view class="_view data-v-17728ee3 item">
+        <view class="_view data-v-17728ee3 title">提现人</view>
+        <input placeholder="请输入真实姓名" value="{{name}}" bindinput="handleProxy" data-eventid="{{'Vsy-1'}}" data-comkey="{{$k}}" class="_input data-v-17728ee3" />
+      </view>
+      <view class="_view data-v-17728ee3 item">
+        <view class="_view data-v-17728ee3 title">支付宝</view>
+        <input placeholder="请输入手机号" value="{{zfbname}}" bindinput="handleProxy" data-eventid="{{'FRa-2'}}" data-comkey="{{$k}}" class="_input data-v-17728ee3" />
+      </view>
+      <view class="_view data-v-17728ee3 item">
+        <view class="_view data-v-17728ee3 title">验证码</view>
+        <input placeholder="请输入验证码" value="{{code}}" bindinput="handleProxy" data-eventid="{{'AKv-3'}}" data-comkey="{{$k}}" class="_input data-v-17728ee3" />
+        <view bindtap="handleProxy" class="_view data-v-17728ee3 yzm-txt" data-eventid="{{'GyC-4'}}" data-comkey="{{$k}}">{{yzm}}</view>
+      </view>
+      <view class="_view data-v-17728ee3 bt" bindtap="handleProxy" data-eventid="{{'gkC-5'}}" data-comkey="{{$k}}">绑定</view>
+    </view>
+  </view>
+</template>

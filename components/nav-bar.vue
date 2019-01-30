@@ -1,9 +1,9 @@
 <template>
 	<view class="nav" :style="{background:background}">
-		<view class="back">
-			<uni-icon type='arrow-left' size="20" :color="color" @click="back"></uni-icon>
+		<view class="back" @click="back" style="width: 30px;">
+			<uni-icon type='arrow-left' size="20" :color="color" ></uni-icon>
 		</view>
-		<view class="title" :style="{color:color}"  >{{title}}</view>
+		<view class="title" :style="{color:color}">{{title}}</view>
 	</view>
 </template>
 <script>
@@ -22,8 +22,8 @@
 				default: "爱省购"
 			}
 		},
-		methods:{
-			back(){
+		methods: {
+			back() {
 				this.$emit('back')
 			}
 		}
@@ -44,6 +44,7 @@
 		z-index: 99;
 		width: 100%;
 		.back {
+			width: 30px!important;
 			float: left;
 		}
 
