@@ -1,16 +1,16 @@
-.container.data-v-932f178a {
+.container.data-v-a35810f8 {
   width: 100%;
   height: 100vh;
   background: #eee;
   overflow: hidden;
 }
-.wrap.data-v-932f178a {
+.wrap.data-v-a35810f8 {
   width: 100%;
   margin-top: 72px;
   background: #FFFFFF;
   height: 40px;
 }
-.wrap .input-wrap.data-v-932f178a {
+.wrap .input-wrap.data-v-a35810f8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31,10 +31,10 @@
   padding: 0 10px;
   width: calc(100% - 20px);
 }
-.wrap .input-wrap .txt-input.data-v-932f178a {
+.wrap .input-wrap .txt-input.data-v-a35810f8 {
   width: 100%;
 }
-.wrap .bt-wrap.data-v-932f178a {
+.wrap .bt-wrap.data-v-a35810f8 {
   width: 70%;
   height: 30px;
   border-radius: 10px;

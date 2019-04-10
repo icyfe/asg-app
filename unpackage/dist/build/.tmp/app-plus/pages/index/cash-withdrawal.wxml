@@ -1,2 +1,2 @@
 <import src="./cash-withdrawal.vue.wxml" />
-    <template is="bb562d80" data="{{ ...$root['0'], $root }}"/>
+    <template is="964f110a" data="{{ ...$root['0'], $root }}"/>

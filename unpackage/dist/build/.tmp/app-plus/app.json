@@ -38,6 +38,7 @@
   "window": {
     "navigationStyle": "custom"
   },
+  "usingComponents": {},
   "tabBar": {
     "color": "#333",
     "selectedColor": "#ff0000",
@@ -57,6 +58,18 @@
         "text": "搜索"
       },
       {
+        "pagePath": "pages/chat/chat",
+        "iconPath": "static/bar/lts.png",
+        "selectedIconPath": "static/bar/selcetlts.png",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/school/school",
+        "iconPath": "static/bar/sch.png",
+        "selectedIconPath": "static/bar/selectsch.png",
+        "text": "学院"
+      },
+      {
         "pagePath": "pages/store/index",
         "iconPath": "static/bar/store.png",
         "selectedIconPath": "static/bar/selectstore.png",
@@ -71,7 +84,8 @@
     ]
   },
   "splashscreen": {
-    "autoclose": true
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
   },
   "appname": "asgapp"
 }

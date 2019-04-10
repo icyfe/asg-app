@@ -1,10 +1,10 @@
-.content.data-v-524f0207 {
+.content.data-v-56815f0f {
   position: relative;
   height: 100%;
   width: 100%;
   background: #fff;
 }
-.content .avatar-wrap.data-v-524f0207 {
+.content .avatar-wrap.data-v-56815f0f {
   position: relative;
   height: 200px;
   width: 100%;
@@ -13,19 +13,19 @@
   border-bottom: 1px solid #f8f8f8;
   margin-top: 40px;
 }
-.content .avatar-wrap .wrap.data-v-524f0207 {
+.content .avatar-wrap .wrap.data-v-56815f0f {
   position: relative;
   top: 25%;
   height: 100%;
   width: 100%;
   margin: 0 auto;
 }
-.content .avatar-wrap .avatar.data-v-524f0207 {
+.content .avatar-wrap .avatar.data-v-56815f0f {
   width: 80px;
   height: 80px;
   border-radius: 50%;
 }
-.content .item.data-v-524f0207 {
+.content .item.data-v-56815f0f {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -49,7 +49,7 @@
   width: calc(100% - 20px);
   z-index: 999;
 }
-.content .item .left.data-v-524f0207 {
+.content .item .left.data-v-56815f0f {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,16 +64,16 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-.content .item .right.data-v-524f0207 {
+.content .item .right.data-v-56815f0f {
   font-size: 16px;
   color: #ccc;
 }
-.content .item .user-msg.data-v-524f0207 {
+.content .item .user-msg.data-v-56815f0f {
   margin-left: 5px;
   font-size: 14px;
   color: #ccc;
 }
-.content .login-out.data-v-524f0207 {
+.content .login-out.data-v-56815f0f {
   height: 30px;
   width: 80%;
   margin: 10px auto 0 auto;

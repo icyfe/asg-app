@@ -1,20 +1,20 @@
 
-.content.data-v-3c02b7e2 {
+.content.data-v-1e529740 {
 	text-align: center;
 	height: 100vh;
 }
-.tabbar.data-v-3c02b7e2 {
+.tabbar.data-v-1e529740 {
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	right: 0;
 }
-.logo.data-v-3c02b7e2 {
+.logo.data-v-1e529740 {
 	height: 200rpx;
 	width: 200rpx;
 	margin-top: 200rpx;
 }
-.title.data-v-3c02b7e2 {
+.title.data-v-1e529740 {
 	font-size: 36rpx;
 	color: #8f8f94;
 }

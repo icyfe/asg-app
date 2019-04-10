@@ -181,6 +181,14 @@
             "path" : "pages/index/cash-withdrawal",
             "style" : {}
         }
+        ,{
+            "path" : "pages/index/order",
+            "style" : {}
+        },
+		{
+		    "path" : "pages/index/sub-detail",
+		    "style" : {}
+		}
     ],
     "globalStyle" : {
         "navigationStyle" : "custom"
@@ -197,12 +205,24 @@
                 "selectedIconPath" : "./static/bar/selecthome.png",
                 "text" : "首页"
             },
-            {
-                "pagePath" : "pages/common/search",
-                "iconPath" : "static/bar/search.png",
-                "selectedIconPath" : "static/bar/sesearch.png",
-                "text" : "搜索"
-            },
+//             {
+//                 "pagePath" : "pages/common/search",
+//                 "iconPath" : "static/bar/search.png",
+//                 "selectedIconPath" : "static/bar/sesearch.png",
+//                 "text" : "搜索"
+//             },
+			{
+				"pagePath": "pages/chat/chat",
+				"iconPath": "static/bar/lts.png",
+				"selectedIconPath": "static/bar/selcetlts.png",
+				"text": "聊天"
+			},
+			{
+				"pagePath": "pages/school/school",
+				"iconPath": "static/bar/sch.png",
+				"selectedIconPath": "static/bar/selectsch.png",
+				"text": "学院"
+			},
             {
                 "pagePath" : "pages/store/index",
                 "iconPath" : "static/bar/store.png",

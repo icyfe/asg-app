@@ -92,6 +92,20 @@
 					</view>
 					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
 				</view>
+				<view class="item" @tap="jump('order')">
+					<view class="item">
+						<uni-icon type="laxin" color="#EEE685" size="22"></uni-icon>
+						<text>我的订单</text>
+					</view>
+					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
+				</view>
+				<view class="item" @tap="copy(user.invitecode)">
+					<view class="item">
+						<uni-icon type="laxin" color="#EEE685" size="22"></uni-icon>
+						<text>下级详情</text>
+					</view>
+					<uni-icon type="arrow-right" size="18" color="#333"></uni-icon>
+				</view>
 				<view class="item" @tap="jump('setting')">
 					<view class="item">
 						<uni-icon type="shezhi" color="#009bdb" size="22"></uni-icon>

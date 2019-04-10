@@ -278,7 +278,7 @@
 					type: '',
 					screen: "",
 					jg: ""
-				})]);
+				}),getDetailImg(id),]);
 				ret.then(res => {
 					if (res.length > 0) {
 						console.log('商品详情', res)

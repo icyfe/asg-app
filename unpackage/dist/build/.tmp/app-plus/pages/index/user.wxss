@@ -1,19 +1,19 @@
-.content.data-v-2a85d771 {
+.content.data-v-e84db70e {
   text-align: center;
   width: 100%;
   height: 100%;
   padding: 0 0 50rpx 0;
 }
-.sm-txt.data-v-2a85d771 {
+.sm-txt.data-v-e84db70e {
   font-size: 12px !important;
 }
-.upper.data-v-2a85d771 {
+.upper.data-v-e84db70e {
   position: relative;
   background: #F9263E;
   width: 100%;
   height: 500rpx;
 }
-.upper .user-wrap.data-v-2a85d771 {
+.upper .user-wrap.data-v-e84db70e {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -24,30 +24,30 @@
   color: #fff;
   width: 100%;
 }
-.upper .user-wrap .avatar.data-v-2a85d771 {
+.upper .user-wrap .avatar.data-v-e84db70e {
   width: 80px;
   height: 80px;
   border-radius: 50%;
 }
-.upper .user-wrap .phone.data-v-2a85d771 {
+.upper .user-wrap .phone.data-v-e84db70e {
   color: #fff;
   font-size: 16px;
 }
-.upper .user-wrap .yq-title.data-v-2a85d771 {
+.upper .user-wrap .yq-title.data-v-e84db70e {
   color: #fff;
   font-size: 12px;
 }
-.upper .user-wrap .code-title.data-v-2a85d771 {
+.upper .user-wrap .code-title.data-v-e84db70e {
   color: #eee685;
   font-size: 14px;
 }
-.upper .user-wrap .copy-title.data-v-2a85d771 {
+.upper .user-wrap .copy-title.data-v-e84db70e {
   color: #fff;
   font-size: 12px;
   margin-left: 6px;
   text-decoration: underline;
 }
-.upper .user-wrap .price-total.data-v-2a85d771 {
+.upper .user-wrap .price-total.data-v-e84db70e {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -63,7 +63,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.upper .user-wrap .price-item.data-v-2a85d771 {
+.upper .user-wrap .price-item.data-v-e84db70e {
   font-size: 12px;
   color: #fff;
   display: -webkit-box;
@@ -85,12 +85,12 @@
           align-items: center;
   margin-left: 10px;
 }
-.upper .user-wrap .price-item .price.data-v-2a85d771 {
+.upper .user-wrap .price-item .price.data-v-e84db70e {
   font-size: 14px;
   color: #fff;
   font-weight: 600;
 }
-.upper .money-apply.data-v-2a85d771 {
+.upper .money-apply.data-v-e84db70e {
   width: 90%;
   background: #000;
   margin: 0 auto;
@@ -118,10 +118,10 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.upper .money-apply .left.data-v-2a85d771 {
+.upper .money-apply .left.data-v-e84db70e {
   padding: 20rpx 0 20rpx 20rpx;
 }
-.upper .money-apply .left .money-txt.data-v-2a85d771 {
+.upper .money-apply .left .money-txt.data-v-e84db70e {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -141,34 +141,34 @@
           align-items: center;
   font-size: 32rpx !important;
 }
-.upper .money-apply .left .money-txt .txt.data-v-2a85d771 {
+.upper .money-apply .left .money-txt .txt.data-v-e84db70e {
   font-size: 30rpx !important;
 }
-.upper .money-apply .left .dec.data-v-2a85d771 {
+.upper .money-apply .left .dec.data-v-e84db70e {
   color: #ccc;
   font-size: 12rpx;
 }
-.upper .money-apply .right.data-v-2a85d771 {
+.upper .money-apply .right.data-v-e84db70e {
   background: #eee685;
   color: #333;
   padding: 0 20rpx;
   margin-right: 20rpx;
   border-radius: 14rpx;
 }
-.upper .money-apply .money-color.data-v-2a85d771 {
+.upper .money-apply .money-color.data-v-e84db70e {
   color: #ccba66;
 }
-.lower.data-v-2a85d771 {
+.lower.data-v-e84db70e {
   margin-top: 20px;
   padding-bottom: 100px;
 }
-.lower .lower-wrap.data-v-2a85d771 {
+.lower .lower-wrap.data-v-e84db70e {
   width: calc(100% - 40px);
   padding: 0 20px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.lower .first-menu.data-v-2a85d771 {
+.lower .first-menu.data-v-e84db70e {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -186,7 +186,7 @@
   padding: 10px 0;
   border-bottom: 1px solid #f8f8f8;
 }
-.lower .first-menu .item.data-v-2a85d771 {
+.lower .first-menu .item.data-v-e84db70e {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -207,17 +207,17 @@
   font-size: 12px !important;
   padding: 10rpx 0;
 }
-.lower .first-menu .price-txt.data-v-2a85d771 {
+.lower .first-menu .price-txt.data-v-e84db70e {
   font-size: 16px;
   font-weight: 600;
   color: #ccba66;
 }
-.lower .second-menu.data-v-2a85d771 {
+.lower .second-menu.data-v-e84db70e {
   padding: 0 10px;
   width: calc(100% - 20px);
   margin-top: 10px;
 }
-.lower .second-menu .item.data-v-2a85d771 {
+.lower .second-menu .item.data-v-e84db70e {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

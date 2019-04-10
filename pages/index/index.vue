@@ -290,7 +290,7 @@
 			//滑动swiper 改变内容
 			async changeTab(e) {
 				let index = e.target.current;
-				console.log('切换tab', index);
+			 
 				let type = index == 0 ? '' : this.tabBars[index].name
 				if (this.istapChange) {
 					this.tabIndex = index;
@@ -320,7 +320,7 @@
 				this.tabIndex = index; //一旦访问data就会出问题
 				this.loadingType = 0;
 				let good = null;
-				console.log('当前tab是否有数据', this.productList[this.tabIndex])
+				 
 				if (!this.productList[this.tabIndex]) {
 					try {
 						good = uni.getStorageSync(this.tabIndex.toString())
@@ -351,7 +351,7 @@
 				})
 			},
 			async tapTab(e) { //点击tab-bar
-				console.log('tabbar', e);
+			 
 				if (this.tabIndex === e.target.dataset.current) {
 					return false;
 				} else {
@@ -364,6 +364,32 @@
 					this.istapChange = true;
 					this.tabIndex = e.target.dataset.current
 					this.loadingType = 0;
+					 
+					if (this.istapChange) {
+						this.tabIndex = index;
+						this.istapChange = false;
+						return;
+					}
+						this.tabIndex = index; //一旦访问data就会出问题
+					this.loadingType = 0;
+					let good = null;
+					 
+					if (!this.productList[this.tabIndex]) {
+						try {
+							good = uni.getStorageSync(this.tabIndex.toString())
+							 
+							console.log('从缓存获取数据', this.tabIndex, good)
+							if (!good) {
+								// console.log('获取数据', this.tabBars[this.tabIndex].name);
+								this._getGoodsList('', this.tabBars[this.tabIndex].name, '', ''); // 切换时刷新数据	
+							} else {
+								this.productList.splice(this.tabIndex,1,good)
+							}
+							// console.log('good', good, 'index', this.tabIndex.toString());
+						} catch (e) {
+							console.log('getData', e.message)
+						}
+					}
 				}
 			},
 		},

@@ -118,6 +118,7 @@
 						return
 					}
 					if (res.result) {
+						console.log('登陆!!',res.result)
 						uni.setStorageSync('user', res.result);
 						uni.switchTab({
 							url: '/pages/index/user'
